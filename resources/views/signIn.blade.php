@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+    <title>BFAR - Login</title>
     <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
     <link rel="stylesheet" href="css/login.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
@@ -19,7 +20,7 @@
                 <h1>Sign In</h1>
                 <div>Please login to use the platform</div>
             </div>
-            <form action="" class="login-card-form">
+            <form action="/dashboard" method="get" class="login-card-form">
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">mail</span>
                     <input type="text" placeholder="Enter Email" id="emailForm"
@@ -43,7 +44,7 @@
                 Don't have an account? <a href="#">Create an account.</a>
             </div>
         </div>
-        <div class="login-card-social">
+        <!-- <div class="login-card-social">
             <div>Other Sign-In Options</div>
             <div class="login-card-social-btns">
                 <a href="#">
@@ -64,6 +65,6 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div> -->
 </body>
 </html>

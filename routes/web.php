@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,4 @@ use App\Http\Controllers\LoginRegisterController;
 */
 
 Route::get('/', [LoginRegisterController::class,"login"])->name('login');
+Route::get('/dashboard', [HomeController::class,"home"])->name('home');
