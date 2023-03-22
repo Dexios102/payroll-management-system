@@ -83,4 +83,11 @@ class LoginRegisterController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function signup(){
+        return view ('signUp');
+    }
+    public function forgotPass(){
+        return view ('forgotPass');
+    }
 }

@@ -36,8 +36,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     Route::post('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 });
-  
 
+Route::get('/signup', [LoginRegisterController::class,"signup"])->name('signup');
+Route::get('/forgotPass', [LoginRegisterController::class,"forgotpass"])->name('forgotPass');
 
 
 
