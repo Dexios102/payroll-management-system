@@ -10,6 +10,7 @@ container.addEventListener("mouseenter", () => {
 
 //Container Hover Leave
 container.addEventListener("mouseleave", () => {
+ 
   container.classList.remove("active");
 });
 

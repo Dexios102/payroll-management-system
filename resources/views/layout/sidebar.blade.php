@@ -3,8 +3,8 @@
         
       </div>
       <ul class="link-items">
-        <li class="link-item active">
-          <a href="#" class="link">
+        <li class="link-item @yield('dashboard')">
+          <a href="/dashboard" class="link">
             <ion-icon name="home-outline"></ion-icon>
             <span style="--i: 1">Home</span>
           </a>
@@ -27,14 +27,14 @@
             <span style="--i: 4">employee</span>
           </a>
         </li>
-        <li class="link-item">
-          <a href="#" class="link">
+        <li class="link-item @yield('department')">
+          <a href="/department" class="link">
           <ion-icon name="trail-sign"></ion-icon>
           <span style="--i: 5">department</span>
           </a>
         </li>
-        <li class="link-item">
-          <a href="#" class="link">
+        <li class="link-item @yield('position')">
+          <a href="/position" class="link">
             <ion-icon name="man"></ion-icon>
             <span style="--i: 6">position</span>
           </a>

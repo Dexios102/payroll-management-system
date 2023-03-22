@@ -1,4 +1,7 @@
 @extends('layout.master')
+@section('dashboard')
+active
+@endsection
 @section('content')
 <!DOCTYPE html>
 <html lang="en">

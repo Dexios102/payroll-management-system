@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PositionController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -27,6 +29,11 @@ Route::get('/logout',[LoginRegisterController::class, 'logoutUser'])->name('logo
 Route::middleware(['auth', 'user-access:hr'])->group(function () {
 Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard');
 
+Route::get('/department', [DepartmentController::class, 'list'])->name('department-list');
+Route::post('/department-save', [DepartmentController::class, 'save'])->name('department-save');
+
+Route::get('/position', [PositionController::class, 'list'])->name('position-list');
+Route::post('/position-save', [PositionController::class, 'save'])->name('position-save');
 });
   
 
