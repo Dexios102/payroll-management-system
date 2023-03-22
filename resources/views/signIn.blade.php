@@ -41,12 +41,12 @@
                         <input type="checkbox" id="rememberMeCheckbox" checked>
                         <label for="rememberMeCheckbox">Remember Me</label>
                     </div>
-                    <a href="#">I forgot my password</a>
+                    <a href="/forgotPass">I forgot my password</a>
                 </div>
                 <button type="submit">Sign In</button>
             </form>
             <div class="login-card-footer">
-                Don't have an account? <a href="#">Create an account.</a>
+                Don't have an account? <a href="/signup">Create an account.</a>
             </div>
         </div>
         <!-- <div class="login-card-social">
