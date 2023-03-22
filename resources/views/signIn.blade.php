@@ -17,18 +17,23 @@
                 <img src="images/logo.png" alt="logo">
             </div>
             <div class="login-card-header">
+             
+                    {{-- {{$name}}
+                {{$type}}
+                --}}
                 <h1>Sign In</h1>
                 <div>Please login to use the platform</div>
             </div>
-            <form action="/dashboard" method="get" class="login-card-form">
+            <form action="/loginUser" method="post" class="login-card-form" >
+                @csrf
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">mail</span>
-                    <input type="text" placeholder="Enter Email" id="emailForm"
+                    <input type="text" placeholder="Enter Email" id="emailForm" name="email"
                     autofocus required>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">lock</span>
-                    <input type="password" placeholder="Enter Password" id="passwordForm"
+                    <input type="password" placeholder="Enter Password" id="passwordForm" name="password"
                     autofocus required>
                 </div>
                 <div class="form-item-other">

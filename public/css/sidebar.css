@@ -60,7 +60,7 @@ body {
   align-items: center;
   width: 100%;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 0px;
   text-decoration: none;
   font-size: 16px;
   white-space: nowrap;
@@ -127,4 +127,53 @@ body {
 .link-item.active a .num-noti {
   color: var(--primary-clr);
   background-color: var(--white-bg);
+}
+
+header{
+  width: 100%;
+  height: 40px;
+  background-color: #0077b6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  
+}
+.logo{
+  margin-left: 6rem;
+  padding: 8px;
+  order: 1;
+}
+nav li{
+  display: inline-block;
+  padding: 10px;
+}
+nav a{
+ text-decoration: none;
+}
+
+nav{
+  order: 2;
+  float: right;
+ 
+}
+
+.content-div{
+  width: 100%;
+  min-height: 100%;
+  /* background-color: rgba(2, 253, 115, 0.467);  */
+  display: inline-flex;
+ 
+}
+
+.main-content{
+  /* background-color: blueviolet; */
+  margin-left: px;
+  margin-top:40px;
+  padding-top: 2%;
+  padding-left: 10%;
+  width: 100%;
+  float: right;
+  height: 400px;
 }

@@ -10,7 +10,17 @@
     <title>BFAR - Dashboard</title>
 </head>
 <body>
-    @include('layout.sidebar')
-    @yield('content')
+    @include('layout.header')
+    
+   
+    <div class="content-div">
+        @include('layout.sidebar')
+
+        <div class="main-content">
+            @yield('content')
+        </div>
+
+    </div>
+    
 </body>
 </html>

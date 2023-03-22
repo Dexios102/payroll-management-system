@@ -52,7 +52,7 @@
           </a>
         </li>
         <li class="link-item">
-          <a href="#" class="link">
+          <a href="/logout" class="link">
             <ion-icon name="log-out"></ion-icon>
             <span style="--i: 9">logout</span>
           </a>
