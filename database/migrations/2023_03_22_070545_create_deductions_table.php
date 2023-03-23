@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('deduction', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('code');
+            $table->string('type');
             $table->string('description')->nullable();
             $table->timestamps();
         });

@@ -48,5 +48,10 @@ class HomeController extends Controller
     {
         return view('managerHome');
     }
+
+    public function practice()
+    {
+        return view('practice');
+    }
     
 }

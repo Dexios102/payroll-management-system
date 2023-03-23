@@ -10,8 +10,13 @@
     <title>BFAR Payroll</title>
 </head>
 <body>
-    @include('layout.header')
     
+
+
+    @include('layout.header')
+    @if (Session::has('success'))
+        @include('notify');
+    @endif
    
     <div class="content-div">
         @include('layout.sidebar')

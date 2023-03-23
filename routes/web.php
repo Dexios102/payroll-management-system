@@ -37,8 +37,10 @@ Route::get('/position', [PositionController::class, 'list'])->name('position-lis
 Route::post('/position-save', [PositionController::class, 'save'])->name('position-save');
 
 Route::get('/deduction', [DeductionController::class, 'list'])->name('deduction-list');
+Route::post('/deduction-save', [DeductionController::class, 'save'])->name('deduction-save');
 
 
+Route::get('/practice', [HomeController::class, 'practice']);
 });
   
 

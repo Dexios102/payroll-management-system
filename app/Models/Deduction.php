@@ -11,6 +11,8 @@ class Deduction extends Model
     protected $table = "deduction";
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'code',
+        'type'
     ];
 }
