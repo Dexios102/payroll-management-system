@@ -12,7 +12,7 @@
 <body>
     
     @if (Session::has('success'))
-    @include('notify');
+    @include('notify')
     @endif
 
     @include('layout.header')
