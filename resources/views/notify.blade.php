@@ -17,7 +17,7 @@
   overflow: hidden;
   transform: translateX(calc(100% + 30px));
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
-  z-index: 1;
+  z-index: 3;
 }
 
 .toast.active {
@@ -126,7 +126,7 @@
   toast = document.querySelector(".toast");
 (closeIcon = document.querySelector(".close")),
   (progress = document.querySelector(".progress"));
-
+  nav = document.querySelector("nav");
 let timer1, timer2;
 
 
@@ -135,6 +135,8 @@ let timer1, timer2;
 
   timer1 = setTimeout(() => {
     toast.style.display = "none";
+    // nav.style.marginTop = "0";
+
   }, 5000); //1s = 1000 milliseconds
 
   timer2 = setTimeout(() => {

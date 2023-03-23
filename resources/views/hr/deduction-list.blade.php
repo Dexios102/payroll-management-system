@@ -11,28 +11,12 @@ active
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<<<<<<< HEAD
-=======
-    <title>Document</title>
 
->>>>>>> 60bc00a92a9b84eb073e445605c2a0c9a18d5a7b
-   
+    <link href="DataTables/datatables.min.css" rel="stylesheet"/>
+    <script src="DataTables/datatables.min.js"></script>
   <style>
     
     
-table{
-  border: 1px solid black;
-  width: 100%;
-  text-align: center;
-
-}
- thead{
-  background-color: #8888885e;
- }
-
- tr{
-  border: 1px solid black;
- }
 
     
     .grid-container {
@@ -62,7 +46,7 @@ table{
     <div class="grid-container">
         <div class="con1">
             <h4>Deduction</h4>
-                <table class="table-content">
+                <table class="table-content" id="dataTable">
                 <thead>
                     <tr>
                     <th>ID</th>
@@ -119,7 +103,11 @@ table{
          
       </div>
 
-    
+    <script>
+      $(document).ready( function () {
+    $('#dataTable').DataTable();
+      } );
+    </script>
 
 </body>
 </html>

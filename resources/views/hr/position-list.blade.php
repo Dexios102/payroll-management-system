@@ -12,9 +12,21 @@ active
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>    
-  table, th, td {
-  border:1px solid black;
+  
+  
+table{
+  border: 1px solid black;
+  width: 100%;
+  text-align: center;
+
 }
+ thead{
+  background-color: #8888885e;
+ }
+
+ tr{
+  border: 1px solid black;
+ }
 
 /* The Modal (background) */
 .modal {
@@ -59,7 +71,7 @@ active
 </head>
 <body>
     
-
+  <button id="posBtn">Add Position</button>
     <h4>Position List</h4>
     <table>
         <tr>
@@ -80,7 +92,7 @@ active
         
     </table>
 
-    <button id="posBtn">Add Position</button>
+    
 
     <!-- The Modal -->
         <div id="posModal" class="modal">

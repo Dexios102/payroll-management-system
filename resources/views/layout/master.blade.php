@@ -11,12 +11,12 @@
 </head>
 <body>
     
-
+    @if (Session::has('success'))
+    @include('notify');
+    @endif
 
     @include('layout.header')
-    @if (Session::has('success'))
-        @include('notify');
-    @endif
+   
    
     <div class="content-div">
         @include('layout.sidebar')
