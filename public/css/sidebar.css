@@ -21,13 +21,14 @@ body.dark-mode {
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  font-size: 15px;
 }
 body {
   min-height: 100vh;
   justify-content: center;
   background: var(--bg-clr);
 }
-.container {
+.container2 {
   width: 85px;
   min-height: 100vh;
   margin: 0;
@@ -40,14 +41,14 @@ body {
   background-color: var(--white-bg);
   transition: all 0.3s ease;
 }
-.container.active {
+.container2.active {
   width: 250px;
 }
-.container .logo {
+.container2 .logo {
   /* width: 1px; */
   margin-bottom: 30px;
 }
-.container ul {
+.container2 ul {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -78,7 +79,7 @@ body {
 .link-item:last-child span p {
   font-size: 12px;
 }
-.container.active .link-item a span {
+.container2.active .link-item a span {
   transition-delay: calc(0.02s * var(--i));
   transform: translateX(0px);
 }
@@ -173,7 +174,8 @@ nav{
   margin-left: px;
   margin-top:40px;
   padding-top: 2%;
-  padding-left: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
   width: 100%;
   float: right;
   height: 400px;

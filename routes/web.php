@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
@@ -34,8 +35,21 @@ Route::post('/department-save', [DepartmentController::class, 'save'])->name('de
 
 Route::get('/position', [PositionController::class, 'list'])->name('position-list');
 Route::post('/position-save', [PositionController::class, 'save'])->name('position-save');
+
+Route::get('/deduction', [DeductionController::class, 'list'])->name('deduction-list');
+
+
 });
   
+
+
+
+
+
+
+
+
+
 
 //All Developer Routes List
 Route::middleware(['auth', 'user-access:1'])->group(function () {
@@ -43,9 +57,8 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 
     Route::post('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 });
+  
 
-Route::get('/signup', [LoginRegisterController::class,"signup"])->name('signup');
-Route::get('/forgotPass', [LoginRegisterController::class,"forgotpass"])->name('forgotPass');
 
 
 

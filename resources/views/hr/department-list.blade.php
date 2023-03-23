@@ -14,9 +14,7 @@ active
     <title></title>
     {{-- @vite('resources/css/app.css') --}}
     <style>
-        table, th, td {
-  border:1px solid black;
-}
+       
 
 /* The Modal (background) */
 .modal {
@@ -57,6 +55,23 @@ active
   cursor: pointer;
 }
 
+table{
+  border: 1px solid black;
+  width: 100%;
+  text-align: center;
+
+}
+ thead{
+  background-color: #8888885e;
+ }
+
+ tr{
+  border: 1px solid black;
+ }
+
+ #deptBtn{
+  float: right;
+ }
 
 
     </style>
@@ -64,15 +79,18 @@ active
 <body>
   
 
-    <h4>Department List</h4>
-    <table>
+    <h4>Department List</h4> <button id="deptBtn">Add department</button>
+    <table class="table-content">
+      <thead>
         <tr>
-            <th>ID</th>
-            <th>Code</th>
-            <th>Division</th>
-            <th>Floor Number</th>
-            <th>Description</th>
-        </tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Division</th>
+          <th>Floor Number</th>
+          <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
         @foreach ($dp as $item)
         <tr>
             <td>{{$item->id}}</td>
@@ -82,10 +100,12 @@ active
             <td>{{$item->description}}</td>
         </tr>
         @endforeach
+      </tbody>
+       
         
     </table>
 
-    <button id="deptBtn">Add department</button>
+    
 
     <!-- The Modal -->
         <div id="deptModal" class="modal">
