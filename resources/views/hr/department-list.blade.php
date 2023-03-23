@@ -11,6 +11,14 @@ active
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.jqueryui.min.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.jqueryui.min.js"></script>
     <title></title>
     {{-- @vite('resources/css/app.css') --}}
     <style>
@@ -55,20 +63,6 @@ active
   cursor: pointer;
 }
 
-table{
-  border: 1px solid black;
-  width: 100%;
-  text-align: center;
-
-}
- thead{
-  background-color: #8888885e;
- }
-
- tr{
-  border: 1px solid black;
- }
-
  #deptBtn{
   float: right;
  }
@@ -80,7 +74,7 @@ table{
   
 
     <h4>Department List</h4> <button id="deptBtn">Add department</button>
-    <table class="table-content">
+    <table id="myTable" class="display">
       <thead>
         <tr>
           <th>ID</th>
@@ -101,13 +95,7 @@ table{
         </tr>
         @endforeach
       </tbody>
-       
-        
     </table>
-
-    <h1>Asel Pogi</h1>
-
-    <!-- The Modal -->
         <div id="deptModal" class="modal">
 
             <!-- Modal content -->
@@ -134,19 +122,10 @@ table{
             </div>
         
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
         <script>
+            $(document).ready(function(){
+              $('#myTable').DataTable();
+            });
             var modal = document.getElementById("deptModal");
             var btn = document.getElementById("deptBtn");
             
@@ -171,9 +150,6 @@ table{
               }
             }
             </script>
-
-
-
 </body>
 </html>
 
