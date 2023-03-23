@@ -2,10 +2,9 @@
   <link rel="stylesheet" href="css/header.css"/>
 </head>
 <nav>
-  <div class="logo">
-    <a href="/dashboard"><img src="images/logo.png" alt="Logo"></a>
+  <div class="logo-container">
+     <h2>Payroll</h2>
   </div>
-  <ul class="nav-links">
-    <li><a href="#">About</a></li>
-  </ul>
+  <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
 </nav>
+<script src="js/clock.js"></script>

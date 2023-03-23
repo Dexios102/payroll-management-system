@@ -3,6 +3,7 @@
 
 nav {
     background-color: #457b9d;
+    color: white;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -12,39 +13,16 @@ nav {
     position: fixed;
   }
   
-  .logo img {
-    height: 55px;
-    margin-top: 16px;
-    box-shadow: 2px 2px 2px #fff;
-    border-radius: 70%;
+  h2 {
+    margin-left: 1.3em;
   }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: left;
-  }
-  
-  nav li {
-    margin: 0 10px;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 50px;
-    padding: 1rem;
-  }
-  
-  nav a:hover {
-    background-color: #fff;
-    color: #333;
-  }
-  
-  .nav-links li:last-child {
-    margin-right: 0;
-  }
+  .clock {
+    margin-top: 1.5em;
+    margin-right: -3.5em;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 6px;
+    font-weight: 600;
+}
   
