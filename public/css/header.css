@@ -11,6 +11,7 @@ nav {
     padding: 0 20px;
     width: 100vw;
     position: fixed;
+    z-index: 1;
   }
   
   h2 {
@@ -20,9 +21,16 @@ nav {
     margin-top: 1.5em;
     margin-right: -3.5em;
     transform: translateX(-50%) translateY(-50%);
-    font-size: 2em;
+    font-size: 1.7em;
     font-family: 'Poppins', sans-serif;
-    letter-spacing: 6px;
+    letter-spacing: 4px;
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .clock {
+        font-size: small;
+    }
+
 }
   

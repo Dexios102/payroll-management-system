@@ -31,6 +31,7 @@ body {
   width: 85px;
   min-height: 100vh;
   margin: 0;
+  margin-top: 50px;
   padding: 20px;
   overflow: hidden;
   border-radius: 10px;
