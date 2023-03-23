@@ -11,6 +11,11 @@ active
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
+=======
+    <title>Document</title>
+
+>>>>>>> 60bc00a92a9b84eb073e445605c2a0c9a18d5a7b
    
   <style>
     
