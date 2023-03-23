@@ -1,4 +1,4 @@
-const container = document.querySelector(".container");
+const container = document.querySelector(".container2");
 const linkItems = document.querySelectorAll(".link-item");
 const darkMode = document.querySelector(".dark-mode");
 /* const logo = document.querySelector(".logo svg"); */

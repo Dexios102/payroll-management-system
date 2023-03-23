@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container2">
       <div class="logo">
         
       </div>
@@ -45,8 +45,8 @@
             <span style="--i: 7">allowance</span>
           </a>
         </li>
-        <li class="link-item">
-          <a href="#" class="link">
+        <li class="link-item @yield('deduction')">
+          <a href="/deduction" class="link">
             <ion-icon name="person-remove"></ion-icon>
             <span style="--i: 8">deduction</span>
           </a>
