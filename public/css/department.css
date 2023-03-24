@@ -146,7 +146,11 @@ input:focus {
 #deptTable td, th{
   text-align: left;
   border-bottom: 1px solid #6c757d;
+  border-left: 1px solid #6c757d;
   transition: all .5s;
+  padding: 1rem;
+  font-size: 1.2rem;
+  /* text-align: center; */
 }
 
 #deptTable tr:nth-child(even) {
