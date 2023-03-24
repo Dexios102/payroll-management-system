@@ -1,0 +1,141 @@
+@import url("reset.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+/* Icons */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
+/* Jquery DataTable CSS */
+@import url('https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  /* border: 2px solid black; */
+  height: 80vh auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #e9ecef;
+  /* background-color: #023047; */
+  box-shadow: 2px 2px 2px #ced4da;
+  /* color: white; */
+}
+
+.table-container {
+  background-color: #fff;
+  color: black;
+  border-radius: 20px;
+  padding: 1.2rem;
+}
+
+.deptLabel {
+  font-size: 2.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #003049;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-container {
+   width: 450px;
+   background: rgba(255, 255, 255, .5);
+   padding: 3rem;
+   /* border: 2px solid black; */
+   border-radius: 15px;
+   box-shadow: 2px 2px 2px #6c757d;
+   margin-left: 35vw;
+   margin-top: 15vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, .3);
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 100%;
+  transition: background .5s;
+}
+
+.modal-container button {
+  background: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background .5s;
+}
+
+.modal-container button:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+input:focus {
+  background: white;
+}
+
+#deptBtn {
+  padding: 1.3em 3em;
+  margin-bottom: calc(1.2rem * .9);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #457b9d;
+  border: none;
+  border-radius: 60px;
+  box-shadow: 2px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+#deptBtn:hover {
+  background-color: #23c483;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#deptBtn:active {
+  transform: translateY(-1px);
+}
+
+#deptTable td, th{
+  text-align: left;
+  border-bottom: 1px solid #6c757d;
+}
+
+#deptTable tr:nth-child(even) {
+  background-color: #ced4da;
+  color: black;
+}
+#deptTable tr:hover {
+  background-color: #457b9d;
+  font-weight: 600;
+  /* transform: scale(1.1); */
+  border-radius: 10px;
+  color:white;
+}
