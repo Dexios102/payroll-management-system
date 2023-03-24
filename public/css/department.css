@@ -12,6 +12,7 @@ body {
 .container {
   /* border: 2px solid black; */
   height: 80vh;
+  width: 100%;
   padding: 1.5rem;
   border-radius: 10px;
   background-color: #e9ecef;

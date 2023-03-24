@@ -76,6 +76,9 @@ active
   <!--  <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bulma.min.js"></script> -->
   <script>
     $(document).ready(function () {
+    $('#deptTable tbody').on('click', 'tr', function () {
+        $(this).toggleClass('selected');
+    });
       $('#deptTable').DataTable({
         scrollY: '45vh',
         scrollCollapse: true,
