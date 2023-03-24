@@ -17,7 +17,7 @@ active
   <div class="container">
     <h4 class="deptLabel">Department List</h4>
     <button id="deptBtn" class="material-symbols-outlined">
-      Add<span>Add department</span></button>
+      library_add<span> Add department</span></button>
     <div class="table-container">
       <table id="deptTable" class="hover row-border" style="width:100%">
         <thead>
