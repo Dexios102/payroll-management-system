@@ -24,6 +24,7 @@ body.dark-mode {
   font-size: 15px;
 }
 body {
+ /*  position: fixed; */
   min-height: 100vh;
   justify-content: center;
   background: var(--bg-clr);
@@ -31,6 +32,7 @@ body {
 .container2 {
   width: 85px;
   min-height: 100vh;
+  min-width: 85;
   margin: 0;
   margin-top: 50px;
   padding: 20px;

@@ -11,7 +11,7 @@ body {
 
 .container {
   /* border: 2px solid black; */
-  height: 80vh auto;
+  height: 80vh;
   padding: 1.5rem;
   border-radius: 10px;
   background-color: #e9ecef;
@@ -51,7 +51,7 @@ body {
 
 .modal-container {
    width: 450px;
-   background: rgba(255, 255, 255, .5);
+   background: #003049;
    padding: 3rem;
    /* border: 2px solid black; */
    border-radius: 15px;
@@ -60,8 +60,15 @@ body {
    margin-top: 15vh;
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-around;
    align-items: center;
+   gap: 5px;
+}
+
+.modal-header h2 {
+   color: white;
+   margin-bottom: 10px;
+   position: sticky;
 }
 
 input[type="text"] {
@@ -73,6 +80,17 @@ input[type="text"] {
   border-radius: 100px;
   width: 100%;
   transition: background .5s;
+}
+
+textarea {
+  border-radius: 20px;
+  padding: 1rem;
+  border: none;
+  outline: none;
+}
+
+textarea:focus {
+  border: none;
 }
 
 .modal-container button {
@@ -126,16 +144,17 @@ input:focus {
 #deptTable td, th{
   text-align: left;
   border-bottom: 1px solid #6c757d;
+  transition: all .5s;
 }
 
 #deptTable tr:nth-child(even) {
-  background-color: #ced4da;
+  background-color: #dee2e6;
   color: black;
 }
 #deptTable tr:hover {
   background-color: #457b9d;
   font-weight: 600;
-  /* transform: scale(1.1); */
+  transform: scale(1.01);
   border-radius: 10px;
   color:white;
 }

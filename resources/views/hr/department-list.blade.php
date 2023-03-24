@@ -19,7 +19,7 @@ active
     <button id="deptBtn" class="material-symbols-outlined">
       Add<span>Add department</span></button>
     <div class="table-container">
-      <table id="deptTable" class="hover row-border">
+      <table id="deptTable" class="hover row-border" style="width:100%">
         <thead>
           <tr>
             <th class="id">ID</th>
@@ -46,7 +46,7 @@ active
     <div id="deptModal" class="modal">
       <div class="modal-container">
         <div class="modal-header">
-          <span class="close">&times;</span>
+          <!-- <span>&times;</span> -->
           <h2>Add Department</h2>
         </div>
         <form action="/department-save" method="POST">
@@ -60,8 +60,9 @@ active
             <option value="3">3</option>
             <option value="4">4</option>
           </select>
+          <br>
           <label for="description">Description</label>
-          <textarea name="description" id="description" cols="30" rows="10">
+          <textarea name="description" id="description" cols="50" rows="5">
 
                 </textarea>
           <button type="submit">Save</button>
@@ -76,9 +77,10 @@ active
   <script>
     $(document).ready(function () {
       $('#deptTable').DataTable({
-        /* scrollY: '50vh', */
+        scrollY: '45vh',
         scrollCollapse: true,
-        paging: false,
+        scrollX: 'auto',
+        paging: true,
       });
     });
   </script>
