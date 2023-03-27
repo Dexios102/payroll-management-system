@@ -15,15 +15,15 @@ body {
 
 .forgot-card {
     /* border: 2px solid black; */
-    width: 57rem;
-    height: 25rem;
+    width: 40rem;
+    height: 18rem;
     padding: 4rem;
     background: rgba(255, 255, 255, .5);
     border-radius: 50px;
     position: relative;
     display: flex;
     flex-direction: row;
-    gap: calc(3rem * .7);
+    gap: calc(3rem * 1.2);
 }
 
 .forgot-card::before {
@@ -39,29 +39,32 @@ body {
 /* Image Icon */
 
 .forgot-card-logo img {
-    width: 20rem;
+    width: 10rem;
 }
 
 /* Header */
-
 .forgot-header {
-    margin-top: calc(2rem * .8);
+    margin-top: calc(-2.1rem);
 }
 
 .forgot-header h1 {
-    font-size: calc(2rem * 1.2);
-    font-weight: 700;
-    margin-bottom: .5rem;
+    font-size: calc(1.5rem * 1.1);
+    font-weight: 600;
+    margin-bottom: .3rem;
 }
 
 .forgot-header h1+div {
     opacity: .9;
 }
 
+.forgot-header div {
+    font-size: calc(1rem * .8);
+}
+
 .forgot-card-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
     margin-top: 2rem;
 }
 .forgot-card-form .form-item {
@@ -72,7 +75,7 @@ body {
     position: absolute;
     top: .82rem;
     left: 1.4rem;
-    font-size: 1.3rem;;
+    font-size: 1.5rem;;
     opacity: .5;
 }
 /* Form Elements */
@@ -111,18 +114,27 @@ body {
 @media (max-width: 768px) {
 
     body {
-        padding: 1.2rem 0;
+        padding: .3rem;
     }
 
     .forgot-card {
-        width: 280px;
-        padding: .5rem auto;
-        overflow: hidden;
+        width: 290px;
+        height: 35rem;
+        padding: 2rem;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        gap: 4px;
+        /* overflow: hidden; */
     }
 
     .forgot-header {
         margin-top: .05rem;
         padding: 2px;
+    }
+
+    button {
+        padding: .5rem;
     }
 
 }

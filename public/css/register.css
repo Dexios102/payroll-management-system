@@ -15,7 +15,7 @@ body {
 .register-card {
     width: 450px;
     background: rgba(255, 255, 255, .5);
-    padding: 4rem;
+    padding: 3rem;
     border-radius: 10px;
     position: relative;
 }
@@ -31,11 +31,11 @@ body {
 }
 
 .card-logo{
-    margin-bottom: 2rem;
+    margin-bottom: .1rem;
 }
 
 .card-logo img {
-    width: 140px;
+    width: 110px;
 }
 
 .card-logo,.register-card-header {
@@ -45,17 +45,17 @@ body {
 /* Card Headear */
 
 .register-card-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .register-card-header h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: .5rem;
 }
 
 .register-card-header h1+div {
-    font-size: calc(1rem * .8);
+    font-size: calc(1rem * .7);
     opacity: .8;
 }
 
@@ -64,7 +64,7 @@ body {
 .register-card-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
 .register-card-form .form-item {
@@ -75,14 +75,14 @@ body {
     position: absolute;
     top: .82rem;
     left: 1.4rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     opacity: .5;
 }
 
 .register-card-form .checkbox {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
 }
 
 .register-card-form .form-item-other {
@@ -97,7 +97,7 @@ body {
 .register-card-footer {
     display: flex;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     font-size: calc(1.2rem * .8);
 }
 
@@ -146,7 +146,14 @@ body {
 @media (max-width: 768px) {
 
     body {
-        padding: 1rem 0;
+        padding: 2rem;
+    }
+    .register-card {
+        width: 300px;
+        height: 40rem;
+        font-size: calc(1rem * .5);
+        padding: .5rem 1.2rem;
+        padding-top: 2rem;
     }
 
 }

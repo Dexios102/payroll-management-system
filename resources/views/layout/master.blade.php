@@ -26,8 +26,8 @@
         </div>
 
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
         @include('layout.footer')
-    </div>
+    </div> -->
 </body>
 </html>

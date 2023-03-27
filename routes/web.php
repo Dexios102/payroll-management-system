@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PositionController;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Generator\StringManipulationGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Auth::routes();
-Route::get('/', [LoginRegisterController::class,"login"])->name('login');
-
+Route::get('/forgotPass', [LoginRegisterController::class,"forgotPass"])->name('forgotPass');
 Route::post('/loginUser',[LoginRegisterController::class, 'loginUser'])->name('login.user');
 Route::get('/logout',[LoginRegisterController::class, 'logoutUser'])->name('logout.user');
-
+Route::get('/signup',[LoginRegisterController::class, 'signup'])->name('signup');
+Route::get('/',[LoginRegisterController::class, 'login'])->name('signIn');
 
 //All HR Users Routes List
 Route::middleware(['auth', 'user-access:hr'])->group(function () {
@@ -43,16 +44,6 @@ Route::post('/deduction-save', [DeductionController::class, 'save'])->name('dedu
 Route::get('/practice', [HomeController::class, 'practice']);
 });
   
-
-
-
-
-
-
-
-
-
-
 //All Developer Routes List
 Route::middleware(['auth', 'user-access:1'])->group(function () {
   
