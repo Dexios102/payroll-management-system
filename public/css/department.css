@@ -186,7 +186,7 @@ body {
   border: none;
   outline: 1px solid #0077b6;
   border-radius: 10px;
-  width: 25em;
+  width: em;
   height: 8em;
   resize: none;
   margin-bottom: 5px;
