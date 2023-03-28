@@ -46,7 +46,7 @@ active
     <div id="deptModal" class="modal">
       <div class="modal-container">
         <div class="modal-header">
-          <a href="/department" class="href"><span class="material-symbols-outlined exit-icon">
+          <a href="#" class="close"><span class="material-symbols-outlined exit-icon">
               close
             </span></a>
           <h2 class="modal-label">Add Department</h2>
@@ -104,7 +104,7 @@ active
       </div>
     </div>
   </div>
-  <script src="js/modal.js"></script>
+  <script src="js/modaldept.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
   <!--  <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bulma.min.js"></script> -->

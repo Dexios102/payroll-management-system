@@ -9,20 +9,20 @@
             <span style="--i: 1">Home</span>
           </a>
         </li>
-        <li class="link-item">
-          <a href="#" class="link">
+        <li class="link-item  @yield('payroll')">
+          <a href="/payroll" class="link">
             <ion-icon name="cash-outline"></ion-icon>
             <span style="--i: 2">payroll</span>
           </a>
         </li>
-        <li class="link-item">
-          <a href="#" class="link"
+        <li class="link-item  @yield('attendance')">
+          <a href="/attendance" class="link"
             ><ion-icon name="person-add-outline"></ion-icon>
             <span style="--i: 3">attendance</span>
           </a>
         </li>
-        <li class="link-item">
-          <a href="#" class="link">
+        <li class="link-item  @yield('employee')">
+          <a href="/employee" class="link">
           <ion-icon name="people-circle"></ion-icon>
             <span style="--i: 4">employee</span>
           </a>
@@ -39,8 +39,8 @@
             <span style="--i: 6">position</span>
           </a>
         </li>
-        <li class="link-item">
-          <a href="#" class="link">
+        <li class="link-item @yield('allowance')">
+          <a href="/allowance" class="link">
             <ion-icon name="cash"></ion-icon>
             <span style="--i: 7">allowance</span>
           </a>

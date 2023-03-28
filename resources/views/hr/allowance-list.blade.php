@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('deduction')
+@section('allowance')
 active
 @endsection
 
@@ -18,7 +18,7 @@ active
 
 <body>
   <div class="container">
-    <h4 class="deduction-label">Deduction Data</h4>
+    <h4 class="deduction-label">Allowance Data</h4>
     <button id="deductionBtn" class="material-symbols-outlined">
       library_add<span>Add</span></button>
     <div class="table-container">
@@ -33,7 +33,7 @@ active
           </tr>
         </thead>
         <tbody>
-          @foreach ($ded as $item)
+          @foreach ($all as $item)
           <tr>
             <td>{{$item->id}}</td>
             <td>{{$item->name}}</td>
@@ -48,13 +48,13 @@ active
     <div class="modal" id="deductionModal">
       <div class="modal-container">
         <div class="modal-header">
-          <a href="/deduction" class="href"><span class="material-symbols-outlined exit-icon">
+          <a href="#" class="close"><span class="material-symbols-outlined exit-icon">
               close
             </span></a>
-          <h2 class="position-label">Deduction</h2>
+          <h2 class="position-label">Allowance</h2>
         </div>
         <div class="modal-form">
-          <form action="/deduction-save" method="POST">
+          <form action="/allowance-save" method="POST">
             @csrf
             <div class="form-item-modal">
               <span class="material-symbols-outlined modal-icon">
@@ -71,7 +71,7 @@ active
             <br><label for="floor">Type</label>
             <select name="type" id="type" aria-placeholder="">
               <option value="Allowance">Allowance</option>
-              <option value="Loan">Loan</option>
+              <option value="Bonus">Bonus</option>
               <option value="3">3</option>
               <option value="4">4</option>
             </select>

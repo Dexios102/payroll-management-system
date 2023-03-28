@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\AllowanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PositionController;
+use App\Models\Allowance;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Generator\StringManipulationGenerator;
 
@@ -40,6 +43,11 @@ Route::post('/position-save', [PositionController::class, 'save'])->name('positi
 Route::get('/deduction', [DeductionController::class, 'list'])->name('deduction-list');
 Route::post('/deduction-save', [DeductionController::class, 'save'])->name('deduction-save');
 
+Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
+Route::post('/employee-save', [EmployeeController::class, 'saveEmployee'])->name('employee-save');
+
+Route::get('/allowance', [AllowanceController::class, 'list'])->name('allowance-list');
+Route::post('/allowance-save', [AllowanceController::class, 'saveAllowance'])->name('allowance-save');
 
 Route::get('/practice', [HomeController::class, 'practice']);
 });
