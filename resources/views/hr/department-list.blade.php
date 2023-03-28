@@ -62,17 +62,19 @@ active
             </div>
             <div class="form-item-modal">
               <span class="material-symbols-outlined modal-icon">
-                badge
+                location_away
               </span>
               <input type="text" name="division" id="division" placeholder="Division">
             </div>
             <label for="floor">Floor Number</label>
-            <select name="floor" id="floor" aria-placeholder="">
-              <option value="1">Floor #1</option>
-              <option value="2">Floor #2</option>
-              <option value="3">Floor #3</option>
-              <option value="4">Floor #4</option>
-            </select>
+            <div class="department-selection">
+              <select name="floor" id="floor" aria-placeholder="">
+                <option value="1">Floor #1</option>
+                <option value="2">Floor #2</option>
+                <option value="3">Floor #3</option>
+                <option value="4">Floor #4</option>
+              </select>
+            </div>
             <br>
             <label for="description">Description</label>
             <textarea name="description" id="description" cols="50" rows="5">

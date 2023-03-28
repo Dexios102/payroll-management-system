@@ -9,7 +9,6 @@ body {
 }
 
 .container {
-  /* border: 2px solid black; */
   height: fit-content;
   width: 100%;
   padding: 1.2rem;
@@ -18,7 +17,6 @@ body {
   background-color: #e9ecef;
   /* background-color: #023047; */
   box-shadow: 2px 2px 2px #ced4da;
-  /* color: white; */
 }
 
 .table-container {
@@ -55,7 +53,7 @@ body {
   background: #e5e5e5;
   box-shadow: 1px 2px 2px #8e9aaf;
   border-radius: 15px;
-  max-width: 28em;
+  max-width: 26em;
   min-height: 36em;
   margin: auto;
   padding: .5rem;
@@ -94,8 +92,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
 }
 
 .noselect {
@@ -186,7 +184,7 @@ body {
   border: none;
   outline: 1px solid #0077b6;
   border-radius: 10px;
-  width: em;
+  width: 23em;
   height: 8em;
   resize: none;
   margin-bottom: 5px;
@@ -205,12 +203,6 @@ body {
   left: 1.4rem;
   font-size: 1.6rem;
 }
-
-
-
-/* .modal-form button {
-  width: 9vw;
-} */
 
 .submit-modal{
   cursor: pointer;
@@ -307,5 +299,12 @@ input:focus {
 
 .exit-icon {
   position: relative;
-  left: 22rem;
+  left: 21rem;
+  bottom: 1.1rem;
+  top: .1rem;
+}
+
+.department-selection select { 
+  width: 23rem;
+  height: 2.2rem;
 }
