@@ -104,7 +104,6 @@ th {
 .check-container .check-icon:hover {
     color: black;
     transform: scale(1.1);
-    /* background: #264653; */
     background: #edede9;
     box-shadow: 2px 1px 6px black;
 }
@@ -158,4 +157,34 @@ th {
 .action-icons {
     height: auto;
     margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.action-icons button{
+    border: none;
+    background: transparent;
+}
+
+.action-icons .icons {
+    color:#fff;
+    font-size: 1.5rem;
+    font-weight: 400;
+    border-radius: 15px 15px 15px 15px;
+    background: #0081a7;
+    padding: .2rem;
+    transition: all .3s;
+}
+
+.action-icons .icons:hover {
+    color: black;
+    transform: scale(1.1);
+    /* background: #264653; */
+    background: #edede9;
+    box-shadow: 2px 1px 6px black;
+}
+
+.action-icons .delete .icons{
+    background: #d62828;
 }

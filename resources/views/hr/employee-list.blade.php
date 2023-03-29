@@ -51,7 +51,7 @@ active
                   <button><a href="#"><span class="material-symbols-outlined icons">
                     update
                     </span></a></button>
-                  <button><a href="#"></a><span class="material-symbols-outlined icons">
+                  <button class="delete"><a href="#"></a><span class="material-symbols-outlined icons">
                     archive
                     </span></button>
                 </div>
