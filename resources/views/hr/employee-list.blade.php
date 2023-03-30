@@ -12,6 +12,7 @@ active
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Department Section</title>
   <link rel="stylesheet" href="css/employee.css" />
+  <link rel="stylesheet" href="css/checkModal.css">
 
 <body>
   <div class="container">
@@ -38,11 +39,11 @@ active
           @foreach ($emp as $item)
           <tr>
             <td>
-              <div class="check-container">
-                <button><a href="#" id="checkBtn" title="Information">
+              <div class="check-container" id="check-Btn">
+                <button title="Information">
                     <span class="material-symbols-outlined check-icon">
                       menu_open
-                    </span></a></button>
+                    </span></button>
               </div>
             </td>
             <td>
@@ -198,8 +199,25 @@ active
           </form>
         </div>
       </div>
-      {{-- checkModal --}}
-      <div id="checkModal" class="modal">
+      </div>
+      </div>
+
+      <!-- {{-- checkModal --}} -->
+      <div class="modal-check" id="check-Modal">
+        <div class="check-modal-container">
+          <div class="check-modal-headear">
+            <span style="float:right" class="close2">
+              <a href="#" style="font-size: 1.5rem; padding:2px;">X</a>
+              </span>
+              <h4 class="check-modal-label">
+                Allowance and Deduction Details
+              </h4>
+          </div>
+        </div>
+      </div>
+  </div>
+      <!-- {{-- checkModal --}}
+      <div class="modalcheck">
         <div class="checkmodal-container">
           <div class="checkmodal-header">
             <span style="float:right" class="close2">
@@ -220,9 +238,7 @@ active
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <script src="js/checkModal.js"></script>
+      </div> -->
     <script src="js/modal.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
