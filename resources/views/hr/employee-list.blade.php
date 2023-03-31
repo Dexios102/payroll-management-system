@@ -39,8 +39,8 @@ active
           @foreach ($emp as $item)
           <tr>
             <td>
-              <div class="check-container" id="check-Btn">
-                <button title="Information">
+              <div class="check-container">
+                <button title="Information" id="check-Btn">
                     <span class="material-symbols-outlined check-icon">
                       menu_open
                     </span></button>
@@ -213,32 +213,10 @@ active
                 Allowance and Deduction Details
               </h4>
           </div>
+          
         </div>
       </div>
   </div>
-      <!-- {{-- checkModal --}}
-      <div class="modalcheck">
-        <div class="checkmodal-container">
-          <div class="checkmodal-header">
-            <span style="float:right" class="close2">
-               <a href="#" style="font-size: 1.5rem; padding:2px;">X</a>
-               </span>
-            <h4>Allowance and Deduction Details</h4>
-          </div>
-          <div class="checkmodal-body">
-            <div class="listcon">
-              <div class="listheader">
-                <h6>Allowances</h6>
-              </div>
-            </div>
-            <div class="listcon">
-              <div class="listheader">
-                <h6>Deductions</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     <script src="js/modal.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
