@@ -19,6 +19,8 @@ active
     <h4 class="employeeLabel">Employee Records</h4>
     <button id="addBtn" class="material-symbols-outlined">
       Add<span>Add</span></button>
+
+      
     <div class="table-container">
       <table id="deptTable" class="hover row-border" style="width:100%">
         <thead>
@@ -39,8 +41,9 @@ active
           @foreach ($emp as $item)
           <tr>
             <td>
-              <div class="check-container" id="check-Btn">
-                <button title="Information">
+              {{-- <div onclick=myHandler() id="{{$item->id}}">&rarr; Click Here! &larr;</div> --}}
+              <div class="check-container" ">
+                <button title="Information" onclick="checkInfo({{$item->id}})" >
                     <span class="material-symbols-outlined check-icon">
                       menu_open
                     </span></button>
@@ -56,7 +59,7 @@ active
                   </span></button>
               </div>
             </td>
-            <td>{{$item->first_name}} {{$item->middle_name}} {{$item->last_name}}</td>
+            <td id="full_name">{{$item->first_name}} {{$item->middle_name}} {{$item->last_name}}</td>
             <td>{{$item->status}}</td>
             <td>{{$item->department}}</td>
             <td>{{$item->position}}</td>
@@ -203,15 +206,87 @@ active
       </div>
 
       <!-- {{-- checkModal --}} -->
-      <div class="modal-check" id="check-Modal">
+      <div class="modal-check" id="checkModal">
         <div class="check-modal-container">
           <div class="check-modal-headear">
             <span style="float:right" class="close2">
               <a href="#" style="font-size: 1.5rem; padding:2px;">X</a>
               </span>
+              <h1 id="fullnameemployee"></h1>
               <h4 class="check-modal-label">
                 Allowance and Deduction Details
               </h4>
+              <p id="try"></p>
+          </div>
+
+          <div class="check-modal-body" style="display: flex">
+              <div class="deduct-container" style="width: 100%; min-height: 20rem; background-color:rgba(0, 255, 255, 0.033); padding:1.5rem">
+                <h4 style="text-align: center">Deduction</h4>
+                <h5>Share</h5>
+                <p id="deduct_list"></p>
+                <form action="" method="post">
+                  <ul style="margin-left: 3rem;">
+                    <li>GSIS
+                      <input type="text" name="" id="input1" class="input1" disabled value="2500"> 
+                      <button type="button" class="btninput1" onclick="btninput1()">
+                        Edit
+                      </button>
+                    </li>
+
+                    <li>Medicare
+                      <input type="text" name="" id="input2" class="input2" disabled value="100">
+                      <button type="button" class="btninput2" onclick="btninput2()">
+                        Edit
+                      </button>
+                    </li>
+
+                    <li>PAGIBIG
+                      <input type="text" name="" id="input3" class="input3" disabled value="500">
+                      <button type="button" class="btninput3" onclick="btninput3()">
+                        Edit
+                      </button> 
+                    </li>
+
+                    <li>WithHolding Tax
+                      <input type="text" name="" id="input4" class="input4" disabled value="500">
+                      <button type="button" class="btninput4" onclick="btninput4()">
+                        Edit
+                      </button>
+                     </li>
+                  </ul>
+                </form>
+
+                <h5>Personal Loan</h5>
+                <form action=""  method="POST">
+                  <ul style="margin-left: 3rem;">
+                    @foreach ($emp_deduc as $item)
+                    <li>{{$item->deduction_info->name}}<input type="text" name="" id="" disabled value="{{$item->total_amount}} - {{$item->interest}}%"></li>
+                    @endforeach
+                 
+                  </ul>
+                </form>
+                <hr style="margin: 1rem 0 1rem 0">
+
+                {{-- AddDeduction --}}
+                <form class="btn-submit" action="add/deduc" method="post">
+                  @csrf
+                  <label for=""></label>
+                  <input type="text" name="input_employee_id" id="employee_id" readonly>
+                  <select name="deduction_id" id="deduction_id">
+                    @foreach ($ded as $item)
+                    <option value={{$item->id}}>{{$item->name}}</option>
+                    @endforeach 
+                  </select>
+                  <input type="number" name="total_loan" id="total_loan" placeholder="Total amount">
+                  <input type="number" name="interest" id="interest" placeholder="Monthly interest">
+
+                  <button class="form-submit2" onclick="addDeduction()">Add Deduction</button>
+                </form>
+              </div>
+              {{-- <div class="bonus-container" style="width: 50%; min-height: 20rem; background-color:rgba(5, 200, 47, 0.087);padding:1.5rem">
+                <h4>Allowance/Bonus</h4>
+
+              </div> --}}
           </div>
         </div>
       </div>
@@ -240,6 +315,7 @@ active
         </div>
       </div> -->
     <script src="js/modal.js"></script>
+    <script src="js/formModal.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
@@ -255,6 +331,29 @@ active
         });
       });
     </script>
+
+    {{-- <script>
+       $('.form-submit2').click(function(){
+        var a = document.getElementById('employee_id').value;
+        var b = document.getElementById('deduction_id').value;
+        var c = document.getElementById('total_loan').value;
+        var d = document.getElementById('interest').value;
+          $.ajax({
+              url: "add/deduc", 
+              method: "POST",
+              cache:false,
+              data:{
+                emp:a,
+                deduc:b,
+                total:c,
+                interest:d
+               },
+              success:function(success){
+              alert(success);
+              }
+          });
+          });
+    </script> --}}
 </body>
 
 </html>

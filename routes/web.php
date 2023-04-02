@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\PositionController;
 use App\Models\Allowance;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +49,13 @@ Route::post('/employee-save', [EmployeeController::class, 'saveEmployee'])->name
 
 Route::get('/allowance', [AllowanceController::class, 'list'])->name('allowance-list');
 Route::post('/allowance-save', [AllowanceController::class, 'saveAllowance'])->name('allowance-save');
+
+
+Route::get('payroll', [PayrollController::class, 'list'])->name('payroll-list');
+Route::get('payroll-save', [PayrollController::class, 'savePayroll'])->name('payroll-save');
+
+Route::get('check/deduc/{id}',[PayrollController::class, 'deduc']);
+Route::post('add/deduc', [EmployeeController::class, 'empDeduction']);
 
 Route::get('/practice', [HomeController::class, 'practice']);
 });

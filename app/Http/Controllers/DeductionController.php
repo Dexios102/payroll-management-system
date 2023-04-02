@@ -20,6 +20,7 @@ class DeductionController extends Controller
         $ded->name = $request->input('name');
         $ded->description = $request->input('description');
         $ded->code = $request->input('code');
+        $ded->minimum_loan = $request->input('minimum');
         $ded->type = $request->input('type');
         $ded->save();
 

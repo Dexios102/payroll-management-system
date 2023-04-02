@@ -25,20 +25,22 @@ active
       <table id="deductionTable" class="hover row-border" style="width:100%">
         <thead>
           <tr>
-            <th>ID</th>
+            
             <th>Code</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Type</th>
+            <th>Minimum Loan</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($ded as $item)
           <tr>
-            <td>{{$item->id}}</td>
-            <td>{{$item->name}}</td>
+            
             <td>{{$item->code}}</td>
+            <td>{{$item->name}}</td>
             <td>{{$item->type}}</td>
+            <td>{{$item->minimum_loan}}</td>
             <td>{{$item->description}}</td>
           </tr>
           @endforeach
@@ -70,12 +72,20 @@ active
             </div>
             <br><label for="floor">Type</label>
             <select name="type" id="type" aria-placeholder="">
-              <option value="Allowance">Allowance</option>
-              <option value="Loan">Loan</option>
-              <option value="3">3</option>
+              <option value="allowance">Allowance</option>
+              <option value="loan">Loan</option>
+              <option value="share">Share</option>
               <option value="4">4</option>
             </select>
-            <br><label for="description">Description</label>
+            <br>
+            <div class="form-item-modal">
+              <span class="material-symbols-outlined modal-icon">
+                code_off
+              </span>
+              <input type="text" name="minimum" id="minimum" placeholder="Minimum Loan">
+            </div>
+
+            <label for="description">Description</label>
             <textarea name="description" id="description" cols="30" rows="10">
                   </textarea>
             <div class="modal-buttons">

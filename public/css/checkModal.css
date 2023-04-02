@@ -3,7 +3,7 @@
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 20vh;
+    padding-top: 10vh;
     left: 0;
     top: 0;
     width: 100%;
@@ -17,14 +17,13 @@
     background: #e5e5e5;
     box-shadow: 1px 2px 2px #8e9aaf;
     border-radius: 15px;
-    max-width: 28em;
-    min-height: 36em;
+    max-width: 55em;
+    min-height: 25em;
     margin: auto;
-    padding: .5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    
     position: relative;
     top: 2px;
 }

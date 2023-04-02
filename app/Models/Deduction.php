@@ -13,6 +13,7 @@ class Deduction extends Model
         'name',
         'description',
         'code',
+        'minimum_loan',
         'type'
     ];
 }
