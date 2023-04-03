@@ -54,7 +54,7 @@ class EmployeeController extends Controller
         $empDeduc->interest = $request->interest;
         $empDeduc->status = "active";
         $empDeduc->save();
-        return back()->with('sucsess','Success!');
+        return back()->with('success','Success!');
 
     }
 }
