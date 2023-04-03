@@ -41,14 +41,14 @@ active
           @foreach ($emp as $item)
           <tr>
             <td>
-<<<<<<< HEAD
+
               {{-- <div onclick=myHandler() id="{{$item->id}}">&rarr; Click Here! &larr;</div> --}}
               <div class="check-container" ">
-                <button title="Information" onclick="checkInfo({{$item->id}})" >
-=======
+                <button title="Information" >
+
               <div class="check-container">
-                <button title="Information" id="check-Btn">
->>>>>>> e07f85ae182202a77788cfa2b049eff24638c67e
+                <button title="Information" id="check-Btn" onclick="checkInfo({{$item->id}})" >
+
                     <span class="material-symbols-outlined check-icon">
                       menu_open
                     </span></button>
