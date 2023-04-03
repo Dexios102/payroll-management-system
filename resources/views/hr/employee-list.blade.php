@@ -41,9 +41,14 @@ active
           @foreach ($emp as $item)
           <tr>
             <td>
+<<<<<<< HEAD
               {{-- <div onclick=myHandler() id="{{$item->id}}">&rarr; Click Here! &larr;</div> --}}
               <div class="check-container" ">
                 <button title="Information" onclick="checkInfo({{$item->id}})" >
+=======
+              <div class="check-container">
+                <button title="Information" id="check-Btn">
+>>>>>>> e07f85ae182202a77788cfa2b049eff24638c67e
                     <span class="material-symbols-outlined check-icon">
                       menu_open
                     </span></button>
@@ -288,32 +293,10 @@ active
 
               </div> --}}
           </div>
+          
         </div>
       </div>
   </div>
-      <!-- {{-- checkModal --}}
-      <div class="modalcheck">
-        <div class="checkmodal-container">
-          <div class="checkmodal-header">
-            <span style="float:right" class="close2">
-               <a href="#" style="font-size: 1.5rem; padding:2px;">X</a>
-               </span>
-            <h4>Allowance and Deduction Details</h4>
-          </div>
-          <div class="checkmodal-body">
-            <div class="listcon">
-              <div class="listheader">
-                <h6>Allowances</h6>
-              </div>
-            </div>
-            <div class="listcon">
-              <div class="listheader">
-                <h6>Deductions</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     <script src="js/modal.js"></script>
     <script src="js/formModal.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
