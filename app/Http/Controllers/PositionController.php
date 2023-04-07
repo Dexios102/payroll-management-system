@@ -28,4 +28,30 @@ class PositionController extends Controller
 
         return back()->with('success','Saved Successful');
     }
+
+    public function modal($id){
+
+        $pos = Position::find($id);
+        $pos_arr = array(
+            "id" => $pos->id,
+            "name" => $pos->name,
+            "division" => $pos->division,
+            "description" => $pos   ->description,
+        );
+
+        return $pos_arr;
+    }
+
+    public function update(Request $request){
+        $id = $request->input('id2');
+
+        $pos = Position::find($id);
+        $pos->name = $request->input('name2');
+        $pos->division = $request->input('division2');
+        $pos->description = $request->input('description2');
+        $pos->save();
+
+        return back()->with('success','Updated Successfully!');
+
+    }
 }

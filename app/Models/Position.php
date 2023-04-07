@@ -11,7 +11,9 @@ class Position extends Model
     protected $table = "position";
     protected $fillable = [
         'code',
-        'description'
+        'description',
+        'name',
+        
     ];
 
     public function division_info(){

@@ -23,4 +23,34 @@ class AllowanceController extends Controller
 
         return back()->with('success','Successfully Saved!');
     }
+
+    public function modal($id){
+
+        $all = Allowance::find($id);
+
+        $all_arr = array(
+            "id" => $all->id,
+            "code" => $all->code,
+            "name" => $all->name,
+            "type" => $all->type,
+            "description" => $all->description,
+        );
+
+        return $all_arr;
+    }
+
+    public function update(Request $request){
+        $id = $request->input('id2');
+
+        $ded = Allowance::find($id);
+        $ded->name = $request->input('name2');
+        $ded->description = $request->input('description2');
+        $ded->code = $request->input('code2');
+        
+        $ded->type = $request->input('type2');
+
+        $ded->save();
+
+        return back()->with('success','Update Successfully!');
+    }
 }

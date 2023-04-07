@@ -26,4 +26,35 @@ class DeductionController extends Controller
 
         return back()->with('success','Successfully Saved!');
     }
+
+    public function modal($id){
+
+        $ded = Deduction::find($id);
+
+        $ded_arr = array(
+            "id" => $ded->id,
+            "code" => $ded->code,
+            "name" => $ded->name,
+            "type" => $ded->type,
+            "minimum" => $ded->minimum_loan,
+            "description" => $ded->description,
+        );
+
+        return $ded_arr;
+    }
+
+    public function update(Request $request){
+        $id = $request->input('id2');
+
+        $ded = Deduction::find($id);
+        $ded->name = $request->input('name2');
+        $ded->description = $request->input('description2');
+        $ded->code = $request->input('code2');
+        $ded->minimum_loan = $request->input('minimum2');
+        $ded->type = $request->input('type2');
+
+        $ded->save();
+
+        return back()->with('success','Update Successfully!');
+    }
 }
