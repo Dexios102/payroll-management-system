@@ -197,7 +197,7 @@ th {
     color: #023047;
 }
 
-.close {
+.updateclose {
     position: relative;
     top: 3.5rem;
     left: 31rem;
@@ -387,16 +387,4 @@ button span {
 
 .require {
     color: red;
-}
-.tab{
-    padding: 15px 0 10px 20px;
-}
-.tab ul li{
-    text-decoration: none;
-    list-style: none;
-}
-
-.tab ul{
-    display: flex;
-    gap: 1rem;
 }

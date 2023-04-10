@@ -53,4 +53,24 @@ class AllowanceController extends Controller
 
         return back()->with('success','Update Successfully!');
     }
+
+    public function deleteModal($id){
+        $all = Allowance::find($id);
+        $all_arr = array(
+            "id" => $all->id,
+        );
+    
+        return $all_arr;
+      }
+    
+
+      public function delete(Request $request){
+    
+        $id = $request->input('id2');
+    
+        $all = Allowance::find($id);
+        $all->delete();
+    
+        return back()->with('success','Deleted Succesfully');
+      }
 }

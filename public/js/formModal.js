@@ -1,9 +1,9 @@
 
 
-    var a = document.getElementById('employee_id').value();
-    var b = document.getElementById('deduction_id').value();
-    var c = document.getElementById('total_loan').value();
-    var d = document.getElementById('interest').value();
+    // var a = document.getElementById('employee_id').value();
+    // var b = document.getElementById('deduction_id').value();
+    // var c = document.getElementById('total_loan').value();
+    // var d = document.getElementById('interest').value();
 
 
     

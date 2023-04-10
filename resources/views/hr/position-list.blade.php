@@ -13,6 +13,8 @@ active
   <title>Position Section</title>
   <link rel="stylesheet" href="css/position.css" />
   <link rel="stylesheet" href="css/updatemodal.css" />
+  <link rel="stylesheet" href="css/deletemodal.css" />
+
 
 </head>
 
@@ -38,7 +40,7 @@ active
             <td>{{$item->description}}</td>
             <td>
               <a href="#" onclick="positionUpdate({{$item->id}})">Update</a>
-              <a href="">Archive</a>
+              <a href="#" onclick="deletemodal4({{$item->id}})">Delete</a>
             </td>
           </tr>
           @endforeach
@@ -149,6 +151,33 @@ active
     </div>
   </div>
 </div>
+
+
+<div id="deletemodal" class="deletemodal">
+  <div class="deletemodal-container">
+    <div class="deletemodal-header">
+      
+      
+      <h2 class="deletemodal-label">Confirm to Delete selected Data</h2>
+    </div>
+    <div class="deletemodal-form">
+      <form action="/position-delete" method="post">
+        @csrf
+        <input type="text" value="" name="id2" hidden>
+        <div class="button-container">
+          <button type="submit">Confirm</button>
+          <button type="button" class="cancelbtn" onclick="cancelbutton()">Cancel</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script src="js/deletemodal.js"></script>
 </body>
 <script src="js/positionModal.js"></script>
 <script src="js/updateModal.js"></script>

@@ -54,4 +54,24 @@ class PositionController extends Controller
         return back()->with('success','Updated Successfully!');
 
     }
+
+    public function deleteModal($id){
+        $data = Position::find($id);
+        $data_arr = array(
+            "id" => $data->id,
+        );
+    
+        return $data_arr;
+      }
+    
+
+      public function delete(Request $request){
+    
+        $id = $request->input('id2');
+    
+        $all = Position::find($id);
+        $all->delete();
+    
+        return back()->with('success','Deleted Succesfully');
+      }
 }

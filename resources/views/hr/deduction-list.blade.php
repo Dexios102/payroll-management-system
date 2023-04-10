@@ -15,6 +15,8 @@ active
   <title>Deduction Section</title>
   <link rel="stylesheet" href="css/deduction.css" />
   <link rel="stylesheet" href="css/updatemodal.css" />
+  <link rel="stylesheet" href="css/deletemodal.css" />
+
 </head>
 
 <body>
@@ -46,13 +48,20 @@ active
             <td>{{$item->description}}</td>
             <td>
               <a href="#" onclick="dedUpdate({{$item->id}})">Update</a>
-              <a href="">Delete</a>
+              <a href="#" onclick="deletemodal2({{$item->id}})" >Delete</a>
+
             </td>
           </tr>
           @endforeach
         </tbody>
       </table>
     </div>
+
+
+
+
+
+
     <div class="modal" id="deductionModal">
       <div class="modal-container">
         <div class="modal-header">
@@ -184,12 +193,31 @@ active
     </div>
   </div>
   
-    
+    <div id="deletemodal" class="deletemodal">
+            <div class="deletemodal-container">
+              <div class="deletemodal-header">
+                
+                
+                <h2 class="deletemodal-label">Confirm to Delete selected Data</h2>
+              </div>
+              <div class="deletemodal-form">
+                <form action="/deduction-delete" method="post">
+                  @csrf
+                  <input type="text" value="" name="id2" hidden>
+                  <div class="button-container">
+                    <button type="submit">Confirm</button>
+                    <button type="button" class="cancelbtn" onclick="cancelbutton()">Cancel</button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
 
 
 
 
-
+    <script src="js/deletemodal.js"></script>
     <script src="js/deduction.js"></script>
     <script src="js/updatemodal.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

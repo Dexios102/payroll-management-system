@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('payroll_deduction', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id')->references('id')->on('Employee')->onDelete('cascade');
-            $table->foreignId('deduction_id')->references('id')->on('Deduction')->onDelete('cascade');
+            $table->foreignId('employee_id')->references('id')->on('employee')->onDelete('cascade');
+            $table->foreignId('deduction_id')->references('id')->on('deduction')->onDelete('cascade');
             $table->string('total_amount');
             $table->string('interest')->default('5');
             $table->string('status');

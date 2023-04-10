@@ -15,6 +15,8 @@ active
   <title>Deduction Section</title>
   <link rel="stylesheet" href="css/deduction.css" />
   <link rel="stylesheet" href="css/updatemodal.css" />
+  <link rel="stylesheet" href="css/deletemodal.css" />
+
 </head>
 
 <body>
@@ -44,7 +46,7 @@ active
             <td>{{$item->description}}</td>
             <td>
               <a href="#" onclick="allowanceUpdate({{$item->id}})">Update</a>
-              <a href="">Archive</a>
+              <a href="#" onclick="deletemodal3({{$item->id}})">Delete</a>
             </td>
           </tr>
           @endforeach
@@ -177,7 +179,32 @@ active
 </div>
 
 
+ 
+<div id="deletemodal" class="deletemodal">
+  <div class="deletemodal-container">
+    <div class="deletemodal-header">
+     
+      
+      <h2 class="deletemodal-label">Confirm to Delete selected Data</h2>
+    </div>
+    <div class="deletemodal-form">
+      <form action="/allowance-delete" method="post">
+        @csrf
+        <input type="text" value="" name="id2" hidden>
+        <div class="button-container">
+          <button type="submit">Confirm</button>
+          <button type="button" class="cancelbtn" onclick="cancelbutton()">Cancel</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>
 
+
+
+
+<script src="js/deletemodal.js"></script>
     <script src="js/deduction.js"></script>
     <script src="js/updatemodal.js"></script>
 

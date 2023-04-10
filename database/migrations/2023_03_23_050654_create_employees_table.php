@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('suffix')->nullable();
             $table->string('contact')->nullable();
+            $table->string('monthly_rate')->nullable();
             $table->string('email');
             $table->string('gender');
             $table->string('department');
@@ -27,6 +28,8 @@ return new class extends Migration
             $table->string('address');
             $table->string('employee_type');
             $table->string('status');
+            $table->string('isActive')->default('1');
+
 
 
 
@@ -39,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('employee');
     }
 };

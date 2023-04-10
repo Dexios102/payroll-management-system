@@ -20,21 +20,18 @@ active
 
 <body>
   <div class="container">
-    <h4 class="employeeLabel">Employee Records</h4>
+    <h4 class="employeeLabel">Employee Archive Records</h4>
     
    
-    <button id="addBtn" class="material-symbols-outlined">
-      Add<span>Add</span></button>
-
       
     <div class="table-container">
       <div class="tab">
         <ul>
           <li>
-            List
+            <a href="/employee">List</a>
           </li>
           <li>
-            <a href="/employee-archive">Archive</a>
+           Archive
           </li>
         </ul>
       </div>
@@ -101,14 +98,16 @@ active
           <div id="deletemodal" class="deletemodal">
             <div class="deletemodal-container">
               <div class="deletemodal-header">
-                
+                <a class="deleteclose" href="#">
+                  <span2  style="font-size: 3rem">&times;</span2>
+                </a>
                 
                 <h2 class="deletemodal-label">Confirm to Delete selected Data</h2>
               </div>
               <div class="deletemodal-form">
                 <form action="employee-delete" method="post">
                   @csrf
-                  <input type="text" value="" name="id2" hidden>
+                  <input type="text" value="" name="id2">
                   <div class="button-container">
                     <button type="submit">Confirm</button>
                     <button type="button" class="cancelbtn" onclick="cancelbutton()">Cancel</button>

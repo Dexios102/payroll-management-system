@@ -57,4 +57,27 @@ class DeductionController extends Controller
 
         return back()->with('success','Update Successfully!');
     }
+
+
+    public function deleteModal($id){
+        $ded = Deduction::find($id);
+        $ded_arr = array(
+            "id" => $ded->id,
+        );
+    
+        return $ded_arr;
+      }
+    
+
+      public function delete(Request $request){
+    
+        $id = $request->input('id2');
+    
+        $ded = Deduction::find($id);
+        $ded->delete();
+    
+        return back()->with('success','Deleted Succesfully');
+      }
+
+
 }
