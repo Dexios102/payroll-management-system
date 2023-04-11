@@ -78,6 +78,9 @@ Route::post('/allowance-delete', [AllowanceController::class, 'delete']);
 
 Route::get('payroll', [PayrollController::class, 'list'])->name('payroll-list');
 Route::get('payroll-save', [PayrollController::class, 'savePayroll'])->name('payroll-save');
+Route::get('/monthlyrate-modal/{id}', [PayrollController::class, 'monthlyratemodal']);
+Route::post('/monthlyrate_update', [PayrollController::class, 'mrateupdate']);
+
 
 Route::get('check/deduc/{id}',[PayrollController::class, 'deduc']);
 Route::post('add/deduc', [EmployeeController::class, 'empDeduction']);

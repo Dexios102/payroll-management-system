@@ -37,21 +37,58 @@ active
           </tr>
         </thead>
         <tbody>
-         <tr>
-          <td>
-            <button type="button">Check</button>
-            <button type="button">Generate Slip</button>
-          </td>
-          <td>0006</td>
-          <td width="20%">John Russel Fabroa</td>
-          <td>IT staff</td>
-          <td>RFIMC</td>
-          <td>100,000</td>
-          <td>10,000</td>
-          <td>1000</td>
-          <td>51000</td>
-          
-         </tr>
+          @foreach ($emp as $item)
+          <tr>
+            <td>
+              <a href="">Check</a>
+              |
+              <a href="">Generate Slip</a>
+            </td>
+            <td>000{{$item->id}}</td>
+            <td>{{$item->first_name}} {{$item->middle_name}} {{$item->last_name}} {{$item->suffix}}</td>
+            <td>{{$item->position}}</td>
+            <td>{{$item->department}}</td>
+
+            <td>
+             <div class="cont2"  style="display: flex">
+              @if(isset($item->monthly_rate))
+                  
+              <div class="rate">
+                {{$item->monthly_rate}}
+              </div>
+              <div class="rate-btn" style="float: right">
+                <button type="button" class="inputupdate1" onclick="inputupdate1({{$item->id}})">
+                  <span class="material-symbols-outlined">
+                    edit
+                    </span>
+                </button>
+              </div>
+            @else
+            <div class="rate">
+              <i style="color:rgb(248, 68, 68)">No Data</i>
+            </div>
+            <div class="rate-btn" style="float: right">
+              <button type="button" class="inputupdate1" onclick="inputupdate1({{$item->id}})">
+                <span class="material-symbols-outlined">
+                  edit
+                  </span>
+              </button>
+            </div>
+           
+            @endif
+             </div>
+               
+    
+            </td>
+            <td>
+              <a href="#" class="tableBtn"> 100000</a>
+            </td>
+            <td>1000</td>
+            <td>51000</td>
+            
+           </tr>
+          @endforeach
+         
           </tbody>
       </table>
     </div>
@@ -102,7 +139,35 @@ active
         </div>
       </div>
     </div>
+  </div>
+
+
+    <div id="monthlyratemodal" class="monthlyratemodal">
+      <div class="monthlyratemodal-container">
+        <div class="monthlyratemodal-header">
+          
+          
+          <h2 class="monthlyratemodal-label" id="mrate_label">Update Monthly Rate</h2>
+        </div>
+        <div class="monthlyratemodal-form">
+          <form action="/monthlyrate_update" method="post">
+            @csrf
+            <input type="text" name="id2" hidden>
+            <input type="number" name="mrate2">
+          
+            <div class="button-container">
+              <button type="submit">Update</button>
+              <button type="button" class="cancelbtn" onclick="cancelbutton()">Cancel</button>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+
+
 </body>
+<script src="js/payroll.js"></script>
 <script src="js/positionModal.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>

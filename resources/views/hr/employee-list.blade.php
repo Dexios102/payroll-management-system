@@ -441,7 +441,14 @@ active
                 @foreach ($pos as $item)
                 <option value="{{$item->name}}""> ({{$item->division_info->code}}) {{$item->name}} </option>
             @endforeach
+
           </select>
+          <div class="">
+            <span class="material-symbols-outlined modal-icon">
+              supervisor_account
+            </span>
+            <input type="text" name="m_rate2" id="m_rate2" placeholder="Monthly Rate(optional)">
+          </div>
               <label for=" employee_type">Employee Type<span class="require">*</span></label>
                   <select name="employee_type2" id="employee_type2">
                     <option value="regular">Regular</option>

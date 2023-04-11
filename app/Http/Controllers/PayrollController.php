@@ -15,7 +15,7 @@ class PayrollController extends Controller
 {
     public function list(){
         
-        $emp = Employee::all();
+        $emp = Employee::where('isActive','1')->get();
         $dept = Department::all();
 
         // $id = auth()->user()->id;
@@ -38,6 +38,27 @@ class PayrollController extends Controller
             
         
         return $empl_array ;
+    }
+
+    public function monthlyratemodal($id){
+        $emp = Employee::find($id);
+
+        $emp_array = array(
+            'id' =>  $emp->id,
+            'lname' => $emp->last_name,
+            'mrate' => $emp->monthly_rate,
+        );
+
+        return $emp_array;
+    }
+
+    public function mrateupdate(Request $request){
+        $id = $request->input('id2');
+        $emp = Employee::find($id);
+        $emp->monthly_rate = $request->input('mrate2');
+        $emp->save();
+
+        return back()->with('success','Updated Successfully');
     }
 
     

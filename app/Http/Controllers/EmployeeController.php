@@ -67,6 +67,7 @@ class EmployeeController extends Controller
             "m_name" => $emp->middle_name,
             "l_name" => $emp->last_name,
             "suffix" => $emp->suffix,
+            "m_rate" => $emp->monthly_rate,
             "contact" => $emp->contact,
             "email" => $emp->email,
             "gender" => $emp->gender,
@@ -92,6 +93,7 @@ class EmployeeController extends Controller
         $emp->middle_name = $request->input('m_name2');
         $emp->last_name = $request->input('l_name2');
         $emp->suffix = $request->input('suffix2');
+        $emp->monthly_rate = $request->input('m_rate2');
         
         $emp->contact = $request->input('contact2');
         $emp->email = $request->input('email2');

@@ -125,6 +125,7 @@ function employeeUpdate(id){
                 $('input[name="l_name2"]').val(array.l_name);
                 $('input[name="suffix2"]').val(array.suffix);
                 $('input[name="contact2"]').val(array.contact);
+                $('input[name="m_rate2"]').val(array.m_rate);
                 $('input[name="email2"]').val(array.email);
                 $('#gender2').val(array.gender);
                 $("#department2").val(array.department);
