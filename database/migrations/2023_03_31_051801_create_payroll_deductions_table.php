@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('total_amount');
             $table->string('interest')->default('5');
             $table->string('status');
-
             $table->timestamps();
         });
     }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deduction;
 use App\Models\Department;
 use App\Models\Employee;
+use App\Models\FixedDeduction;
 use App\Models\Payroll;
 use App\Models\PayrollDeduction;
 use Illuminate\Http\Request;
@@ -18,10 +20,11 @@ class PayrollController extends Controller
         $emp = Employee::where('isActive','1')->get();
         $dept = Department::all();
 
+        $fixed_deduc = FixedDeduction::all();
         // $id = auth()->user()->id;
         // $encrypt = Crypt::encryptString($id);
         // $decrypt = Crypt::decryptString($encrypt);
-        return view('hr.payroll-list', compact('dept','emp'));
+        return view('hr.payroll-list', compact('dept','emp','fixed_deduc'));
     }
 
     public function deduc($id){
@@ -58,8 +61,17 @@ class PayrollController extends Controller
         $emp->monthly_rate = $request->input('mrate2');
         $emp->save();
 
-        return back()->with('success','Updated Successfully');
+        return back()->with('success','Updated Succesfully');
     }
 
+    
+    public function checkdeduction($id){
+        $emp = Employee::find($id);
+        $dept = Department::all();
+        $ded = Deduction::all();
+        $fixed_deduc = FixedDeduction::all();
+
+        return view('hr.payroll-checkdeduction', compact('dept','emp','fixed_deduc','ded'));
+    }
     
 }

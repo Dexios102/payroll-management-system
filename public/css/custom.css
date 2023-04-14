@@ -1,0 +1,61 @@
+.row {
+    display: flex;
+  }
+  
+  /* Create two equal columns that sits next to each other */
+  .col {
+    display:block;
+    flex: 100%;
+  }
+
+  .col-10{
+    flex: 10%;
+    width: 10%;
+  }
+  .col-20{
+    flex: 20%;
+    width: 20%;
+  }
+  .col-30{
+    flex: 30%;
+    width: 30%;
+  }
+  .col-40{
+    flex: 40%;
+    width: 40%;
+  }
+  .col-50{
+    flex: 50%;
+    width: 50%;
+  }
+  .col-60{
+    flex: 60%;
+    width: 60%;
+  }
+  .col-70{
+    flex: 70%;
+    width: 70%;
+  }
+  .col-80{
+    flex: 80%;
+    width: 80%;
+  }
+  .col-90{
+    flex: 90%;
+    width: 90%;
+  }
+
+  .text-center{
+    text-align: center;
+  }
+
+  .float-right{
+    float: right;
+  }
+
+  .float-left{
+    float: left;
+  }
+
+  
+

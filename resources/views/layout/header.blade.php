@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" href="css/header.css"/>
+  <link rel="stylesheet" href="/css/header.css"/>
 </head>
 <nav>
   <div class="logo-container">

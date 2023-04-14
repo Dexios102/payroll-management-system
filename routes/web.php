@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\PositionController;
 use App\Models\Allowance;
+use App\Models\Payroll;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Generator\StringManipulationGenerator;
 
@@ -58,7 +59,6 @@ Route::post('/deduction-update', [DeductionController::class, 'update'])->name('
 Route::get('/deduction-deletemodal/{id}', [DeductionController::class, 'deleteModal']);
 Route::post('/deduction-delete', [DeductionController::class, 'delete'])->name('deduction-modal');
 
-
 Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
 Route::post('/employee-save', [EmployeeController::class, 'saveEmployee'])->name('employee-save');
 Route::get('/employee-modal/{id}', [EmployeeController::class, 'modal'])->name('employee-modal');
@@ -76,10 +76,11 @@ Route::get('/allowance-deletemodal/{id}', [AllowanceController::class, 'deleteMo
 Route::post('/allowance-delete', [AllowanceController::class, 'delete']);
 
 
-Route::get('payroll', [PayrollController::class, 'list'])->name('payroll-list');
-Route::get('payroll-save', [PayrollController::class, 'savePayroll'])->name('payroll-save');
+Route::get('/payroll', [PayrollController::class, 'list'])->name('payroll-list');
+Route::get('/payroll-save', [PayrollController::class, 'savePayroll'])->name('payroll-save');
 Route::get('/monthlyrate-modal/{id}', [PayrollController::class, 'monthlyratemodal']);
 Route::post('/monthlyrate_update', [PayrollController::class, 'mrateupdate']);
+Route::get('/checkdeductiondetails/{id}', [PayrollController::class, 'checkdeduction']);
 
 
 Route::get('check/deduc/{id}',[PayrollController::class, 'deduc']);

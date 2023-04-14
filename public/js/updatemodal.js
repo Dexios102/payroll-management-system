@@ -111,7 +111,6 @@ function departmentUpdate(id){
 }
 
 function employeeUpdate(id){
-    
 
     $.ajax({
         url:"/employee-modal/"+id,
