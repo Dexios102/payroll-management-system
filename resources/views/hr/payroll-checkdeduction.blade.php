@@ -14,7 +14,31 @@ active
   <link rel="stylesheet" href="/css/payroll.css" />
   <link rel="stylesheet" href="/css/checkModal.css">
   <link rel="stylesheet" href="/css/custom.css">
+<style>
 
+  table {
+  border-collapse: collapse;
+  background-color: white;
+  overflow: hidden;
+  
+  /* border-radius: 10px; */
+  }
+  thead{
+    border-bottom: 2px solid rgba(67, 67, 135, 0.655);
+  }
+
+th, td {
+  
+  text-align: left;
+  font-size: 13px;
+  padding: 10px;
+}
+
+th {
+  background-color: #1b4062;
+  color: rgb(255, 255, 255);
+}
+</style>
 </head>
 
 <body>
@@ -25,159 +49,145 @@ active
     {{-- <button id="positionBtn" class="material-symbols-outlined">
       library_add<span>Add</span></button> --}}
     <div class="table-container">
-  
+
       <div class="check-modal-headear">
         <span style="float:right" class="close2">
           <a href="/payroll" style="font-size: 1.5rem; padding:2px;">Back</a>
         </span>
         <h1 id="fullnameemployee"></h1>
         <h4 class="check-modal-label">
-          
+
         </h4>
         <p id="try">Employee Name: {{$emp->last_name}}, {{$emp->first_name}} {{$emp->middle_name}} {{$emp->suffix}}</p>
         <p id="try">Employee No.: @if (isset($emp->id))000{{$emp->id}}
-            
-        @else
-            <i>No Data</i>
-        @endif</p>
+
+          @else
+          <i>No Data</i>
+          @endif
+        </p>
 
       </div>
       <hr>
-      <div class="check-modal-body" >
-
-        <div class="checkTable">
+      <div class="check-modal-body">
           <div class="check-header">
-            <div class="row">
-              <div class="col text-center" style="border-right: 1px solid rgba(128, 128, 128, 0.404)">
+            <button href="#" type="button" class="btn-blue" onclick="addDeduc()"
+              style="margin:0.6rem;">ADD
+            </button>
+              <div class=" text-center" style="border-right: 1px solid rgba(128, 128, 128, 0.404)">
                 Deductions
               </div>
-              <div class="col text-center">
-                Allowances
-              </div>
-            </div>
+          
           </div>
 
           <div class="check-body">
-            <div class="row">
-              <div class="col" style="border-right: 1px solid rgba(128, 128, 128, 0.404);">
-                <button href="#" type="button" class="float-right" onclick="addDeduc()" style="margin-right:1rem;">ADD</button> <br>
-                <div class="deducName" style="margin-top: 1rem">
-                  <table>
 
-                    @foreach ($fixed_deduc as $item)
-                    <tr>
-                      <td width="60%" style="padding: 2px">
-                        <p>{{$item->name}}</p>
-                      </td>
+              <table style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Deduction every month</th>
+                    <th>Actions</th>
+                    <th></th>
+                    <th>Balance</th>
+                    <th></th>
 
-                      <td width="40%" style="padding: 2px; display:flex; gap:5px">
-                        <input type="text" name="" id="" value="{{$item->percentage}}" readonly>
-                        <a href="edit"><span class="material-symbols-outlined">edit</span></a>
-                        <a href="edit"><span class="material-symbols-outlined">save</span></a>
-                      </td>
-                    </tr>
-                    @endforeach
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($fixed_deduc as $item)
+                  <tr>
+                    <td width="" style="padding: 2px">
+                      <p>{{$item->name}}</p>
+                    </td>
+                    <td>
+                    <input type="text" name="" id="" value="{{$item->percentage}}" readonly>
+                    </td>
 
-                  </table>
+                    <td width="" style="padding: 2px; display:flex; gap:5px">
+                      
+                      <a href="edit"><span class="material-symbols-outlined">edit</span></a>
+                      <a href="edit"><span class="material-symbols-outlined">save</span></a>
+                    </td>
+                    <td>sadas</td>
+                    <td>asdasd</td>
+                    <td>askdsjf</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+               
+              </table>
 
-
-
-                  <p class=""><b>Other Deduction</b></p>
-                  <table>
-                    <tr>
-                      <td width="60%" style="padding: 2px">
-                        <p>GSIS Per Share </p>
-                      </td>
-
-                      <td width="40%" style="padding: 2px; display:flex; gap:5px">
-                        <input type="text" name="" id="" value="232908" readonly>
-                        <a href="edit"><span class="material-symbols-outlined">edit</span></a>
-                        <a href="edit"><span class="material-symbols-outlined">save</span></a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td width="60%" style="padding: 2px">
-                        <p>Medicare 4% </p>
-                      </td>
-
-                      <td width="40%" style="padding: 2px; display:flex; gap:5px">
-                        <input type="text" name="" id="" value="232908" readonly>
-                        <a href="edit"><span class="material-symbols-outlined">edit</span></a>
-                        <a href="edit"><span class="material-symbols-outlined">save</span></a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td width="60%" style="padding: 2px">
-                        <p>Pag-Ibig</p>
-                      </td>
-
-                      <td width="40%" style="padding: 2px; display:flex; gap:5px">
-                        <input type="text" name="" id="" value="232908" readonly>
-                        <a href="edit"><span class="material-symbols-outlined">edit</span></a>
-                        <a href="edit"><span class="material-symbols-outlined">save</span></a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td width="60%" style="padding: 2px">
-                        <p>Withholding Tax</p>
-                      </td>
-
-                      <td width="40%" style="padding: 2px; display:flex; gap:5px">
-                        <input type="text" name="" id="" value="232908" readonly>
-                        <a href="edit"><span class="material-symbols-outlined">edit</span></a>
-                        <a href="edit"><span class="material-symbols-outlined">save</span></a>
-                      </td>
-
-
-                    </tr>
-                  </table>
-
-                </div>
-
-
-
+              <div class=" text-center" style="border-right: 1px solid rgba(128, 128, 128, 0.404); margin-top:5px;">
+                Other Deductions
               </div>
-              <div class="col" ">
-
-                  </div>
+              <table style="width:100%">
+                <thead>
+                  <th>Name</th>
+                  <th>Deduction every month</th>
+                  <th>Actions</th>
+                  <th>Total Loan</th>
+                  <th>Balance</th>
+                  <th>Status</th>
+                </thead>
+                <tbody>
+                  @foreach ($p_dec as $item)
+                  <tr>
+                    <td style="padding: 2px">
+                      <p>{{$item->deduction_info->name}}</p>
+                    </td>
+                    <td>
+                      <input type="text" name="" id="" value="232908" readonly>
+                    </td>
+                    <td width="" style="padding: 2px; display:flex; gap:5px">
+                      <a href="edit"><span class="material-symbols-outlined">edit</span></a>
+                      <a href="edit"><span class="material-symbols-outlined">save</span></a>
+                    </td>
+                    <td>{{$item->total_amount}}</td>
+                    <td>{{$item->balance}}</td>
+                    <td>Active</td>
+                  </tr>
+                  @endforeach
+                 
+  
                 
-                </div>
-              </div>
-            </div>
-              </div>
-
+                </tbody>
+               
+              </table>
             </div>
 
 
+          </div>
+        </div>
 
-  
 
 
-  
 
-          
-  <!-- {{-- AddcheckModal --}} -->
-  <div class="addDeductionModal" id="addDeductionModal">
-    <div class="addDeductionModal-container">
-      <div class="addDeductionModal-headear">
-        <span style="float:right" class="close2">
-          <a href="#" style="font-size: 1.5rem; padding:2px;" onclick="closeModal2()">X</a>
-        </span>
-        <h1 id="fullnameemployee"></h1>
-        <h4 class="addDeductionModal-label">
-          Add 
-        </h4>
-        <p id="try"></p>
-      </div>
-      <hr>
+
+
+
+
+
+
+
+      <!-- {{-- AddcheckModal --}} -->
+      <div class="addDeductionModal" id="addDeductionModal">
+        <div class="addDeductionModal-container">
+          <div class="addDeductionModal-headear">
+            <span style="float:right" class="close2">
+              <a href="#" style="font-size: 1.5rem; padding:2px;" onclick="closeModal2()">X</a>
+            </span>
+            <h1 id="fullnameemployee"></h1>
+            <h4 class="addDeductionModal-label">
+              Add
+            </h4>
+            <p id="try"></p>
+          </div>
+          <hr>
           <div class="addDeductionModal-body" style="margin-top: 5px;">
             <div class="modal-form">
               <form action="/payrolldeduction-save" method="POST">
                 @csrf
-               
+                <input type="text" name="employee_id" id="" value="{{$emp->id}}" hidden>
                 <select name="deduction" id="deduction" aria-placeholder="">
                   @foreach ($ded as $item)
                   <option value="{{$item->id}}">{{$item->name}}(<i>minimum:{{$item->minimum_loan}}</i>)</option>
@@ -195,9 +205,9 @@ active
                   </span>
                   <input type="number" name="percentage" id="percentage" placeholder="Percentage(per month)">
                 </div>
-               
+
                 <br>
-               
+
                 <div class="modal-buttons">
                   <button class="noselect"><span class="text">Reset</span><span class="icon"><svg
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -216,12 +226,12 @@ active
                     </svg>
                   </button>
                 </div>
-    
+
               </form>
             </div>
           </div>
-    </div>
-  </div>
+        </div>
+      </div>
 
 
 

@@ -400,3 +400,14 @@ button span {
     text-decoration: underline;
     padding: 5px;
 }
+
+.container-label{
+   
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #003049;
+        margin-bottom: 10px;
+    
+}

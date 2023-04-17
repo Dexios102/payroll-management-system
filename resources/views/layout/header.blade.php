@@ -7,4 +7,4 @@
   </div>
   <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
 </nav>
-<script src="js/clock.js"></script>
+<script src="/js/clock.js"></script>

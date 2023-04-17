@@ -41,7 +41,7 @@ active
           @foreach ($emp as $item)
           <tr>
             <td>
-              <a href="">Check</a>
+              <a href="/payroll-check/{{Crypt::encrypt($item->id)}}">Check</a>
               |
               <a href="">Generate Slip</a>
             </td>
@@ -82,7 +82,7 @@ active
 
             </td>
             <td>
-              <a href="/checkdeductiondetails/{{$item->id}}" class="tableBtn" title="Check deduction"> 100000</a>
+              <a href="/checkdeductiondetails/{{Crypt::encrypt($item->id)}}" class="tableBtn" title="Check deduction"> 100000</a>
             </td>
             <td>1000</td>
             <td>51000</td>

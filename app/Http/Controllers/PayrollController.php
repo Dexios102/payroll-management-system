@@ -66,12 +66,38 @@ class PayrollController extends Controller
 
     
     public function checkdeduction($id){
-        $emp = Employee::find($id);
+        $decrypt = Crypt::decrypt($id);
+        $emp = Employee::find($decrypt);
         $dept = Department::all();
         $ded = Deduction::all();
         $fixed_deduc = FixedDeduction::all();
+        $p_dec = PayrollDeduction::with(['deduction_info','employee_info'])->where('employee_id',$decrypt)->get();
 
-        return view('hr.payroll-checkdeduction', compact('dept','emp','fixed_deduc','ded'));
+        return view('hr.payroll-checkdeduction', compact('dept','emp','fixed_deduc','ded','p_dec'));
+    }
+
+    public function checkPayroll($id){
+        $decrypt= Crypt::decrypt($id);
+        $emp = Employee::find($decrypt);
+        $fixed_deduc = FixedDeduction::all();
+        return view('hr.payroll-check', compact('emp','fixed_deduc'));
     }
     
+
+    public function deductionSave(Request $request){
+
+        $ded2 = new PayrollDeduction();
+        $ded2->employee_id = $request->input('employee_id');
+        $ded2->deduction_id = $request->input('deduction');
+        $ded2->total_amount = $request->input('total_amount');
+        $ded2->balance = $request->input('total_amount');
+        $ded2->interest = $request->input('percentage');
+        $ded2->status = "new";
+        $ded2->save();
+
+        return back()->with('success','New Deduction Saved!');
+
+
+        
+    }
 }
