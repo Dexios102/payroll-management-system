@@ -42,6 +42,7 @@ Route::get('/department-modal/{id}', [DepartmentController::class, 'modal'])->na
 Route::post('/department-update', [DepartmentController::class, 'update'])->name('department-update');
 Route::get('/department-deletemodal/{id}', [DepartmentController::class, 'deleteModal']);
 Route::post('/department-delete', [DepartmentController::class, 'delete']);
+Route::post('/department-restore', [DepartmentController::class, 'restore']);
 
 
 Route::get('/position', [PositionController::class, 'list'])->name('position-list');
@@ -49,7 +50,8 @@ Route::post('/position-save', [PositionController::class, 'save'])->name('positi
 Route::get('/position-modal/{id}', [PositionController::class, 'modal'])->name('position-modal');
 Route::post('/position-update', [PositionController::class, 'update'])->name('position-update');
 Route::get('/position-deletemodal/{id}', [PositionController::class, 'deleteModal']);
-Route::post('/position-delete', [PositionController::class, 'delete'])->name('position-update');
+Route::post('/position-delete', [PositionController::class, 'delete']);
+Route::post('/position-restore', [PositionController::class, 'restore']);
 
 
 Route::get('/deduction', [DeductionController::class, 'list'])->name('deduction-list');
@@ -57,7 +59,8 @@ Route::post('/deduction-save', [DeductionController::class, 'save'])->name('dedu
 Route::get('/deduction-modal/{id}', [DeductionController::class, 'modal'])->name('deduction-modal');
 Route::post('/deduction-update', [DeductionController::class, 'update'])->name('deduction-modal');
 Route::get('/deduction-deletemodal/{id}', [DeductionController::class, 'deleteModal']);
-Route::post('/deduction-delete', [DeductionController::class, 'delete'])->name('deduction-modal');
+Route::get('/deduction-delete/{id}', [DeductionController::class, 'delete']);
+Route::get('/deduction-restore/{id}', [DeductionController::class, 'restore']);
 
 Route::get('/employee', [EmployeeController::class, 'list'])->name('employee-list');
 Route::post('/employee-save', [EmployeeController::class, 'saveEmployee'])->name('employee-save');
@@ -74,18 +77,22 @@ Route::get('/allowance-modal/{id}', [AllowanceController::class, 'modal'])->name
 Route::post('/allowance-update', [AllowanceController::class, 'update'])->name('allowance-modal');
 Route::get('/allowance-deletemodal/{id}', [AllowanceController::class, 'deleteModal']);
 Route::post('/allowance-delete', [AllowanceController::class, 'delete']);
+Route::post('/allowance-restore', [AllowanceController::class, 'restore']);
+
 
 
 Route::get('/payroll', [PayrollController::class, 'list'])->name('payroll-list');
 Route::get('/payroll-save', [PayrollController::class, 'savePayroll'])->name('payroll-save');
 Route::get('/payroll-check/{id}',[PayrollController::class, 'checkPayroll']);
 Route::post('/payrolldeduction-save',[PayrollController::class, 'deductionSave']);
+Route::post('/payrolldeduction-update/{id}',[PayrollController::class, 'deductionUpdate']);
+
 
 
 Route::get('/monthlyrate-modal/{id}', [PayrollController::class, 'monthlyratemodal']);
 Route::post('/monthlyrate_update', [PayrollController::class, 'mrateupdate']);
 Route::get('/checkdeductiondetails/{id}', [PayrollController::class, 'checkdeduction']);
-
+Route::get('/deduction-fixed/{id}',[PayrollController::class, 'fixedDeductionSave']);
 
 Route::get('check/deduc/{id}',[PayrollController::class, 'deduc']);
 Route::post('add/deduc', [EmployeeController::class, 'empDeduction']);

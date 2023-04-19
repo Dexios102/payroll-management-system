@@ -28,10 +28,11 @@ active
   }
 
 th, td {
-  
+  border: 1px solid rgba(141, 137, 137, 0.163);
+  border-gap: 0;
   text-align: left;
   font-size: 13px;
-  padding: 10px;
+  padding: 5px;
 }
 
 th {
@@ -45,7 +46,7 @@ th {
 
 
   <div class="container">
-    <h4 class="position-label">Allowance and Deduction Details</h4>
+    <h4 class="position-label">Deduction Details</h4>
     {{-- <button id="positionBtn" class="material-symbols-outlined">
       library_add<span>Add</span></button> --}}
     <div class="table-container">
@@ -73,7 +74,7 @@ th {
             <button href="#" type="button" class="btn-blue" onclick="addDeduc()"
               style="margin:0.6rem;">ADD
             </button>
-              <div class=" text-center" style="border-right: 1px solid rgba(128, 128, 128, 0.404)">
+              <div class="label" style="border-right: 1px solid rgba(128, 128, 128, 0.404)">
                 Deductions
               </div>
           
@@ -85,66 +86,106 @@ th {
                 <thead>
                   <tr>
                     <th>Name</th>
+                    <th>%</th>
                     <th>Deduction every month</th>
-                    <th>Actions</th>
-                    <th></th>
+                   
+                    
                     <th>Balance</th>
-                    <th></th>
+                    <th>Status</th>
+                    <th>Actions</th>
 
                   </tr>
                 </thead>
+                @if ($f_count != 0)
                 <tbody>
-                  @foreach ($fixed_deduc as $item)
-                  <tr>
-                    <td width="" style="padding: 2px">
-                      <p>{{$item->name}}</p>
-                    </td>
-                    <td>
-                    <input type="text" name="" id="" value="{{$item->percentage}}" readonly>
-                    </td>
-
-                    <td width="" style="padding: 2px; display:flex; gap:5px">
-                      
-                      <a href="edit"><span class="material-symbols-outlined">edit</span></a>
-                      <a href="edit"><span class="material-symbols-outlined">save</span></a>
-                    </td>
-                    <td>sadas</td>
-                    <td>asdasd</td>
-                    <td>askdsjf</td>
-                  </tr>
-                  @endforeach
+                      @foreach ($f_dec as $item)
+                        <tr>
+                          <td>
+                            <p>{{$item->deduction_info->name}}</p>
+                          </td>
+                          <td>{{$item->interest}}</td>
+                          <td>
+                            <form action="/payrolldeduction-update/{{$item->id}}" method="post">
+                              @csrf
+                              <input type="text" name="id2" id="" value="{{$item->id}}" hidden>
+                              <input type="text" name="f_deduction{{$item->id}}" id="f_deduction{{$item->id}}" value="{{$item->monthly_deduction}}" readonly>
+                              
+                              <button type="button" onclick="btninputshow({{$item->id}})" onclick=""><span class="material-symbols-outlined">edit</span></button>
+                              <button id="updBtn{{$item->id}}"  type="submit" disabled><span class="material-symbols-outlined">save</span></button>
+                            </form>
+                          
+                        </td>
+      
+                          {{-- <td width="" style="padding: 2px; display:flex; gap:5px">
+                            
+                          </td> --}}
+                          
+                          <td>{{$item->balance}}</td>
+                          <td>@if ($item->deleted_at == null)
+                              Active
+                          @else
+                              Inactive
+                          @endif
+                        </td>
+                        <td>
+                          <a href="">Update</a>
+                          <a href="">Delete</a>
+                        </td>
+                        </tr>
+                    @endforeach     
                 </tbody>
+                @else
+                <tbody>
+                  <tr>
+                    <td colspan="6" class="text-center">
+                      <i style="color: rgb(245, 69, 69)">No Data....</i> 
+                      <a href="/deduction-fixed/{{$emp->id}}">Generate fixed deductions</a>
+                    </td>
+                  </tr>
+                </tbody>
+                
+                @endif
                
               </table>
-
-              <div class=" text-center" style="border-right: 1px solid rgba(128, 128, 128, 0.404); margin-top:5px;">
+<hr>
+              <div class="label" style="border-right: 1px solid rgba(128, 128, 128, 0.404); margin-top:20px;">
                 Other Deductions
               </div>
               <table style="width:100%">
                 <thead>
                   <th>Name</th>
-                  <th>Deduction every month</th>
-                  <th>Actions</th>
                   <th>Total Loan</th>
+                  <th>Deduction every month</th>
+                 
+                  
                   <th>Balance</th>
                   <th>Status</th>
+                  <th>Actions</th>
                 </thead>
                 <tbody>
                   @foreach ($p_dec as $item)
                   <tr>
-                    <td style="padding: 2px">
+                    <td >
                       <p>{{$item->deduction_info->name}}</p>
                     </td>
-                    <td>
-                      <input type="text" name="" id="" value="232908" readonly>
-                    </td>
-                    <td width="" style="padding: 2px; display:flex; gap:5px">
-                      <a href="edit"><span class="material-symbols-outlined">edit</span></a>
-                      <a href="edit"><span class="material-symbols-outlined">save</span></a>
-                    </td>
                     <td>{{$item->total_amount}}</td>
+                    <td>
+                      <form action="/payrolldeduction-update/{{$item->id}}" method="post">
+                        @csrf
+                      <input type="text" name="f_deduction{{$item->id}}" id="f_deduction{{$item->id}}" value="{{$item->monthly_deduction}}" readonly>
+                      <button type="button" onclick="btninputshow({{$item->id}})" onclick=""><span class="material-symbols-outlined">edit</span></button>
+                      <button id="updBtn{{$item->id}}"  type="submit" disabled><span class="material-symbols-outlined">save</span></button>
+                    </form>
+                    </td>
+                  
+                      
+                    
                     <td>{{$item->balance}}</td>
                     <td>Active</td>
+                    <td>
+                      <a href="">Update</a>
+                      <a href="">Delete</a>
+                    </td>
                   </tr>
                   @endforeach
                  
@@ -254,6 +295,34 @@ th {
     });
   });
 </script>
+
+<script>
+  function btninputshow($id) {
+    let input = document.querySelector('#f_deduction'+$id);
+    if (input.readOnly) {
+        input.readOnly = false;
+
+        document.querySelector('.label').addClass('malaking-font');
+        
+
+        input.onchange = function() {
+          let btn = document.querySelector('#updBtn'+$id);
+          btn.disabled = false;
+        };
+        
+    }
+    else {
+        input.readOnly = true;
+
+        let btn = document.querySelector('#updBtn'+$id);
+        btn.disabled = true;
+    }
+}
+
+
+</script>
+
+
 
 </html>
 @endsection

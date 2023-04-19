@@ -69,6 +69,8 @@ class DeductionController extends Controller
       }
     
 
+      
+
       public function delete(Request $request){
     
         $id = $request->input('id2');
@@ -79,5 +81,10 @@ class DeductionController extends Controller
         return back()->with('success','Deleted Succesfully');
       }
 
+    public function restore($id){
 
+        $ded = Deduction::onlyTrashed()->where('id',$id)->first();
+        $ded->restore();
+        return back()->with('success','Restored Succesfully! ');
+    }
 }

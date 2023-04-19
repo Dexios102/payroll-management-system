@@ -24,6 +24,7 @@ class Employee extends Model
         'address',
         'employee_type',
         'status',
+        'monthly_rate'
 
     ];
     
