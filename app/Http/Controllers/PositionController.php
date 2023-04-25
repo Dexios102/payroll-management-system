@@ -13,14 +13,15 @@ class PositionController extends Controller
 
         $dept = Department::all();
         $pos = Position::with('division_info')->get();
-      
+        $posdeleted = Position::with('division_info')->onlyTrashed()->get();
 
-        return view('hr.position-list', compact('dept','pos'));
+        return view('hr.position-list', compact('dept','pos', 'posdeleted'));
     }
 
     public function save(Request $request){
 
         $pos = new Position();
+        $pos->id = $request->input('íd');
         $pos->name = $request->input('name');
         $pos->division = $request->input('division');
         $pos->description = $request->input('description');
@@ -65,13 +66,15 @@ class PositionController extends Controller
       }
     
 
-      public function delete(Request $request){
-    
-        $id = $request->input('id2');
+      public function delete(Request $request, $id){
+            
+        $id = $request->input('postid');
     
         $all = Position::find($id);
         $all->delete();
     
         return back()->with('success','Deleted Succesfully');
       }
-}
+    }
+
+
