@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 nav {
-    background-color: #0081a7/* 457b9d */;
+    background-color: /* #0081a7 */#003049 ;
     color: white;
     height: 60px;
     display: flex;
@@ -32,6 +32,5 @@ nav {
     .clock {
         font-size: small;
     }
-
 }
   
