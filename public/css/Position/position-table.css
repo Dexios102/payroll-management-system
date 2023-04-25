@@ -1,0 +1,180 @@
+/* ! Table */
+/* *Main Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+}
+
+th, td {
+    padding: .45rem;
+    text-align: center;
+    border-bottom: 1px solid var(--input-bg);
+    font-weight: 400;
+}
+
+th {
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    background: #003049;
+    padding: 1rem;
+    color: #fff;
+}
+
+#table-main th:nth-child(1) {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#table-main th:nth-child(6) {
+    border-radius: 0px 10px 10px 0px;
+}
+
+#table-second th:nth-child(7) {
+    border-radius: 0px 10px 10px 0px;
+}
+
+#table-second th:nth-child(1) {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#table-second td:nth-child(6),
+#table-second td:nth-child(2) {
+    color: #9d0208;
+    font-weight: 500;
+}
+
+tr {
+    transition: .1s;
+}
+
+tr:hover {
+    background-color: RGBA(188,184,177,0.4);
+}
+
+
+.table-action-icons button:not(:last-child) {
+    margin-right: 25px;
+}
+
+.table-action-icons button{
+    border: none;
+    font-size: 1rem;
+    transition: .2s;
+    background: transparent;
+}
+
+.table-action-icons button:hover {
+    transform: scale(1.2);
+}
+
+table td:nth-child(3), td:nth-child(4) {
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #023047;
+}
+
+#table-main td:nth-child(2), #table-second td:nth-child(2) {
+    font-weight: 700;
+}
+
+table td span {
+    border-radius: 50px;
+    padding: 2px 5px;
+}
+
+.table-container-wrapper {
+    width: 100%;
+    height: fit-content;
+    max-height: 40rem;
+    overflow: scroll;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-025);
+    border-radius: 10px;
+    /* padding: 0 .5rem 0 .5rem; */
+}
+
+.fa {
+    color: #adb5bd;
+}
+
+table::-webkit-scrollbar {
+    display: none;
+}
+/* *Main Table END */
+/* *Sort Button */
+.sort-btn, .sort-btn_archived {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 5px;
+}
+/* *Sort Button END */
+/* * Table Change */
+.table-change.active {
+    display: block;
+  }
+  
+  .table-change {
+    display: none;
+  }
+  
+/* * Table Change END */
+/* * Checkbox-Selected */
+.selected {
+    background-color: #89c2d9;
+    transition: background-color .5s ease-in-out;
+  }
+/* * Checkbox-Selected END */
+/* *Delete Fade out */
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+/* *Delete Face out END */
+/* * Modal View EYE */
+.modalview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .modalview > div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+  }
+  
+  .modalview h2 {
+    margin-top: 0;
+  }
+  /* * Modal View END*/
+/* ! Table END */
