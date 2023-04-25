@@ -1,26 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #d4cff7;
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 5px;
-}
-
-*::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #887af36c;
-  border-radius: 10px;
-  /* border: 1px solid #ffffff; */
-}
-
-
 :root {
   --primary-clr: #0077b6;
   --bg-clr: #f2f4f5;
@@ -42,31 +21,27 @@ body.dark-mode {
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
- 
+  font-size: 15px;
 }
 body {
  /*  position: fixed; */
-  /* min-height: 100vh; */
+  min-height: 100vh;
   justify-content: center;
   background: var(--bg-clr);
 }
 .container2 {
   width: 85px;
-  height: 100%;
-  min-width: 85;
+  min-height: 100vh;
   margin: 0;
+  margin-top: 50px;
   padding: 20px;
-  padding-top: 5rem;
-  overflow-y:scroll;
+  overflow: hidden;
   border-radius: 10px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   background-color: var(--white-bg);
   transition: all 0.3s ease;
-  position: absolute;
-  position: fixed;
-  
-  z-index: 5;
+  z-index: 2;
 }
 .container2.active {
   width: 250px;
@@ -88,7 +63,7 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 16px;
@@ -190,24 +165,19 @@ nav{
 
 .content-div{
   width: 100%;
-  /* min-height: 100%; */
-  /* background-color: rgba(2, 253, 115, 0.467);  */
+  min-height: 100%;
   display: inline-flex;
  
 }
 
 .main-content{
-  /* background-color: blueviolet;  */
   margin-left: 1px;
   margin-right: 1px;
   margin-top:55px;
+  padding-left: 2%;
   padding-top: 2%;
-  padding-left: 9%;
   padding-right: 2%;
   width: 100%;
   float: right;
-  height: fit-content;
-  
-  
-  
+  height: 400px;
 }
