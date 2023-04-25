@@ -31,6 +31,11 @@ class CreateFixedDeduction extends Seeder
                 'description'=> 'Sample Description',
              ],
              [
+                'name'=>'Modified Pag-ibig 2',
+                'percentage'=>'0',
+                'description'=> 'Sample Description',
+             ],
+             [
                 'name'=>'Withholding Tax',
                 'percentage'=>'0',
                 'description'=> 'Sample Description',

@@ -104,6 +104,7 @@
     </style>
 </head>
 <body>
+  @if (Session::has('success'))
     <div class="toast active">
         <div class="toast-content">
           <i class="fas fa-solid fa-check check"></i>
@@ -116,8 +117,11 @@
         <!-- Remove 'active' class, this is just to show in Codepen thumbnail -->
         <div class="progress active"></div>
       </div>
-      {{-- <button>Show Toast</button>
+  @endif
 
+  
+      {{-- <button>Show Toast</button>
+   
       <small style="position: absolute; bottom: 40px">Remove 'active' classes, this is just to show in Codepen thumbnail</small> --}}
 
 

@@ -103,9 +103,9 @@ th {
                           <td>
                             <p>{{$item->deduction_info->name}}</p>
                           </td>
-                          <td>{{$item->interest}}</td>
+                          <td>{{$item->interest}}%</td>
                           <td>
-                            <form action="/payrolldeduction-update/{{$item->id}}" method="post">
+                            <form action="/payrolldeduction2-update/{{$item->id}}" method="post">
                               @csrf
                               <input type="text" name="id2" id="" value="{{$item->id}}" hidden>
                               <input type="text" name="f_deduction{{$item->id}}" id="f_deduction{{$item->id}}" value="{{$item->monthly_deduction}}" readonly>
@@ -128,8 +128,8 @@ th {
                           @endif
                         </td>
                         <td>
-                          <a href="">Update</a>
-                          <a href="">Delete</a>
+                          <button type="button">Update</button>
+                          <button type="button" onclick="deleteDeduc2({{$item->id}})">Delete</button>
                         </td>
                         </tr>
                     @endforeach     
@@ -173,7 +173,7 @@ th {
                       <form action="/payrolldeduction-update/{{$item->id}}" method="post">
                         @csrf
                       <input type="text" name="f_deduction{{$item->id}}" id="f_deduction{{$item->id}}" value="{{$item->monthly_deduction}}" readonly>
-                      <button type="button" onclick="btninputshow({{$item->id}})" onclick=""><span class="material-symbols-outlined">edit</span></button>
+                      <button type="button" onclick="btninputshow({{$item->id}})" ><span class="material-symbols-outlined">edit</span></button>
                       <button id="updBtn{{$item->id}}"  type="submit" disabled><span class="material-symbols-outlined">save</span></button>
                     </form>
                     </td>
@@ -183,8 +183,8 @@ th {
                     <td>{{$item->balance}}</td>
                     <td>Active</td>
                     <td>
-                      <a href="">Update</a>
-                      <a href="">Delete</a>
+                      <button type="button">Update</button>
+                      <button type="button" onclick="deleteDeduc({{$item->id}})">Delete</button>
                     </td>
                   </tr>
                   @endforeach
@@ -301,9 +301,6 @@ th {
     let input = document.querySelector('#f_deduction'+$id);
     if (input.readOnly) {
         input.readOnly = false;
-
-        document.querySelector('.label').addClass('malaking-font');
-        
 
         input.onchange = function() {
           let btn = document.querySelector('#updBtn'+$id);

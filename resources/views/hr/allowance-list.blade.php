@@ -40,8 +40,9 @@ active
           @foreach ($all as $item)
           <tr>
             <td>{{$item->id}}</td>
-            <td>{{$item->name}}</td>
+            
             <td>{{$item->code}}</td>
+            <td>{{$item->name}}</td>
             <td>{{$item->type}}</td>
             <td>{{$item->description}}</td>
             <td>

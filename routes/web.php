@@ -86,6 +86,10 @@ Route::get('/payroll-save', [PayrollController::class, 'savePayroll'])->name('pa
 Route::get('/payroll-check/{id}',[PayrollController::class, 'checkPayroll']);
 Route::post('/payrolldeduction-save',[PayrollController::class, 'deductionSave']);
 Route::post('/payrolldeduction-update/{id}',[PayrollController::class, 'deductionUpdate']);
+Route::post('/payrolldeduction2-update/{id}',[PayrollController::class, 'deductionUpdate2']);
+Route::get('/payrolldeduction-delete/{id}',[PayrollController::class, 'deductionDelete']);
+Route::get('/payrolldeduction2-delete/{id}',[PayrollController::class, 'deductionDelete2']);
+Route::post('/payrolladditional-save',[PayrollController::class, 'additionalSave']);
 
 
 

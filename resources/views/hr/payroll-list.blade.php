@@ -14,7 +14,14 @@ active
   <link rel="stylesheet" href="css/payroll.css" />
   <link rel="stylesheet" href="css/checkModal.css">
   <link rel="stylesheet" href="css/custom.css">
+<style>
+  .material-symbols-outlined:hover{
+    background-color: #0076b69f;
+    padding: 3px;
+    border-radius: 5px;
 
+}
+</style>
 </head>
 
 <body>
@@ -32,8 +39,8 @@ active
             <th>Employee ID</th>
             <th>Name</th>
             <th>Monthly Salary</th>
-            <th>Total Deduction</th>
             <th>Bonus/Allowance</th>
+            <th>Total Deduction</th>
             <th>Net Amount Received</th>
           </tr>
         </thead>
@@ -53,7 +60,7 @@ active
             <td>
               <div class="cont2" style="display: flex; gap:2rem;">
                 @if(isset($item->monthly_rate))
-
+                
                 <div class="rate">
                   {{$item->monthly_rate}}
                 </div>
@@ -79,12 +86,33 @@ active
                 @endif
               </div>
 
+              <td>1000</td>
+            </td>
+            
+              <td class="text-center">
+                {{-- @foreach ($monthlyDeductions as $deduction) 
+                    @if ($deduction->employee_id == $item->id)
+                    {{$deduction->total_deduction}}
+                    @endif
+                @endforeach 
+                |
+                @foreach ($monthlyDeductions2 as $deduction2) 
+                    @if ($deduction2->employee_id == $item->id)
+                    {{$deduction2->total_deduction}}
+                    @endif
+                @endforeach
+                <hr> --}}
+            @foreach ($TotalDeduction  as $key => $value) 
+                @if ($key == $item->id)
+                {{$value}}
+                @endif
+            @endforeach
+                <br>
+                <i><a href="/checkdeductiondetails/{{Crypt::encrypt($item->id)}}" class="tableBtn" title="Check deduction">click for the details</a>
+                </i>
+              </td>
 
-            </td>
-            <td>
-              <a href="/checkdeductiondetails/{{Crypt::encrypt($item->id)}}" class="tableBtn" title="Check deduction"> 100000</a>
-            </td>
-            <td>1000</td>
+            
             <td>51000</td>
 
           </tr>
