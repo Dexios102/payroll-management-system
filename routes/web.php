@@ -46,12 +46,15 @@ Route::post('/department-restore', [DepartmentController::class, 'restore']);
 
 
 Route::get('/position', [PositionController::class, 'list'])->name('position-list');
+Route::get('/position2', [PositionController::class, 'list2'])->name('position-list2');
 Route::post('/position-save', [PositionController::class, 'save'])->name('position-save');
 Route::get('/position-modal/{id}', [PositionController::class, 'modal'])->name('position-modal');
 Route::post('/position-update', [PositionController::class, 'update'])->name('position-update');
 Route::get('/position-deletemodal/{id}', [PositionController::class, 'deleteModal']);
 Route::post('/position-delete', [PositionController::class, 'delete']);
 Route::post('/position-restore', [PositionController::class, 'restore']);
+Route::post('/position-delete/{id}', [PositionController::class, 'delete'])->name('position-update');
+Route::get('/positions/deleted', 'PositionController@list2')->name('positions.deleted');
 
 
 Route::get('/deduction', [DeductionController::class, 'list'])->name('deduction-list');
