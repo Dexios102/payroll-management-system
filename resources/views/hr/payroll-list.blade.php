@@ -32,7 +32,7 @@ active
     {{-- <button id="positionBtn" class="material-symbols-outlined">
       library_add<span>Add</span></button> --}}
     <div class="table-container">
-      <table id="positionTable" class="hover row-border" style="width:100%">
+      <table id="positionTable" class="hover row-border" style="width:100%; font-size:5px;">
         <thead>
           <tr>
             <th></th>
@@ -57,12 +57,12 @@ active
             {{-- <td>{{$item->position}}</td>
             <td>{{$item->department}}</td> --}}
 
-            <td>
+            <td class="text-center">
               <div class="cont2" style="display: flex; gap:2rem;">
                 @if(isset($item->monthly_rate))
                 
                 <div class="rate">
-                  {{$item->monthly_rate}}
+                  <span>&#8369;</span>{{$item->monthly_rate}}.00
                 </div>
                 <div class="rate-btn" style="float: right;">
                   <button type="button" class="inputupdate1" onclick="inputupdate1({{$item->id}})">
@@ -86,34 +86,42 @@ active
                 @endif
               </div>
 
-              <td>1000</td>
+              <td class="text-center">
+                @if (isset($TotalAdditional[$item->id]))
+                      @foreach ($TotalAdditional  as $key => $value) 
+                        @if ($key == $item->id)
+                        <span>&#8369;</span>{{$value}}.00
+                        @endif
+                      @endforeach
+                    @else
+                    <i>No Data</i>
+                 @endif
+              </td>
             </td>
             
               <td class="text-center">
-                {{-- @foreach ($monthlyDeductions as $deduction) 
-                    @if ($deduction->employee_id == $item->id)
-                    {{$deduction->total_deduction}}
-                    @endif
-                @endforeach 
-                |
-                @foreach ($monthlyDeductions2 as $deduction2) 
-                    @if ($deduction2->employee_id == $item->id)
-                    {{$deduction2->total_deduction}}
-                    @endif
-                @endforeach
-                <hr> --}}
-            @foreach ($TotalDeduction  as $key => $value) 
-                @if ($key == $item->id)
-                {{$value}}
+                @if (isset($TotalDeduction[$item->id]))
+                    @foreach ($TotalDeduction  as $key => $value) 
+                        @if ($key == $item->id)
+                        <span>&#8369;</span>{{$value}}.00
+                        @endif
+                    @endforeach
+                  @else
+                  <i>No Data</i>
                 @endif
-            @endforeach
-                <br>
+                {{-- <br>
                 <i><a href="/checkdeductiondetails/{{Crypt::encrypt($item->id)}}" class="tableBtn" title="Check deduction">click for the details</a>
-                </i>
+                </i> --}}
               </td>
 
             
-            <td>51000</td>
+              <td class="text-center">
+                @foreach ($TotalNet  as $key => $value) 
+                @if ($key == $item->id)
+                <span>&#8369;</span>{{$value}}.00
+                @endif
+            @endforeach</td>
+              </td>
 
           </tr>
           @endforeach

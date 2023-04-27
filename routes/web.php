@@ -93,6 +93,9 @@ Route::post('/payrolldeduction2-update/{id}',[PayrollController::class, 'deducti
 Route::get('/payrolldeduction-delete/{id}',[PayrollController::class, 'deductionDelete']);
 Route::get('/payrolldeduction2-delete/{id}',[PayrollController::class, 'deductionDelete2']);
 Route::post('/payrolladditional-save',[PayrollController::class, 'additionalSave']);
+Route::get('/contributionStatus-edit/{id}',[PayrollController::class, 'contributionStatus']);
+Route::get('/contributionStatus2-edit/{id}',[PayrollController::class, 'contributionStatus2']);
+Route::get('/additionalStatus-edit/{id}',[PayrollController::class, 'additionalStatus']);
 
 
 

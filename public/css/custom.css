@@ -140,6 +140,22 @@
    color: aliceblue;
   }
 
+  .btn-delete{
+    padding: 5px 15px;
+    background-color: rgb(197, 79, 79);
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: #e8e8e8;
+  }
+
+  .btn-delete:hover{
+   cursor: pointer;
+   background-color: rgb(140, 36, 36);
+   color: aliceblue;
+  }
+
   .text-center{
     text-align: center;
   }
