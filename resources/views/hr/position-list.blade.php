@@ -151,8 +151,6 @@ active
                       <th class="table-selectAll"><input type="checkbox"></th>
                       <th>Id <button class="sort-btn_archived" data-sortby="id"><i class="fa fa-sort"></i></button></th>
                       <th>Name <button class="sort-btn_archived" data-sortby="name"><i class="fa fa-sort"></i></button></th>
-                      <th>Division <button class="sort-btn_archived" data-sortby="division"><i class="fa fa-sort"></i></button>
-                      </th>
                       <th>Description <button class="sort-btn_archived" data-sortby="description"><i
                             class="fa fa-sort"></i></button></th>
                       <th>Date_Deleted <button class="sort-btn_archived" data-sortby="date_deleted"><i
@@ -166,7 +164,6 @@ active
                       <td class="select-checkBox"><input type="checkbox" data-id="{{ $item->id }}"></td>
                       <td>{{$item->id}}</td>
                       <td>{{$item->name}}</td>
-                      <td>{{$item->division_info->code}}</td>
                       <td>{{$item->description}}</td>
                       <td>{{$item->deleted_at}}</td>
                       <span id="test"></span>

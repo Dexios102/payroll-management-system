@@ -124,7 +124,7 @@ printBtn.addEventListener('click', function () {
       selectedRows.push(rowst[i]);
     }
   }
-  var tableData = '<table><thead><tr><th>ID</th><th>Name</th><th>Division</th><th>Description</th></tr></thead><tbody>';
+  var tableData = '<table><thead><tr><th>ID</th><th>Name</th><th>Division</th><th>Description</th>></tr></thead><tbody>';
   for (var i = 0; i < selectedRows.length; i++) {
     var rowCells = selectedRows[i].querySelectorAll('td');
     tableData += '<tr>';

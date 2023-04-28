@@ -12,8 +12,9 @@ class DepartmentController extends Controller
 {
     public function list(){
 
-        $dp = DB::table('department')->get();
-        return view('hr.department-list', compact('dp'));
+        $dp = Department::withoutTrashed()->get();
+        $dpdeleted = Department::onlyTrashed()->get();
+        return view('hr.department-list', compact('dp', 'dpdeleted'));
     }
 
     public function save(Request $request){
@@ -71,12 +72,26 @@ class DepartmentController extends Controller
 
       public function delete(Request $request){
     
-        $id = $request->input('id2');
+        $id = $request->input('dpid');
+    
+        $all = Department::find($id);
+        $all->delete();
+        $pos = Position::where('division',$id)->delete();
+    
+        return back()->with('success','Deleted Succesfully');
+      }
+
+      public function delete2(Request $request, $id){
+    
+        $id = $request->input('dpid');
     
         $all = Department::find($id);
         $all->delete();
 
-        $pos = Position::where('division',$id)->delete();
+
+
+
+        Position::where('division',$id)->delete();
     
         return back()->with('success','Deleted Succesfully');
       }

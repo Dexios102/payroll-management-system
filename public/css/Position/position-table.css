@@ -23,17 +23,17 @@ thead {
 
 #table-main th:nth-child(3),
 #table-second th:nth-child(3) {
-    width: 15%;
+    width: 20%;
 }
 
 #table-main th:nth-child(4),
 #table-second th:nth-child(4) {
-    width: 20%;
+    width: 30%;
 }
 
 #table-main th:nth-child(5),
 #table-second th:nth-child {
-    width: 30%;
+    width: 20%;
 }
 th,
 td {
@@ -71,10 +71,10 @@ th {
     border-radius: 10px 0px 0px 10px;
 }
 
-#table-second td:nth-child(6),
+#table-second td:nth-child(5),
 #table-second td:nth-child(2) {
     color: #9d0208;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 tr {

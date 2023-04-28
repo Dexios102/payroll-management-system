@@ -1,0 +1,60 @@
+.eye-modal-archive {
+    border: 1px solid #023047;
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+}
+
+.eye-header-archive {
+    color: #023047;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.eye-modal-archive span {
+    color: red;
+}
+
+.eye-modal-archive strong {
+    font-size: 1.1rem;
+}
+
+.eye-header-archive:first-child {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.eye-modal {
+    border: 1px solid #023047;
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+}
+
+.eye-header {
+    color: #023047;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.eye-modal .active-status {
+    color: #1b4332;
+    font-weight: 500;
+}
+
+.eye-modal .created {
+    color: #1b4332;
+    font-weight: 500;
+}
+
+.eye-modal strong {
+    font-size: 1.1rem;
+}
+
+.eye-header:first-child {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+

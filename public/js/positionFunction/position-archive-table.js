@@ -153,15 +153,12 @@ printBtn_arpos.addEventListener('click', function () {
 function showModal_arpos_view(row_arpos_view) {
     const id_arpos_view = row_arpos_view.cells[1].textContent;
     const name_arpos_view = row_arpos_view.cells[2].textContent;
-    const division_arpos_view = row_arpos_view.cells[3].textContent;
-    const description_arpos_view = row_arpos_view.cells[4].textContent;
-    const deleted_at_arpos_view = row_arpos_view.cells[5].textContent;
+    const description_arpos_view = row_arpos_view.cells[3].textContent;
+    const deleted_at_arpos_view = row_arpos_view.cells[4].textContent;
     const modalContent_arpos_view = `
     <div style="background-color: white; color: black; padding: 10px;">
       <p><strong>ID: </strong>${id_arpos_view}</p>
-      <br>
       <p><strong>Name: </strong> ${name_arpos_view}</p>
-      <p><strong>Division: </strong> ${division_arpos_view}</p>
       <p><strong>Description: </strong> ${description_arpos_view}</p>
       <p><strong>Deleted at: </strong> ${deleted_at_arpos_view}</p>
     </div>

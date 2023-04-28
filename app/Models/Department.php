@@ -16,7 +16,5 @@ class Department extends Model
         'division',
         'floor',
         'description',
-
-    ];
-
+    ];  
 }
