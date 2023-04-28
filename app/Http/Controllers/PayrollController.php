@@ -29,9 +29,11 @@ class PayrollController extends Controller
             ->withoutTrashed()->get();
        
         $monthlyDeductions =PayrollDeduction::selectRaw('employee_id, sum(monthly_deduction) as total_deduction')
+        ->where('status','active')
         ->groupBy('employee_id')->withoutTrashed()
         ->get();
         $monthlyDeductions2 =PayrollFixedDeduction::selectRaw('employee_id, sum(monthly_deduction) as total_deduction')
+        ->where('status','active')
         ->groupBy('employee_id')->withoutTrashed()
         ->get();
 
@@ -49,13 +51,57 @@ class PayrollController extends Controller
           
         }
 
-        // $fixed_ded = PayrollFixedDeduction::with(['deduction_info','employee_info'])
-        // ->withoutTrashed()->get();
+        //Additional
+        $payrollAdd = PayrollAdditional::where('status','active')->withoutTrashed()->get();
+        $TotalAdditional = [];
+        foreach($payrollAdd as $d1){
+          if (isset($TotalAdditional[$d1->employee_id])) {
+              $TotalAdditional[$d1->employee_id] += $d1->amount;
+          } else {
+              // Otherwise, add a new key-value pair
+              $TotalAdditional[$d1->employee_id] = $d1->amount;
+          }
+        }
 
-        // // $total_ded = 0;
-        // // // $id = auth()->user()->id;
-        // // // $encrypt = Crypt::encryptString($id);
-        // // // $decrypt = Crypt::decryptString($encrypt);
+        
+        
+        //TotalNet
+        $TotalNet = []; 
+        //MOnthlyRate
+        foreach($emp as $d3){
+          if (isset($TotalNet[$d3->id])) {
+              $TotalNet[$d3->id] += $d3->monthly_rate;
+          } else {
+              // Otherwise, add a new key-value pair
+              $TotalNet[$d3->id] = $d3->monthly_rate;
+          }
+        } 
+        //Additional
+        foreach($payrollAdd as $d1){
+          if (isset($TotalNet[$d1->employee_id])) {
+              $TotalNet[$d1->employee_id] += $d1->amount;
+          } else {
+              // Otherwise, add a new key-value pair
+              $TotalNet[$d1->employee_id] = $d1->amount;
+          }
+        }
+
+        foreach($TotalNet as $key1 => $value1){
+          foreach($TotalDeduction as $key2 => $value2){
+              if($key1 == $key2){
+                  $TotalNet[$key1] = $value1 - $value2;
+              }
+          }
+          
+        
+      }
+
+
+
+
+
+
+
         return view('hr.payroll-list',[
             'dept' => $dept,
             'emp' => $emp,
@@ -64,7 +110,9 @@ class PayrollController extends Controller
             'nameko' => 8979,
             'monthlyDeductions' => $monthlyDeductions, 
             'monthlyDeductions2' => $monthlyDeductions2,
-            'TotalDeduction' => $TotalDeduction,               
+            'TotalDeduction' => $TotalDeduction,  
+            'TotalAdditional' => $TotalAdditional,              
+            'TotalNet' => $TotalNet, 
         ]);
             
     }
@@ -129,10 +177,10 @@ class PayrollController extends Controller
         ->withoutTrashed()->get();
 
         $other_ded = PayrollDeduction::where('employee_id',$decryptID)
-            ->where('status','!=','fixed')
+            ->where('status','active')
             ->with(['deduction_info','employee_info'])->withoutTrashed()->get();
         $total_ded = PayrollDeduction::where('employee_id',$decryptID)
-            ->where('status','!=','fixed')
+            ->where('status','active')
             ->with(['deduction_info','employee_info'])->withoutTrashed()->sum('monthly_deduction');
 
             $dept = Department::all();
@@ -141,18 +189,29 @@ class PayrollController extends Controller
             $p_dec = PayrollDeduction::with(['deduction_info','employee_info'])
             ->where('status','!=','fixed')->where('employee_id',$decryptID)->withoutTrashed()->get();
     
-            $f_dec = PayrollFixedDeduction::with(['deduction_info','employee_info'])->where('employee_id',$decryptID)->withoutTrashed()->get();
-    
+            $f_dec = PayrollFixedDeduction::with(['deduction_info','employee_info'])->where('employee_id',$decryptID)
+            ->where('status','active')->withoutTrashed()->get();
+            $f_ded_all = PayrollFixedDeduction::with(['deduction_info','employee_info'])->where('employee_id',$decryptID)
+            ->withoutTrashed()->get();
             $f_count = $f_dec->count();
 
             $allowance = Allowance::withoutTrashed()->get();
 
-        $payrollAdd = PayrollAdditional::where('employee_id',$decryptID)->where('status','active')->withoutTrashed()->get();
+            $payrollAdd_all = PayrollAdditional::where('employee_id',$decryptID)->withoutTrashed()->get();
+            
 
+            $total_f = $f_dec->sum('monthly_deduction');
+
+        $payrollAdd = PayrollAdditional::where('employee_id',$decryptID)->where('status','active')->withoutTrashed()->get();
+        $total_add = $payrollAdd->sum('amount');
+        $add_count = $payrollAdd->count();
+        $total_net = ($emp->monthly_rate +  $total_add) - ($total_ded + $total_f) ;
+        $half_net = $total_net / 2 ;
 
 
         return view('hr.payroll-check', compact('emp','fixed_deduc','other_ded', 'total_ded','dept',
-    'ded','fixed_deduc2','p_dec','f_dec','f_count','allowance','payrollAdd'));
+    'ded','fixed_deduc2','p_dec','f_dec','f_count','allowance','payrollAdd','total_add','add_count','total_f',
+    'total_net','half_net','f_ded_all','payrollAdd_all'));
     }
     
 
@@ -181,7 +240,7 @@ class PayrollController extends Controller
             $ded2->monthly_deduction = 0;
         }
         
-        $ded2->status = "new";
+        $ded2->status = "active";
         $ded2->save();
 
         return back()->with('success','New Deduction Saved!');
@@ -273,6 +332,48 @@ class PayrollController extends Controller
             $ded2->status = "active";
             $ded2->save();
         }
+        return back()->with('success','Success!');
+
+    }
+
+    public function contributionStatus($id){
+        $ded = PayrollFixedDeduction::find($id);
+        if($ded->status == 'active'){
+            $ded->status = 'inactive';
+        }elseif($ded->status == 'inactive'){
+            $ded->status = 'active';
+        }else{
+            $ded->status = 'active';
+        }
+        $ded->save();
+        return back()->with('success','Success!');
+
+    }
+
+    public function contributionStatus2($id){
+        $ded = PayrollDeduction::find($id);
+        if($ded->status == 'active'){
+            $ded->status = 'inactive';
+        }elseif($ded->status == 'inactive'){
+            $ded->status = 'active';
+        }else{
+            $ded->status = 'active';
+        }
+        $ded->save();
+        return back()->with('success','Success!');
+
+    }
+
+    public function additionalStatus($id){
+        $ded = PayrollAdditional::find($id);
+        if($ded->status == 'active'){
+            $ded->status = 'inactive';
+        }elseif($ded->status == 'inactive'){
+            $ded->status = 'active';
+        }else{
+            $ded->status = 'active';
+        }
+        $ded->save();
         return back()->with('success','Success!');
 
     }

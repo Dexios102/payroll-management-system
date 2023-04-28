@@ -78,8 +78,27 @@ active
         <tr>
           <th rowspan="4" colspan="2" style="text-align: center; width:fit-content">NAME OF EMPLOYEE</th>
           <th rowspan="4" style="text-align: center">MONTHLY SALARY</th>
-          <th rowspan="4" style="text-align: center">PERA</th>
+          @foreach ($payrollAdd as $item)
+            <th rowspan="4" style="text-align: center">{{$item->allowance_info->name}}</th>
+            @endforeach
+
+
+          @if($f_count == 1)
+          <th colspan="4" rowspan="2" style="text-align: center">Deductions</th>
+          @elseif($f_count == 2)
+          <th colspan="5" rowspan="2" style="text-align: center">Deductions</th>
+          @elseif($f_count == 3)
+          <th colspan="6" rowspan="2" style="text-align: center">Deductions</th>
+          @elseif($f_count == 4)
+          <th colspan="7" rowspan="2" style="text-align: center">Deductions</th>
+          @elseif($f_count == 5)
           <th colspan="8" rowspan="2" style="text-align: center">Deductions</th>
+          @else
+          <th colspan="3" rowspan="2" style="text-align: center">Deductions</th>
+          @endif
+
+
+
           <th rowspan="4" style="text-align: center">NET AMOUNT RECEIVED <br> MARCH 1-23, 2023</th>
           <th rowspan="4">Signature of <br> Payee</th>
         </tr>
@@ -87,7 +106,7 @@ active
 
         </tr>
         <tr>
-          @foreach ($fixed_deduc as $item)
+          @foreach ($f_dec as $item)
           <td rowspan="2" style="text-align: center">{{$item->deduction_info->name}}</td>
           @endforeach
           
@@ -113,8 +132,13 @@ active
 
 
           <td class="text-center">{{$emp->monthly_rate}}.00</td>
-          <td style="text-align: center">2000.00</td>
-           @foreach ($fixed_deduc as $item)
+          
+          @foreach ($payrollAdd as $item)
+            <td rowspan="4" style="text-align: center">{{$item->amount}}</td>
+            @endforeach
+
+
+           @foreach ($f_dec as $item)
           <td style="text-align: center">{{$item->monthly_deduction}}<br><i style="color: rgb(100, 96, 93); font-size:15px;">({{$item->interest}}% of Basic salary)</i></td>
           @endforeach
           {{-- <td style="text-align: center">5</td>
@@ -146,13 +170,43 @@ active
               <li>{{$total_ded}}</li> --}}
             </ul>
           </td>
-          <td rowspan="2" style="text-align: center">15,000<br> 15,000</td>
+          <td rowspan="2" style="text-align: center">
+            {{$half_net}}.00<br> {{$half_net}}.00 <br>
+            <i style="color: rgb(100, 96, 93); font-size:15px;">Total: {{$total_net}}.00</i>
+          </td>
          
 
         </tr>
         <tr>
-          <td colspan="2"></td>
-          <td colspan="5"></td>
+          @if($add_count == 1)
+          <th colspan="2"  style="text-align: center"></th>
+          @elseif($add_count == 2)
+          <th colspan="3"  style="text-align: center; "></th>
+          @elseif($add_count == 3)
+          <th colspan="4"  style="text-align: center"></th>
+          @elseif($add_count == 4)
+          <th colspan="5"  style="text-align: center"></th>
+          @elseif($add_count == 5)
+          <th colspan="6"  style="text-align: center"></th>
+          @elseif($add_count == 0)
+          <th colspan="1"  style="text-align: center"></th>
+          @else
+          <th colspan="2"  style="text-align: center"></th>
+          @endif
+          
+          @if($f_count == 1)
+          <td colspan="1" style="text-align: center"><span style="font-size:13px">Total contribution: {{$total_f}}</span></td>
+          @elseif($f_count == 2)
+          <td colspan="2" style="text-align: center"><span style="font-size:13px">Total contribution: {{$total_f}}</span></td>
+          @elseif($f_count == 3)
+          <td colspan="3" style="text-align: center"><span style="font-size:13px">Total contribution: {{$total_f}}</span></td>
+          @elseif($f_count == 4)
+          <td colspan="4" style="text-align: center"><span style="font-size:13px">Total contribution: {{$total_f}}</span></td>
+          @elseif($f_count == 5)
+          <td colspan="5" style="text-align: center"><span style="font-size:13px">Total contribution: {{$total_f}}</span> </td>
+          @else
+          
+          @endif
           
           <td colspan="2" style="text-align: end">Total</td>
           <td style="text-align: center">{{$total_ded}}</td>
@@ -313,18 +367,26 @@ active
                   <tr>
                     <th>Code</th>
                     <th>Name</th>
+                    <th>Amount</th>
                     <th>Due</th>
                     <th>Status</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($payrollAdd as $item)
+                  @foreach ($payrollAdd_all as $item)
                   <tr class="text-center">
                     <td>{{$item->allowance_info->code}}</td>
                     <td>{{$item->allowance_info->name}}</td>
+                    <td>{{$item->amount}}</td>
                     <td>{{$item->due}}</td>
-                    <td><a href="#" class="btn-edit">{{$item->status}}</a></td>
+                    <td>
+                      @if ($item->status == 'active')
+                      <a href="/additionalStatus-edit/{{$item->id}}" class="btn-edit">{{$item->status}}</a>
+                    @else
+                    <a href="/additionalStatus-edit/{{$item->id}}" class="btn-delete">{{$item->status}}</a>
+                    @endif
+                    </td>
                     <td>
                       <button type="button" class=""></button>
                     </td>
@@ -367,7 +429,7 @@ active
                       </thead>
                       @if ($f_count != 0)
                       <tbody>
-                            @foreach ($f_dec as $item)
+                            @foreach ($f_ded_all as $item)
                               <tr>
                                 <td>
                                   <p>{{$item->deduction_info->name}}</p>
@@ -390,12 +452,13 @@ active
                                 </td> --}}
                                 
                                 <td>{{$item->balance}}</td>
-                                <td>@if ($item->deleted_at == null)
-                                    Active
-                                @else
-                                    Inactive
-                                @endif
-                              </td>
+                                <td>
+                                  @if ($item->status == 'active')
+                                    <a href="/contributionStatus-edit/{{$item->id}}" class="btn-edit">{{$item->status}}</a>
+                                  @else
+                                  <a href="/contributionStatus-edit/{{$item->id}}" class="btn-delete">{{$item->status}}</a>
+                                  @endif
+                                </td>
                               <td>
                                 <button type="button">Update</button>
                                 <button type="button" onclick="deleteDeduc2({{$item->id}})">Delete</button>
@@ -450,7 +513,13 @@ active
                             
                           
                           <td>{{$item->balance}}</td>
-                          <td>Active</td>
+                          <td>
+                            @if ($item->status == 'active')
+                              <a href="/contributionStatus2-edit/{{$item->id}}" class="btn-edit">{{$item->status}}</a>
+                            @else
+                            <a href="/contributionStatus2-edit/{{$item->id}}" class="btn-delete">{{$item->status}}</a>
+                            @endif
+                          </td>
                           <td>
                             <button type="button">Update</button>
                             <button type="button" onclick="deleteDeduc({{$item->id}})">Delete</button>
