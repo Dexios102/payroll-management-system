@@ -25,7 +25,7 @@ countSpans.textContent = rowCounts;
 
 /* Full Screen */
 function openFullscreen() {
-  const elem_archived = document.querySelector(".department-table-container");
+  const elem_archived = document.querySelector(".all-table-container");
 
   if (document.fullscreenElement) {
     document.exitFullscreen();

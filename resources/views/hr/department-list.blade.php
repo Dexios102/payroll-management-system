@@ -16,18 +16,18 @@ active
 </head>
 
 <body>
-  <div class="department-main-content">
-    <div class="department-header-label">
+  <div class="all-main-container">
+    <div class="all-main-header-label">
       Department Data
     </div>
-    <div class="department-status-windows">
+    <div class="all-status-windows">
       <ul>
         <li class="all" id="all-btn" onclick="openTable('table-all')">All <span class="count">0</span></li>
         <li class="del" id="archive-button" onclick="openTable('table-archived')">Archived <span
             class="countArchive">0</span></li>
       </ul>
     </div><!-- ! status-window close -->
-    <div class="department-table-container">
+    <div class="all-table-container">
       <div class="table-change active" id="table-all">
 
         <div class="action-container">
@@ -85,12 +85,12 @@ active
               @foreach ($dp as $item)
               <tr>
                 <td class="select-checkBox"><input type="checkbox" data-id="{{ $item->id }}"></td>
-                <td>ID-{{$item->id}}</td>
+                <td>ID-00{{$item->id}}</td>
                 <td>{{$item->code}}</td>
                 <td>{{$item->division}}</td>
                 <td><span>Floor - {{$item->floor}}</span></td>
                 <td>{{$item->description}}</td>
-                <td>{{$item->created_at}}</td>
+                <td><div class="created_at">{{$item->created_at}}</div></td>
                 <span id="test"></span>
                 <td class="table-action-icons">
                   <button>
@@ -173,12 +173,12 @@ active
               @foreach ($dpdeleted as $item2)
               <tr id="table2-tr">
                 <td class="select-checkBox"><input type="checkbox" data-id="{{ $item2->id }}"></td>
-                <td>ID-{{$item2->id}}</td>
+                <td>ID-00{{$item2->id}}</td>
                 <td>{{$item2->code}}</td>
                 <td>{{$item2->division}}</td>
                 <td><span>Floor - {{$item2->floor}}</span></td>
                 <td>{{$item2->description}}</td>
-                <td><span class="delete_at">{{$item2->deleted_at}}</span></td>
+                <td><div class="delete_at">{{$item2->deleted_at}}</div></td>
                 <span id="test"></span>
                 <td class="table-action-icons">
                   <button>

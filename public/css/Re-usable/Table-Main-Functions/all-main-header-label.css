@@ -1,0 +1,11 @@
+/* !Header Label */
+.all-main-header-label {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #003049;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+/* !Header label End */

@@ -1,0 +1,11 @@
+:root {
+    /* Box Shadow */
+    --box-shadow-02: 0px 15px 20px rgba(0, 0, 0, 0.2);
+    --box-shadow-025: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    --bg-color: #fffeff;
+    --active-color: #023e8a;
+    --status-green: #2a9d8f;
+    --status-red: #ef233c;
+    --main-bg: #0d1b2a;
+    --input-bg: #ced4da;
+}

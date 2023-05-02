@@ -1,3 +1,4 @@
+/* * View Eye Modal */
 .eye-modal-archive {
     border: 1px solid #023047;
     display: flex;
@@ -12,7 +13,11 @@
 }
 
 .eye-modal-archive span {
-    color: red;
+    color: #fff;
+    font-weight: 500;
+    background-color: red;
+    border-radius: 10px;
+    padding: 0 0.5rem;
 }
 
 .eye-modal-archive strong {
@@ -39,13 +44,19 @@
 }
 
 .eye-modal .active-status {
-    color: #1b4332;
+    color: #fff;
     font-weight: 500;
+    background-color: #1b4332;
+    border-radius: 10px;
+    padding: 0 0.5rem;
 }
 
 .eye-modal .created {
-    color: #1b4332;
+    color: #fff;
     font-weight: 500;
+    background-color: #1b4332;
+    border-radius: 10px;
+    padding: 0 0.5rem;
 }
 
 .eye-modal strong {
@@ -57,4 +68,4 @@
     align-items: center;
     margin: auto;
 }
-
+/* ! View Eye Modal END*/

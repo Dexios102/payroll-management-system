@@ -1,0 +1,10 @@
+/* * Table Change */
+.table-change.active {
+    display: block;
+  }
+  
+  .table-change {
+    display: none;
+  }
+  
+/* * Table Change END */

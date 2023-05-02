@@ -1,0 +1,64 @@
+/* ! Action Section */
+/* *Action Container */
+.action-container {
+    margin-bottom: .3rem;
+}
+
+.action-wrapper { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 7rem;
+    padding: .5rem;
+}
+/* *Action Container END */
+/* *Action Wrapper */
+.action-wrapper .action-buttons .action{
+    margin-right: 20px;
+}
+
+.action-wrapper .action-buttons {
+    margin-top: 5px;
+}
+/* *Action Wrapper END*/
+/* *Action Buttons */
+.action-buttons .action {
+    border: 1px solid rgba(0,0,0,0.52);
+    padding: .3rem .6rem;
+    border-radius: 50px;
+    box-shadow: 5px 5px 9px -5px rgba(0,0,0,0.57);
+    transition: .3s;
+}
+
+.action-buttons .action:hover {
+    background-color: RGBA(206,212,218,0.91);
+    cursor: pointer;
+}
+
+.action-buttons .action:focus {
+    background-color: #1f2e42;
+    color: white;
+}
+/* *Action Buttons END */
+/* *Action Search */
+.action-search input[type="search"] {
+    border: none;
+    outline: none;
+    background: var(--input-bg);
+    padding: .5rem;
+    padding-left: 2rem;
+    border-radius: 5px;
+}
+
+.action-search {
+    position: relative;
+}
+
+.action-search .search-icon {
+    position: absolute;
+    top: 19px;
+    left: .6rem;
+    transform: translateY(-50%);
+}
+/* *Action Search END */
+/* !Action Section END */

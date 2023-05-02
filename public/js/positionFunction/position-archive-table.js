@@ -81,7 +81,7 @@ for (let i = 0; i < sortButtons_arpos.length; i++) {
 
 /* Full Screen */
 function openFullscreen() {
-    const elem = document.querySelector(".position-table-container");
+    const elem = document.querySelector(".all-table-container");
   
     if (document.fullscreenElement) {
       document.exitFullscreen();
@@ -156,11 +156,13 @@ function showModal_arpos_view(row_arpos_view) {
     const description_arpos_view = row_arpos_view.cells[3].textContent;
     const deleted_at_arpos_view = row_arpos_view.cells[4].textContent;
     const modalContent_arpos_view = `
-    <div style="background-color: white; color: black; padding: 10px;">
+    <div class="eye-modal-archive">
+    <h2 class="eye-header-archive">Position's Archived</h2>
       <p><strong>ID: </strong>${id_arpos_view}</p>
-      <p><strong>Name: </strong> ${name_arpos_view}</p>
+      <p><strong>Status: </strong><span>Inactive</span></p>
+      <p><strong>Name: </strong> ${name_arpos_view}</p></p>
       <p><strong>Description: </strong> ${description_arpos_view}</p>
-      <p><strong>Deleted at: </strong> ${deleted_at_arpos_view}</p>
+      <p><strong>Deleted at: </strong><span> ${deleted_at_arpos_view}<span></p>
     </div>
   `;
     const modal_arpos_view = document.createElement('div');

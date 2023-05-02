@@ -22,15 +22,15 @@ active
 
 <!-- !Body Open -->
 <body>
-  <div class="position-main-content">
-    <h4 class="position-header-label">Position Data</h4>
-      <div class="position-status-windows">
+  <div class="all-main-container">
+    <h4 class="all-main-header-label">Position Data</h4>
+      <div class="all-status-windows">
         <ul>
           <li class="all" id="all-btn" onclick="openTable('table-all')">All <span class="count">0</span></li>
           <li class="del" id="archive-button" onclick="openTable('table-archived')">Archived <span class="countArchive">0</span></li>
         </ul>
       </div><!-- ! status-window close -->
-      <div class="position-table-container">
+      <div class="all-table-container">
         <div class="table-change active" id="table-all">
 
           <div class="action-container">
@@ -77,6 +77,7 @@ active
                   <th>Name <button class="sort-btn" data-sortby="name"><i class="fa fa-sort"></i></button></th>
                   <th>Division <button class="sort-btn" data-sortby="division"><i class="fa fa-sort"></i></button></th>
                   <th>Description <button class="sort-btn" data-sortby="description"><i class="fa fa-sort"></i></button>
+                  <th>Created_at <button class="sort-btn" data-sortby="created_at"><i class="fa fa-sort"></i></button>
                   </th>
                   <th class="table-action">Action</th>
                 </tr>
@@ -85,10 +86,11 @@ active
                 @foreach ($pos as $item)
                 <tr>
                   <td class="select-checkBox"><input type="checkbox" data-id="{{ $item->id }}"></td>
-                  <td>{{$item->id}}</td>
+                  <td>ID-00{{$item->id}}</td>
                   <td>{{$item->name}}</td>
                   <td>{{$item->division_info->code}}</td>
                   <td>{{$item->description}}</td>
+                  <td><div class="created_at">{{$item->created_at}}</div></td>
                   <span id="test"></span>
                   <td class="table-action-icons">
                     <button>
@@ -162,10 +164,10 @@ active
                     @foreach ($posdeleted as $item)
                     <tr id="table2-tr">
                       <td class="select-checkBox"><input type="checkbox" data-id="{{ $item->id }}"></td>
-                      <td>{{$item->id}}</td>
+                      <td>ID-00{{$item->id}}</td>
                       <td>{{$item->name}}</td>
                       <td>{{$item->description}}</td>
-                      <td>{{$item->deleted_at}}</td>
+                      <td><div class="delete_at">{{$item->deleted_at}}</div></td>
                       <span id="test"></span>
                       <td class="table-action-icons">
                         <button>

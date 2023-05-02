@@ -1,0 +1,44 @@
+/* ?Root */
+@import url("./Roots/root.css");
+
+/* ?Google Fonts */
+@import url("./Fonts/fonts.css");
+
+/* ?Reset CSS */
+@import url("./Reset/reset.css");
+
+/* ?Main Container */
+@import url("./Table-Main-Functions/all-main-container.css");
+
+/* ?Main Header Label */
+@import url("./Table-Main-Functions/all-main-header-label.css");
+
+/* ?Status Windows */
+@import url("./Table-Main-Functions/status-windows.css");
+
+/* ?Table Container */
+@import url("./Table-Main-Functions/all-table-container.css");
+
+/* ?Action Functions */
+@import url("./Table-Main-Functions/all-action-function.css");
+
+/* ?View Modal Icon */
+@import url("./Table/eye-view-modal.css");
+
+/* ?Media Query */
+@import url("./Table-Main-Functions/media-query.css");
+
+/* ?Table */
+@import url("./Table/modal-eye.css");
+
+/* ?Delete Animation */
+@import url("./Table/delete-animation.css");
+
+/* ?Sort and Checkbox */
+@import url("./Table/sort-checkbox.css");
+
+/* ?Table Changing */
+@import url("./Table/table-changing.css");
+
+/* ?Main Table Design */
+@import url("./Table/main-table-ui.css");

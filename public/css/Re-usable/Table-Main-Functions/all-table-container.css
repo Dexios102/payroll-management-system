@@ -1,0 +1,11 @@
+/* !Table Content */
+.all-table-container {
+    max-height: 47rem;
+    height: fit-content;
+    border-radius: 5px;
+    box-shadow: -4px 4px 51px -4px rgba(0,0,0,0.10);
+    background-color: #e9ecef;
+    padding-bottom: 1rem;
+    overflow: hidden;
+}
+/* !Table Content Container END*/

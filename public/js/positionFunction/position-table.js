@@ -1,5 +1,5 @@
 /* Border Bottom - Status */
-const listItems = document.querySelectorAll('.position-status-windows li');
+const listItems = document.querySelectorAll('.all-status-windows li');
 listItems[0].classList.add('active');
 listItems.forEach(function (listItem) {
   listItem.addEventListener('click', function () {
@@ -22,9 +22,10 @@ searchInput.addEventListener('input', () => {
     const id = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
     const name = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
     const division = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+    const created_at = row.querySelector('td:nth-child(6)').textContent.toLowerCase();
 
     if (id.includes(searchTerm) || name.includes(searchTerm)
-      || division.includes(searchTerm)) {
+      || division.includes(searchTerm) || created_at.includes(searchTerm)) {
       row.style.display = '';
     } else {
       row.style.display = 'none';
@@ -65,6 +66,9 @@ for (let i = 0; i < sortButtons_pos_main.length; i++) {
       case "description":
         columnIndex_pos_main = 4;
         break;
+        case "created_at":
+          columnIndex_pos_main = 5;
+          break;
       default:
         columnIndex_pos_main = 0;
         break;
@@ -155,13 +159,16 @@ function showModal(row) {
   const name = row.cells[2].textContent;
   const division = row.cells[3].textContent;
   const description = row.cells[4].textContent;
+  const created_at = row.cells[5].textContent;
   const modalContent = `
-  <div style="background-color: white; color: black; padding: 10px;">
+  <div class="eye-modal">
+  <h2 class="eye-header">Position's Active</h2>
     <p><strong>ID: </strong>${id}</p>
-    <br>
+    <p><strong>Status: </strong><span class="active-status">Active</span></p>
     <p><strong>Name: </strong> ${name}</p>
     <p><strong>Division: </strong> ${division}</p>
     <p><strong>Description: </strong> ${description}</p>
+    <p><strong>Created at: </strong><span class="created"> ${created_at}<span></p>
   </div>
 `;
   const modal = document.createElement('div');
@@ -214,12 +221,12 @@ function openTable(tableId) {
 
 /* Full Screen */
 function openFullscreen() {
-  const elem = document.querySelector(".position-table-container");
+  const elem_pos = document.querySelector(".all-table-container");
 
   if (document.fullscreenElement) {
     document.exitFullscreen();
   } else {
-    elem.requestFullscreen();
+    elem_pos.requestFullscreen();
   }
 }
 
