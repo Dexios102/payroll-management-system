@@ -28,10 +28,120 @@ active
 
 
   <div class="container">
+    <div class="tab-container" style="margin-bottom: 10px;">
+              
+      <button class="tab-btn w3-button tab-active tablink" onclick="openCont(event,'cont1')">Generate Payslip</button>
+      <button class="tab-btn w3-bar-item w3-button tablink" onclick="openCont(event,'cont2')">Table</button>
+      {{-- <button class="tab-btn w3-bar-item w3-button tablink" onclick="openCont(event,'cont3')">Tokyo</button> --}}
+   
+  </div>
     <h4 class="position-label">Regular Employee Payroll</h4>
     {{-- <button id="positionBtn" class="material-symbols-outlined">
       library_add<span>Add</span></button> --}}
-    <div class="table-container">
+      <div id="cont1" class="w3-container w3-border city generate-payroll" >
+          <div class="menu-container">
+            <div class="row row-menu">
+              <div class="col-30 col-row">
+                  <h5 style="font-weight: normal">Search Employee Name/ID</h5>
+                  <input type="text" list="names" name="" id="inputEmployee" onkeyup="inputEmployee()" placeholder="Name or ID" class="w-100">
+                  <datalist id="names">
+                    @foreach ($emp as $item)
+                    <option>{{$item->first_name}} {{$item->middle_name}} {{$item->last_name}}</option>
+                    @endforeach
+                  </datalist>
+                </div>
+
+              
+              <div class="col-70 col-row bg-white">
+                  <table class="w-100 payslip-tbl">
+                    <thead>
+                      <tr>
+                        <td colspan="2">
+                          <p id="empFullname">Employee Name: XXXXXXXX</p>
+                          <p id="empId">Employee ID: XXXXXX</p>
+
+                        </td>
+                        <td colspan="2">
+                          <p id="empDepartment">Department: XXXXXXXX</p>
+                          <p id="empPosition">Designation/Position: XXXXXX</p>
+
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  {{-- Header --}}
+                      <tr>
+                        <td style="width:40%" class="text-center">Payments</td>
+                        <td style="width:10%" class="text-right">Amount</td>
+                        <td style="width:40%" class="text-center">Deductions</td>
+                        <td style="width:10%" class="text-right">Amount</td>
+                      </tr>
+                  {{-- EndHEader --}}
+
+                      <tr>
+                        <td class="text-center">
+                          <ul>
+                            <li >Basic Salary </li>
+                            <li>Loan</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul>
+                            <li><input type="text" name="" id="" class="text-right" value="0000"></li>
+                            <li><input type="text" name="" id="" class="text-right" value="0000"></li>
+                          </ul>
+                      </td>
+
+                        <td class="text-center">
+                          <ul>
+                            <li>Taxes </li>
+                            <li>Loan</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <ul>
+                            <li><input type="text" name="" id="" class="text-right" value="0000"></li>
+                            <li><input type="text" name="" id="" class="text-right" value="0000"></li>
+                          </ul>
+                        </td>
+                      </tr>
+                      
+                      <tr>
+                        <td colspan="2">Total Payments</td>
+                        <td colspan="2">total Deductions</td>
+                      </tr>
+                    </tbody>
+                  </table>
+           
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="table-container city" id="cont2" style="display:none">
       <table id="positionTable" class="hover row-border" style="width:100%; font-size:5px;">
         <thead>
           <tr>
@@ -356,8 +466,8 @@ active
 
 
 </body>
-<script src="js/payroll.js"></script>
-<script src="js/positionModal.js"></script>
+<script src="/js/payroll.js"></script>
+<script src="/js/positionModal.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>

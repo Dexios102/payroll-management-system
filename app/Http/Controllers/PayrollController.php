@@ -378,5 +378,22 @@ class PayrollController extends Controller
 
     }
 
+    public function payslipCheck(Request $request){
+
+       $input = $request->input_data;
+        
+       $emp = Employee::where('fullname', 'like', '%' . $input . '%')
+            ->orWhere('employee_id',  $input )
+            ->first();
+        $emp_arr = array(
+            'id' => $emp->employee_id,
+            'fullname' => $emp->fullname,
+            'dept' => $emp->department,
+            'pos' => $emp->position
+        );
+        
+        return $emp_arr;
+    }
+
     
 }

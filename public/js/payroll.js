@@ -137,3 +137,39 @@ function deleteDeduc2(id){
     evt.currentTarget.className += " tab-active";
   }
   
+
+  function inputEmployee() {
+    let input = document.getElementById("inputEmployee").value;
+    // document.getElementById("try").innerHTML = "Your email: " + id;
+    // console.log(input);
+
+    $.ajax({
+        url:"/payslip-check",
+        type:"GET",
+        data:{'input_data':input},
+        cache:false,
+        success:function(data){
+            console.log(data.dept);
+
+            $('#empFullname').html('Employee Name: '+ data.fullname);
+            $('#empId').html('Employee ID: '+ data.id);
+            $('#empDepartment').html('Department: '+ data.dept);
+            $('#empPosition').html('Designation/Position: '+ data.pos);
+            // if(response!=""){
+            // console.log(response);
+            // // document.getElementById("try3").innerHTML = "Record Found! Please enter your key.";
+            // document.getElementById("try3").innerHTML = "Employee Name: " + response.f_name+ " " + response.m_name+ " " + response.l_name + "<br><i> Please input your key.<i/>" ;
+            
+            //     // document.getElementById("try3").innerHTML = data;
+            // }else{
+            //     document.getElementById("try3").innerHTML = "<i style='color:#fa3c3c'>Record Not Found! Please input valid credentials</i>";
+            // }
+
+          
+        },
+        error:function(data){
+            console.log(data);
+        }
+    })
+  
+  }

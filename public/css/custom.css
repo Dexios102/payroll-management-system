@@ -1,5 +1,11 @@
 .row {
     display: flex;
+    flex-direction: row;
+  }
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column;
+    }
   }
   
   /* Create two equal columns that sits next to each other */
@@ -10,39 +16,39 @@
 
   .col-10{
     flex: 10%;
-    width: 10%;
+   
   }
   .col-20{
     flex: 20%;
-    width: 20%;
+    
   }
   .col-30{
     flex: 30%;
-    width: 30%;
+  
   }
   .col-40{
     flex: 40%;
-    width: 40%;
+ 
   }
   .col-50{
     flex: 50%;
-    width: 50%;
+   
   }
   .col-60{
     flex: 60%;
-    width: 60%;
+   
   }
   .col-70{
     flex: 70%;
-    width: 70%;
+   
   }
   .col-80{
     flex: 80%;
-    width: 80%;
+    
   }
   .col-90{
     flex: 90%;
-    width: 90%;
+   
   }
 
   .text-center{
@@ -111,18 +117,16 @@
     background-color: rgb(58, 58, 58);
     border-radius: 5px 5px 0px 0px;
     color: white;
-    box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999; 
+    /* box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999; 
     -moz-box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999; 
-   -webkit-box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999;};
+   -webkit-box-shadow: 6px 0 4px -4px #999, -6px 0 4px -4px #999;}; */
   }
 
   .white{
     background-color: white;
   }
 
-  .active{
 
-  }
 
   .btn-edit{
     padding: 5px 15px;
@@ -159,14 +163,24 @@
   .text-center{
     text-align: center;
   }
+  .text-right{
+    text-align: right;
+  }
+
+  .text-left{
+    text-align: left;
+  }
 
   .bg-black{
     background-color: black;
 
   }
+  .bg-blue{
+    background-color: rgb(55, 128, 255);
+  }
 
   .bg-white{
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     
   }
 

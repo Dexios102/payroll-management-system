@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeePortalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\HomeController;
@@ -31,6 +32,11 @@ Route::post('/loginUser',[LoginRegisterController::class, 'loginUser'])->name('l
 Route::get('/logout',[LoginRegisterController::class, 'logoutUser'])->name('logout.user');
 Route::get('/signup',[LoginRegisterController::class, 'signup'])->name('signup');
 Route::get('/',[LoginRegisterController::class, 'login'])->name('signIn');
+
+Route::get('/employee-portal',[EmployeePortalController::class, 'portal']);
+
+
+
 
 //All HR Users Routes List
 Route::middleware(['auth', 'user-access:hr'])->group(function () {
@@ -107,6 +113,11 @@ Route::get('check/deduc/{id}',[PayrollController::class, 'deduc']);
 Route::post('add/deduc', [EmployeeController::class, 'empDeduction']);
 
 Route::get('/practice', [HomeController::class, 'practice']);
+
+
+Route::get('/payslip-check', [PayrollController::class, 'payslipCheck']);
+
+
 });
   
 //All Developer Routes List

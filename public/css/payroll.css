@@ -412,4 +412,52 @@ button span {
     
 }
 
+.generate-payroll{
+  
+   
+  
+}
+
+.menu-container{
+    /* border:1px dotted rgb(243, 56, 56); */
+    min-height: 50vh;
+
+}
+
+.row-menu{
+    gap:10px;
+    padding: 3px;
+}
+
+.col-row{
+    min-height: 20vh;
+    border:1px dotted rgb(105, 137, 255);
+    padding: 3rem 1rem 3rem 1rem;
+}
+
+
+
+
+
+
+/* PAYSLIP */
+.payslip-tbl td,th{
+    padding: 5px;
+    font-size: 13px;
+}
+
+.payslip-tbl ul li{
+    text-decoration: none;
+    list-style: none ;
+    font-size: 13px;
+}
+
+.payslip-tbl input[type=text]{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: .5px solid gray;
+    font-size: 13px;
+}
+
 
