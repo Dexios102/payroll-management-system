@@ -358,7 +358,24 @@
 .m-y-56 { margin-top: 14rem; margin-bottom: 14rem; }
 .m-y-64 { margin-top: 16rem; margin-bottom: 16rem; }
 
+
 .m-t-0 { margin-top: 0; }
+.m-t-1 { margin-top: 0.25rem; }
+.m-t-2 { margin-top: 0.5rem; }
+.m-t-3 { margin-top: 0.75rem; }
+.m-t-4 { margin-top: 1rem; }
+.m-t-5 { margin-top: 1.25rem; }
+.m-t-6 { margin-top: 1.5rem; }
+.m-t-8 { margin-top: 2rem; }
+.m-t-10 { margin-top: 2.5rem; }
+.m-t-12 { margin-top: 3rem; }
+.m-t-16 { margin-top: 4rem; }
+.m-t-20 { margin-top: 5rem; }
+.m-t-24 { margin-top: 6rem; }
+.m-t-32 { margin-top: 8rem; }
+.m-t-40 { margin-top: 10rem; }
+.m-t-48 { margin-top: 12rem; }
+.m-t-56 { margin-top: 14rem; }
 .m-t-64 { margin-top: 16rem; }
 
 .m-r-0 { margin-right: 0; }
@@ -469,5 +486,16 @@
 
   }
 
-  
+  .border-r{
+    border-right: 1px solid black;
+  }
+  .border-l{
+    border-left: 1px solid black;
+  }
+  .border-t{
+    border-top:1px solid black;
+  }
+  .border-b{
+    border-bottom: 1px solid black;
+  }
     

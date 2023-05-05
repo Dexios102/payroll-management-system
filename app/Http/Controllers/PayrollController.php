@@ -12,6 +12,8 @@ use App\Models\Payroll;
 use App\Models\PayrollAdditional;
 use App\Models\PayrollDeduction;
 use App\Models\PayrollFixedDeduction;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
@@ -96,8 +98,18 @@ class PayrollController extends Controller
         
       }
 
-
-
+    // WorkingDays and datenow
+    $now = Carbon::now();
+    $daysInMonth = $now->daysInMonth;
+    $workingDays = 0;
+    for ($i = 1; $i <= $daysInMonth; $i++) {
+        $date = Carbon::createFromDate($now->year, $now->month, $i);
+        if (!$date->isWeekend()) {
+            $workingDays++;
+        }
+    }
+    $workinMinutes = (60 * 8) * $workingDays;
+    $monthtoday = $now->format('F Y');
 
 
 
@@ -112,7 +124,10 @@ class PayrollController extends Controller
             'monthlyDeductions2' => $monthlyDeductions2,
             'TotalDeduction' => $TotalDeduction,  
             'TotalAdditional' => $TotalAdditional,              
-            'TotalNet' => $TotalNet, 
+            'TotalNet' => $TotalNet,
+            'workindays' => $workingDays, 
+            'workinminutes' => $workinMinutes,
+            'dateToday'=> $monthtoday,
         ]);
             
     }
@@ -389,10 +404,92 @@ class PayrollController extends Controller
             'id' => $emp->employee_id,
             'fullname' => $emp->fullname,
             'dept' => $emp->department,
-            'pos' => $emp->position
+            'pos' => $emp->position,
+            'salary' => $emp->monthly_rate
         );
+
+        // ALL DEDUCTIONS
+        // OTHER DEDUCTIONS
+        $deductions = PayrollDeduction::where('employee_id', $emp->id)
+                    ->where('status','active')->get();
+        $sumDed = 0;
+        $deductionHTML = '';
+        $dedAmount = '';
+        foreach($deductions as $items){
+            // Deductionlist
+            $deductionHTML .= '<li>'.$items->deduction_info->name.'</li>';
+            // AmountList
+            $dedAmount .= '<li><input type="number" name="" id="deductions" class="text-right deductions" value="'.$items->monthly_deduction.'" onchange="dedChange()"></li>';
+            //sum
+            $sumDed += $items->monthly_deduction;
+        }
+        // CONTRIBUTIONS
+        $contributions = PayrollFixedDeduction::where('employee_id', $emp->id)
+        ->where('status','active')->get();
+        $contriHTML = '';
+        $contriAmount = '';
+        $sumContri = 0;
+        foreach($contributions as $items){
+            // Deductionlist
+            $contriHTML .= '<li>'.$items->deduction_info->name.'</li>';
+            // AmountList
+            $contriAmount .= '<li><input type="number" name="" id="deductions" class="text-right deductions" value="'.$items->monthly_deduction.'" onchange="dedChange()"></li>';
+            //sum
+            $sumContri += $items->monthly_deduction;
+        }
+
+        $totalDed = $sumDed + $sumContri;
+
+
+        // ALL Additionals
+        $additionals = PayrollAdditional::where('employee_id', $emp->id)
+        ->where('status','active')->get();
+
+        $addHTML = '';
+        $addAmount = '';
+        $addTotal = 0;
+        foreach($additionals as $items){
+             // Deductionlist
+             $addHTML .= '<li>'.$items->allowance_info->name.'</li>';
+             // AmountList
+             $addAmount .= '<li><input type="number" name="" id="additionals" class="text-right additionals" value="'.$items->amount.'" onchange="addChange()"></li>';
+             //sum
+             $addTotal += $items->amount;
+        }
+
+
+        // WorkingDays and datenow
+        $now = Carbon::now();
+        $daysInMonth = $now->daysInMonth;
+        $workingDays = 0;
+        for ($i = 1; $i <= $daysInMonth; $i++) {
+            $date = Carbon::createFromDate($now->year, $now->month, $i);
+            if (!$date->isWeekend()) {
+                $workingDays++;
+            }
+        }
+        $workinMinutes = (60 * 8) * $workingDays;
+        $monthtoday = $now->format('F Y');
+
+        $amountEarned = $workingDays * $emp->daily_rate;
         
-        return $emp_arr;
+        $totalEarned = $amountEarned + $addTotal;
+
+         return response()->json([
+                        'emp_array'=>$emp_arr,
+                        'ded_array'=>$deductions,
+                        'dedHTML' => $deductionHTML, 
+                        'amountHTML' =>$dedAmount,
+                        'dedTotal' =>$sumDed,
+                        'addHTML'=> $addHTML,
+                        'addAmount'=> $addAmount,
+                        'addTotal' => $addTotal,
+                        'contriHTML'=> $contriHTML,
+                        'contriAmount'=> $contriAmount,
+                        'totalDed' => $totalDed,
+                        'amountEarned' => $amountEarned,
+                        'totalEarned' => $totalEarned,
+                    ]);
     }
 
     

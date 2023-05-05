@@ -14,6 +14,8 @@ active
   <link rel="stylesheet" href="css/payroll.css" />
   <link rel="stylesheet" href="css/checkModal.css">
   <link rel="stylesheet" href="css/custom.css">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
   .material-symbols-outlined:hover{
     background-color: #0076b69f;
@@ -42,6 +44,10 @@ active
           <div class="menu-container">
             <div class="row row-menu">
               <div class="col-30 col-row">
+                {{-- <h5 style="font-weight: normal">Date</h5>
+                <select type="text" list="dates" name="" id="inputDate" onkeyup="inputDate()" placeholder="" class="w-100" style="margin-bottom: 10px;">
+                  <option value="">January</option>
+                </select> --}}
                   <h5 style="font-weight: normal">Search Employee Name/ID</h5>
                   <input type="text" list="names" name="" id="inputEmployee" onkeyup="inputEmployee()" placeholder="Name or ID" class="w-100">
                   <datalist id="names">
@@ -51,9 +57,22 @@ active
                   </datalist>
                 </div>
 
-              
               <div class="col-70 col-row bg-white">
-                  <table class="w-100 payslip-tbl">
+                {{-- <div class="text-center m-b-2">
+                  <p>BUREAU OF FISHERIES AND AQUATIC RESOURCES REGIONAL <br> FISHERIES OFFICE - MIMAROPA</p>
+                </div> --}}
+
+                <div class="row m-b-5" >
+                  <div class="col">
+                    <p>For the Period: {{$dateToday}}</p>
+                    <p >Fund Cluster:</p>
+                  </div>
+                  <div class="col">
+                    <p>No. of Days: {{$workindays}} days</p>
+                    <p>N0. of Minutes: {{$workinminutes}} minutes</p>
+                  </div>
+                </div>
+                  <table class="w-100 payslip-tbl" style="table-layout: fixed">
                     <thead>
                       <tr>
                         <td colspan="2">
@@ -71,46 +90,84 @@ active
                     <tbody>
                   {{-- Header --}}
                       <tr>
-                        <td style="width:40%" class="text-center">Payments</td>
-                        <td style="width:10%" class="text-right">Amount</td>
-                        <td style="width:40%" class="text-center">Deductions</td>
-                        <td style="width:10%" class="text-right">Amount</td>
+                        <td style="width:100%" class="text-left ">Payments</td>
+                        <td style="width:10%" class="text-center ">Amount</td>
+                        <td style="width:40%" class="text-left">Other Deductions</td>
+                        <td style="width:10%" class="text-center">Amount</td>
                       </tr>
                   {{-- EndHEader --}}
 
-                      <tr>
-                        <td class="text-center">
+                      <tr >
+                        <td class="text-left" style="align-content: flex-start">
                           <ul>
-                            <li >Basic Salary </li>
-                            <li>Loan</li>
+                            {{-- <li >Amount Earn</li> --}}
+                            <li>Gross Amount</li>
                           </ul>
+                          <ul id="addlist">
+
+                          </ul>
+                          <p><b>Absent/Late</b></p>
+                          <ul>
+                            <li>Days</li>
+                            <li>Hours</li>
+                            <li>Minutes</li>
+                          </ul>
+                       
+                         
+                          
                         </td>
                         <td>
                           <ul>
-                            <li><input type="text" name="" id="" class="text-right" value="0000"></li>
-                            <li><input type="text" name="" id="" class="text-right" value="0000"></li>
+                            {{-- <li><input type="number" name="empSalary" id="empSalary" class="text-right" value="0000"  >  </li> --}}
+                            <li><input type="number" name="empEarned" id="empEarned" class="text-right additionals" value="0000" onchange="addChange()"></li>
                           </ul>
+                          <ul id="addamount">
+
+                          </ul>
+                          <p class="text-right"><sub> </sub></p>
+                          <ul class="m-t-5">
+                            <li><input type="number" name="" id="" class="text-right additionals" value="0" onchange="addChange()"></li>
+                            <li><input type="number" name="" id="" class="text-right additionals" value="0" onchange="addChange()"></li>
+                            <li><input type="number" name="" id="" class="text-right additionals" value="0" onchange="addChange()"></li>
+                          </ul>
+                         
                       </td>
 
-                        <td class="text-center">
-                          <ul>
-                            <li>Taxes </li>
-                            <li>Loan</li>
+                        <td class="text-left">
+                          <ul id="contrilist">
+                            <li>Taxes</li>
+                          </ul>
+                          <ul id="dedlist">
+
                           </ul>
                         </td>
                         <td>
-                          <ul>
-                            <li><input type="text" name="" id="" class="text-right" value="0000"></li>
-                            <li><input type="text" name="" id="" class="text-right" value="0000"></li>
+                          <ul id="contriamount">
+                          <input type="number" class="text-right" name="" id="" value="0000">
+                          </ul>
+                          <ul id="dedamount">
+
                           </ul>
                         </td>
                       </tr>
                       
                       <tr>
-                        <td colspan="2">Total Payments</td>
-                        <td colspan="2">total Deductions</td>
+                        <td  class="text-center">Gross after deduction of <br> Absent/Late (Php)</td>
+                        <td ><input type="number" name="totalAdd" id="totalAdd" class="text-right" value="0000" readonly></td>
+                       
+                        <td class="text-center">total Deductions</td>
+                        <td ><input type="number" name="totalDed" id="totalDed" class="text-right" value="0000" readonly></td>
                       </tr>
                     </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="4" class="text-right p-5" style="background: rgb(207, 207, 207); padding:15px;">
+                         <p class="totalnet" id="totalnet">
+                          Total Net Amount: 0000
+                          </p> 
+                        </td>
+                      </tr>
+                    </tfoot>
                   </table>
            
               </div>
