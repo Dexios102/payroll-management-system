@@ -29,12 +29,12 @@ class EmployeeController extends Controller
         $emp->middle_name = $request->input('m_name');
         $emp->last_name = $request->input('l_name');
         $emp->suffix = $request->input('suffix');
-        
         $emp->contact = $request->input('contact');
         $emp->email = $request->input('email');
         $emp->gender = $request->input('gender');
         $emp->department = $request->input('department');
         $emp->position = $request->input('position');
+        $emp->daily_rate = $request->input('daily_rate');
         $emp->birthdate = $request->input('birthdate');
         $emp->birthplace = $request->input('birthplace');
         $emp->address = $request->input('address');
@@ -73,6 +73,7 @@ class EmployeeController extends Controller
             "gender" => $emp->gender,
             "department" => $emp->department,
             "position" => $emp->position,
+            "daily_rate" => $emp->daily_rate,
             "birthdate" => $emp->birthdate,
             "birthplace" => $emp->birthplace,
             "address" => $emp->address,
@@ -99,6 +100,7 @@ class EmployeeController extends Controller
         $emp->email = $request->input('email2');
         $emp->gender = $request->input('gender2');
         $emp->department = $request->input('department2');
+        $emp->daily_rate = $request->input('daily_rate2');
         $emp->position = $request->input('position2');
         $emp->birthdate = $request->input('birthdate2');
         $emp->birthplace = $request->input('birthplace2');

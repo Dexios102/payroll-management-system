@@ -1,0 +1,179 @@
+/* ! Table */
+/* *Main Table */
+
+/* Table Size Main*/
+#table-main th:nth-child(1) {
+    width: 4%;
+}
+
+#table-main th:nth-child(2) {
+    width: 7%;
+}
+
+#table-main th:nth-child(3) {
+    width: 7%;
+}
+
+#table-main th:nth-child(4) {
+    width: 13%;
+}
+
+#table-main th:nth-child(5) {
+    width: 20%;
+}
+
+#table-main th:nth-child(6) {
+    width: 10%;
+}
+
+#table-main th:nth-child(7) {
+    width: 8%;
+}
+
+#table-main th:nth-child(8) {
+    width: 10%;
+}
+
+#table-main th:nth-child(9) {
+    width: 15%;
+}
+
+/* Table Size Archived  */
+#table-second th:nth-child(1) {
+    width: 5%;
+}
+
+#table-second th:nth-child(2) {
+    width: 7%;
+}
+
+#table-second th:nth-child(3) {
+    width: 9%;
+}
+
+#table-second th:nth-child(4) {
+    width: 12%;
+}
+
+#table-second th:nth-child(5) {
+    width: 15%;
+}
+
+#table-second th:nth-child(6) {
+    width: 20%;
+}
+
+#table-second th:nth-child(7) {
+    width: 18%;
+}
+
+#table-main td:nth-child(2) {
+    color: #1d3557;
+}
+
+/* Border Raduis Table */
+#table-main th:nth-child(1) {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#table-main th:nth-child(10) {
+    border-radius: 0px 10px 10px 0px;
+}
+
+#table-second th:nth-child(8) {
+    border-radius: 0px 10px 10px 0px;
+}
+
+#table-second th:nth-child(1) {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#table-second td:nth-child(2) {
+    color: #9d0208;
+    font-weight: 700;
+}
+
+#table-main td .created_at{
+    background-color: #1b4332;
+    font-weight: 450;
+    color: #fff;
+    border-radius: 15px;
+}
+
+#table-second td .delete_at {
+    background-color: #a4161a;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+#table-main td:nth-child(5),
+#table-second td:nth-child(5) {
+    color: #1d3557;
+    font-weight: 700;
+    line-height: 2rem;
+}
+
+#table-main td:nth-child(6),
+#table-main td:nth-child(8) {
+    font-weight: 600;
+}
+
+#table-main td:nth-child(7) {
+    font-weight: 500;
+}
+
+/* !Border */
+#table-main td:nth-child(4),
+#table-main td:nth-child(5) {
+    border-right: 1px solid #adb5bd;
+}
+/* ! Table END */
+
+
+.td-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid #d9d9d9;
+    border-radius: 20px;
+    padding: .7rem 0;
+    box-shadow: var(--box-shadow-02);
+    background-color: #dee2e6;
+    color: #000;
+}
+
+.extra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.extra span {
+    font-size: 1rem;
+}
+
+.dropdown-switch {
+    border: none;
+    background-color: transparent;
+}
+
+.dropdown-switch:hover {
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+.dropdown-switch i {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.extra-info-row p span:nth-child(3) {
+    text-decoration: underline;
+}
+
+.job_type {
+    color: #2c6e49;
+}

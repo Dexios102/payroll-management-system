@@ -19,6 +19,7 @@ class Employee extends Model
         'gender',
         'department',
         'position',
+        'daily_rate',
         'birthdate',
         'birthplace',
         'address',

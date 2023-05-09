@@ -42,3 +42,6 @@
 
 /* ?Main Table Design */
 @import url("./Table/main-table-ui.css");
+
+/* ?Table Print */
+@import url("./Table/table-print.css");
