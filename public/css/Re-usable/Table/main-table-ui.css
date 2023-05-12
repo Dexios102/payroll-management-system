@@ -16,6 +16,10 @@ tbody {
     color: #023047;
 }
 
+.primary-table-row:only-of-type {
+    background-color: green;
+}
+
 th,
 td {
     padding: .45rem;
@@ -75,7 +79,7 @@ table td span {
 .table-container-wrapper {
     width: 100%;
     height: fit-content;
-    max-height: 40rem;
+    max-height: 90vh;
     overflow: scroll;
     border-radius: 10px;
     box-shadow: var(--box-shadow-025);

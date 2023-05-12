@@ -77,6 +77,7 @@ Route::post('/employee-update', [EmployeeController::class, 'updateEmployee'])->
 Route::get('/employee-deletemodal/{id}', [EmployeeController::class, 'deleteModal']);
 Route::post('/employee-delete', [EmployeeController::class, 'deleteEmployee']);
 Route::get('/employee-archive', [EmployeeController::class, 'archive']);
+Route::post('/employee-delete/{id}', [EmployeeController::class, 'delete'])->name('employee-update');
 
 
 Route::get('/allowance', [AllowanceController::class, 'list'])->name('allowance-list');
