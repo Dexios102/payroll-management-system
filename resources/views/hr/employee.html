@@ -531,3 +531,102 @@ active
 
 </html>
 @endsection
+
+
+
+
+
+
+
+<div class="table-change active" id="table-all">
+        <button class="action" id="print-btn">
+          <span class="action-icons">
+            <i class="fa-solid fa-table" style="color: #2d9211;"></i>
+          </span>
+          Spreadsheet
+        </button>
+
+  <div class="table-container-wrapper">
+    <table id="table-main">
+      <thead class="thead-main">
+        <tr>
+          <th class="table-selectAll"><input type="checkbox"></th>
+          <th>Id <button class="sort-btn" data-sortby="id"><i class="fa fa-sort"></i></button></th>
+          <th>Status</th>
+          <th>Action</th>
+          <th>Name <button class="sort-btn" data-sortby="name"><i class="fa fa-sort"></i></button></th>
+          <th>Division <button class="sort-btn" data-sortby="division"><i class="fa fa-sort"></i></button></th>
+          <th>Daily Rate</th>
+          <th>Position <button class="sort-btn" data-sortby="position"><i class="fa fa-sort"></i></button></th>
+          <th>Date Recorded <button class="sort-btn" data-sortby="created_at"><i
+                class="fa fa-sort"></i></button></th>
+          <th>More</th>
+        </tr>
+      </thead><!-- ?Thead END -->
+      <tbody id="table-body" class="tbody-main">
+        @foreach ($emp as $item)
+        <tr class="primary-table-row">
+          <td class="select-checkBox"><input type="checkbox" data-id="{{ $item->id }}"></td>
+          <td>ID-00{{$item->id}}</td>
+          <td>
+            <div class="status">
+              <div class="wrapper-status">{{$item->status}}</div>
+            </div>
+          </td>
+          <td class="table-action-icons">
+            <button>
+              <span class="action-icons"><i class="fa-solid fa-eye eye-main-pos"
+                  style="color: #157fd1;"></i></span>
+            </button>
+            <button>
+              <span class="action-icons"><i class="fa-solid fa-pen-to-square" style="color: #6c737f;"></i></span>
+            </button>
+            <button>
+              <span class="action-icons"><i class="fa-sharp fa-solid fa-trash" style="color: #6c737f;"></i></span>
+            </button>
+          </td><!-- ?Action Buttons END -->
+          <td id="full_name">{{$item->first_name}} {{$item->middle_name}} {{$item->last_name}}</td>
+          <td>{{$item->department}}</td>
+          <td>
+            <div class="money">
+              <div class="wrapper-money">{{$item->daily_rate}}</div>
+            </div>
+          </td>
+          <td>{{$item->position}}</td>
+          <td>
+            <div class="created_at">{{$item->created_at}}</div>
+          </td>
+
+          <td class="dropdown-td">
+            <button class="dropdown-switch ">
+              <i class="fa-regular fa-circle-chevron-down" style="color: #013a63;"></i></button>
+            <div class="dropdown-content">
+        <tr class="extra-info-row" style="display: none;">
+          <td colspan="10">
+            <div class="td-flex">
+              <div class="extra">
+                <span>Type: <span class="job_type">{{$item->employee_type}}</span></span>
+                <span>Contact: @if(isset($item->contact))
+                  {{$item->contact}}
+                  @else
+                  <i>No Data</i>
+                  @endif</span>
+              </div>
+              <div class="extra">
+                <span>Birthdate: {{$item->birthdate}}</span>
+                <span>Address: {{$item->address}}</span>
+              </div>
+              <div class="extra">
+                <span>Gender: {{$item->gender}}</span>
+                <span>Email: {{$item->email}}</span>
+              </div>
+          </td>
+        </tr>
+  </div>
+</div>
+</td>
+</tr>
+@endforeach
+</tbody><!-- ?Tbody END -->
+</table><!-- ?Table Secction END -->
+</div><!-- !Table Container Wrapper END -->

@@ -23,6 +23,10 @@ active
     <div class="all-status-windows">
       <ul>
         <li class="all" id="all-btn" onclick="openTable('table-all')">All <span class="count">0</span></li>
+        <li class="active-tab" id="active-btn" onclick="openTable('table-active')">Active <span class="countActive"
+            style="color: #2d6a4f;">0</span></li>
+        <li class="inactive-tab" id="inactive-btn" onclick="openTable('table-inactive')">Inactive <span
+            class="countinActive" style="color: red;">0</span></li>
         <li class="del" id="archive-button" onclick="openTable('table-archived')">Archived <span
             class="countArchive">0</span></li>
       </ul>
@@ -48,7 +52,13 @@ active
                 <span class="action-icons">
                   <i class="fa-solid fa-print" style="color: #606671;"></i>
                 </span>
-                Print
+                Print PDF/Printer
+              </button>
+              <button class="action" id="print-excel" onclick="exportToExcel()">
+                <span class="action-icons">
+                  <i class="fa-solid fa-table" style="color: #2d9211;"></i>
+                </span>
+                Spreadsheet
               </button>
               <button class="action" id="delete-button" onclick="deleteCheckedItems()">
                 <span class="action-icons">
@@ -78,8 +88,8 @@ active
                 <th>Division <button class="sort-btn" data-sortby="division"><i class="fa fa-sort"></i></button></th>
                 <th>Daily Rate</th>
                 <th>Position <button class="sort-btn" data-sortby="position"><i class="fa fa-sort"></i></button></th>
-                <th>Date Recorded <button class="sort-btn" data-sortby="created_at"><i
-                      class="fa fa-sort"></i></button></th>
+                <th>Date Recorded <button class="sort-btn" data-sortby="created_at"><i class="fa fa-sort"></i></button>
+                </th>
                 <th>More</th>
               </tr>
             </thead><!-- ?Thead END -->
@@ -150,6 +160,46 @@ active
       </tbody><!-- ?Tbody END -->
       </table><!-- ?Table Secction END -->
     </div><!-- !Table Container Wrapper END -->
+
+    <!-- !---------------------------------------------------------------------------------------------------------------- -->
+
+    <div class="table-change" id="table-archived">
+      <div class="action-container">
+        <div class="action-wrapper">
+          <div class="action-buttons">
+            <button class="action" id="positionBtn" style="background: #6c757d; cursor: not-allowed; color: #fff">
+              <span class="action-icons" id="mark-as-paid">
+                <i class="fa-solid fa-plus" style="color: #fdfffe;"></i>
+              </span>
+              Add
+            </button>
+            <button class="action fullscreen" id="fullscreen-button" onclick="openFullscreen()">
+              <span class="action-icons" id="mark-as-unpaid">
+                <i class="fa-solid fa-expand fa-beat-fade" style="color: #0c3d92;"></i>
+              </span>
+              Expand
+            </button>
+            <button class="action" id="print-btn2">
+              <span class="action-icons">
+                <i class="fa-solid fa-print" style="color: #606671;"></i>
+              </span>
+              Print
+            </button>
+            <button class="action" id="delete-button" onclick="deleteCheckedItems()">
+              <span class="action-icons">
+                <i class="fa-solid fa-trash" style="color: #4b5462;"></i>
+              </span>
+              Delete
+            </button>
+          </div>
+          <div class="action-search">
+            <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input type="search" placeholder="Search" id="search-input2">
+          </div>
+        </div><!-- !Action Wrapper Close -->
+      </div><!-- !Action Container Close -->
+    </div>
+
 
     <div id="addModal" class="modal">
       <div class="modal-container">
@@ -249,7 +299,7 @@ active
                       <option value="casual">Casual</option>
                       <option value="job order">Job-Order</option>
                     </select>
-                    <label for="status" >Status<span class="require"> (required)</span></label>
+                    <label for="status">Status<span class="require"> (required)</span></label>
                     <select name="status" id="status" style="margin-bottom: .5rem;">
                       <option value="active">Active</option>
                       <option value="inactive">Inactive</option>
@@ -258,7 +308,8 @@ active
                       <span class="material-symbols-outlined modal-icon">
                         trending_up
                       </span>
-                      <input type="text" name="daily_rate" id="daily_rate" placeholder="Daily Rate" style="margin-bottom: -.5rem;">
+                      <input type="text" name="daily_rate" id="daily_rate" placeholder="Daily Rate"
+                        style="margin-bottom: -.5rem;">
                     </div>
 
                     <!-- !Modal Buttons -->
@@ -288,12 +339,60 @@ active
   </div>
   <script src="js/employeeFunction/employee-table.js"></script>
   <script src="js/employeeFunction/employeeModal.js"></script>
+  <script src="js/employeeFunction/employee-archived.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+  <script src="/path/to/xlsx.full.min.js"></script>
   <script>
     const dropdownSwitches = document.querySelectorAll(".dropdown-switch");
     dropdownSwitches.forEach((switchBtn) => {
       switchBtn.addEventListener("click", function () {
         const extraInfoRow = switchBtn.closest("tr").nextElementSibling;
         extraInfoRow.style.display = (extraInfoRow.style.display === "none") ? "table-row" : "none";
+      });
+    });
+  </script>
+  <!-- Delete Function -->
+  <script>
+    function deleteCheckedItems() {
+      let message = "Are you sure to delete this data? Note: All position that included in this department will be deleted."
+      if (confirm(message) == true) {
+        const checkboxes = $('#table-main tbody input[type="checkbox"]:checked');
+        checkboxes.each(function () {
+          const checkbox = $(this);
+          const itemId = checkbox.data('id');
+          $.ajax({
+            type: 'POST',
+            url: '/employee-delete/' + itemId,
+            data: {
+              _token: '{{ csrf_token() }}',
+              deleted_at: new Date().toISOString(),
+              emid: itemId,
+            },
+            success: function (data) {
+              console.log('Database updated successfully');
+            },
+            error: function (data) {
+              console.log('Error updating database');
+            }
+          });
+        });
+      }
+
+    }
+  </script>
+  <!-- Animation -->
+  <script>
+    $(document).ready(function () {
+      $('#delete-button').click(function () {
+        var checkedBoxes = $('#table-main tbody input[type="checkbox"]:checked');
+        checkedBoxes.each(function () {
+          var row = $(this).closest('tr');
+          row.addClass('fade-out');
+          setTimeout(function () {
+            row.remove();
+          }, 500);
+        });
       });
     });
   </script>

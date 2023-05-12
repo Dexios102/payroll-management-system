@@ -19,6 +19,7 @@ class EmployeeController extends Controller
         $emp = Employee::where('isActive','1')->get();
         $ded = Deduction::all();
         $emp_deduc = PayrollDeduction::with('employee_info','deduction_info')->get();
+        $empdeleted = Employee::onlyTrashed()->get();
         return view('hr.employee-list', compact('dept','pos','emp','ded','emp_deduc'));
     }
 
@@ -145,4 +146,14 @@ class EmployeeController extends Controller
     $emp_deduc = PayrollDeduction::with('employee_info','deduction_info')->get();
     return view('hr.employee-archive', compact('dept','pos','emp','ded','emp_deduc'));
 }
+
+public function delete(Request $request, $id){
+            
+    $id = $request->input('emid');
+
+    $all = Employee::find($id);
+    $all->delete();
+
+    return back()->with('success','Deleted Succesfully');
+  }
 }
