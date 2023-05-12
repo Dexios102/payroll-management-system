@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $userType = auth()->user()->type;
        
-        return view('dashboard');
+        return view('hr.dashboard');
     } 
   
     /**
@@ -52,6 +52,10 @@ class HomeController extends Controller
     public function practice()
     {
         return view('practice');
+    }
+
+    public function removeSession(Request $request){
+        $request->session()->flush();
     }
     
 }

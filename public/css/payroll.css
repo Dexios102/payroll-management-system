@@ -441,11 +441,8 @@ button span {
 
 
 /* PAYSLIP */
-.payslip-tbl{
-    border-spacing: 0px;
-    border:1px solid #003049;
- 
-
+.payslip-tbl{border-spacing: 0px;
+border:1px solid #003049;
 }
 
 .payslip-tbl td,th{
