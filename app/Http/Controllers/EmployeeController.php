@@ -20,7 +20,7 @@ class EmployeeController extends Controller
         $ded = Deduction::all();
         $emp_deduc = PayrollDeduction::with('employee_info','deduction_info')->get();
         $empdeleted = Employee::onlyTrashed()->get();
-        return view('hr.employee-list', compact('dept','pos','emp','ded','emp_deduc'));
+        return view('hr.employee-list', compact('dept','pos','emp','ded','emp_deduc', 'empdeleted'));
     }
 
     public function saveEmployee(Request $request){

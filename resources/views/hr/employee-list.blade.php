@@ -160,6 +160,7 @@ active
       </tbody><!-- ?Tbody END -->
       </table><!-- ?Table Secction END -->
     </div><!-- !Table Container Wrapper END -->
+</div><!-- !Table Change END -->
 
     <!-- !---------------------------------------------------------------------------------------------------------------- -->
 
@@ -167,25 +168,31 @@ active
       <div class="action-container">
         <div class="action-wrapper">
           <div class="action-buttons">
-            <button class="action" id="positionBtn" style="background: #6c757d; cursor: not-allowed; color: #fff">
+            <button class="action" id="positionBtn-archive" style="background: #6c757d; cursor: not-allowed; color: #fff">
               <span class="action-icons" id="mark-as-paid">
                 <i class="fa-solid fa-plus" style="color: #fdfffe;"></i>
               </span>
               Add
             </button>
-            <button class="action fullscreen" id="fullscreen-button" onclick="openFullscreen()">
+            <button class="action fullscreen" id="fullscreen-button-archive" onclick="openFullscreen()">
               <span class="action-icons" id="mark-as-unpaid">
                 <i class="fa-solid fa-expand fa-beat-fade" style="color: #0c3d92;"></i>
               </span>
               Expand
             </button>
-            <button class="action" id="print-btn2">
-              <span class="action-icons">
-                <i class="fa-solid fa-print" style="color: #606671;"></i>
-              </span>
-              Print
-            </button>
-            <button class="action" id="delete-button" onclick="deleteCheckedItems()">
+            <button class="action" id="print-archive">
+                <span class="action-icons">
+                  <i class="fa-solid fa-print" style="color: #606671;"></i>
+                </span>
+                Print PDF/Printer
+              </button>
+              <button class="action" id="print-excel-archive" onclick="exportToExcel()">
+                <span class="action-icons">
+                  <i class="fa-solid fa-table" style="color: #2d9211;"></i>
+                </span>
+                Spreadsheet
+              </button>
+            <button class="action" id="delete-button-archive" onclick="deleteCheckedItems()">
               <span class="action-icons">
                 <i class="fa-solid fa-trash" style="color: #4b5462;"></i>
               </span>
@@ -198,7 +205,94 @@ active
           </div>
         </div><!-- !Action Wrapper Close -->
       </div><!-- !Action Container Close -->
+
+      <div class="table-container-wrapper">
+          <table id="table-second">
+            <thead class="thead-second">
+              <tr>
+                <th class="table-selectAll"><input type="checkbox"></th>
+                <th>Id <button class="sort-btn" data-sortby="id"><i class="fa fa-sort"></i></button></th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Name <button class="sort-btn" data-sortby="name"><i class="fa fa-sort"></i></button></th>
+                <th>Division <button class="sort-btn" data-sortby="division"><i class="fa fa-sort"></i></button></th>
+                <th>Daily Rate</th>
+                <th>Position <button class="sort-btn" data-sortby="position"><i class="fa fa-sort"></i></button></th>
+                <th>Date Recorded <button class="sort-btn" data-sortby="created_at"><i class="fa fa-sort"></i></button>
+                </th>
+                <th>More</th>
+              </tr>
+            </thead><!-- ?Thead END -->
+            <tbody id="table-body2" class="tbody-second">
+              @foreach ($empdeleted as $item2)
+              <tr class="primary-table-row">
+                <td class="select-checkBox"><input type="checkbox" data-id="{{ $item2->id }}"></td>
+                <td>ID-00{{$item2->id}}</td>
+                <td>
+                  <div class="status">
+                    <div class="wrapper-status">{{$item2->status}}</div>
+                  </div>
+                </td>
+                <td class="table-action-icons">
+                  <button>
+                    <span class="action-icons"><i class="fa-solid fa-eye eye-main-pos"
+                        style="color: #157fd1;"></i></span>
+                  </button>
+                  <button>
+                    <span class="action-icons"><i class="fa-solid fa-pen-to-square" style="color: #6c737f;"></i></span>
+                  </button>
+                  <button>
+                    <span class="action-icons"><i class="fa-sharp fa-solid fa-trash" style="color: #6c737f;"></i></span>
+                  </button>
+                </td><!-- ?Action Buttons END -->
+                <td id="full_name">{{$item2->first_name}} {{$item2->middle_name}} {{$item2->last_name}}</td>
+                <td>{{$item2->department}}</td>
+                <td>
+                  <div class="money">
+                    <div class="wrapper-money">{{$item2->daily_rate}}</div>
+                  </div>
+                </td>
+                <td>{{$item2->position}}</td>
+                <td>
+                  <div class="created_at">{{$item2->created_at}}</div>
+                </td>
+
+                <td class="dropdown-td">
+                  <button class="dropdown-switch ">
+                    <i class="fa-regular fa-circle-chevron-down" style="color: #013a63;"></i></button>
+                  <div class="dropdown-content">
+              <tr class="extra-info-row" style="display: none;">
+                <td colspan="10">
+                  <div class="td-flex">
+                    <div class="extra">
+                      <span>Type: <span class="job_type">{{$item2->employee_type}}</span></span>
+                      <span>Contact: @if(isset($item2->contact))
+                        {{$item2->contact}}
+                        @else
+                        <i>No Data</i>
+                        @endif</span>
+                    </div>
+                    <div class="extra">
+                      <span>Birthdate: {{$item2->birthdate}}</span>
+                      <span>Address: {{$item2->address}}</span>
+                    </div>
+                    <div class="extra">
+                      <span>Gender: {{$item2->gender}}</span>
+                      <span>Email: {{$item2->email}}</span>
+                    </div>
+                </td>
+              </tr>
+        </div>
+      </div>
+      </td>
+      </tr>
+      @endforeach
+      </tbody><!-- ?Tbody END -->
+      </table><!-- ?Table Secction END -->
     </div>
+  </div><!-- !Table Change END -->
+  </div><!-- !all-table-container END -->
+  </div><!-- !ALl Main Container END -->
 
 
     <div id="addModal" class="modal">
@@ -337,7 +431,9 @@ active
       </div>
     </div>
   </div>
-  <script src="js/employeeFunction/employee-table.js"></script>
+</body>
+
+<script src="js/employeeFunction/employee-table.js"></script>
   <script src="js/employeeFunction/employeeModal.js"></script>
   <script src="js/employeeFunction/employee-archived.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -396,10 +492,6 @@ active
       });
     });
   </script>
-  </div><!-- !Table Change END -->
-  </div><!-- !all-table-container END -->
-  </div><!-- !ALl Main Container END -->
-</body>
 
 </html>
 @endsection

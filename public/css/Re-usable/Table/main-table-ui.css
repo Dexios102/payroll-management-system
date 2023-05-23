@@ -1,7 +1,7 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+    table-layout: auto;
 }
 
 thead {
@@ -65,7 +65,8 @@ tr:hover {
 }
 
 
-#table-main td:nth-child(2), #table-second td:nth-child(2) {
+#table-main td:nth-child(2),
+#table-second td:nth-child(2) {
     font-weight: 700;
 }
 

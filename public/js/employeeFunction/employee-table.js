@@ -1,5 +1,3 @@
-
-
 /* Border Bottom - Status */
 const listItems = document.querySelectorAll('.all-status-windows li');
 listItems[0].classList.add('active');
@@ -177,28 +175,6 @@ window.onload = function () {
 }
 
 /* Search */
-// Listen for input in the search box
-$('#search-box').on('input', function () {
-  var query = $(this).val().toLowerCase();
-
-  // Loop through all table rows and hide/show them based on the search query
-  $('#table-body tr').each(function () {
-    var fullName = $(this).find('#full_name').text().toLowerCase();
-    var division = $(this).find('td:nth-child(6)').text().toLowerCase();
-
-    if (fullName.includes(query) || division.includes(query)) {
-      $(this).show();
-    } else {
-      $(this).hide();
-    }
-  });
-});
-
-
-// Add event listener to the search box
-var searchInput = document.getElementById("search-input");
-searchInput.addEventListener("input", searchTable);
-
 
 /* Sorting */
 const table_pos_main = document.getElementById("table-main");
@@ -257,16 +233,16 @@ for (let i = 0; i < sortButtons_pos_main.length; i++) {
 function showModal(rowv) {
   const id = rowv.cells[1].textContent;
   const status = rowv.cells[2].textContent;
-  const name = rowv.cells[3].textContent;
-  const division = rowv.cells[4].textContent;
-  const d_rate = rowv.cells[5].textContent;
-  const position = rowv.cells[6].textContent;
-  const created_at = rowv.cells[7].textContent;
+  const name = rowv.cells[4].textContent;
+  const division = rowv.cells[5].textContent;
+  const d_rate = rowv.cells[6].textContent;
+  const position = rowv.cells[7].textContent;
+  const created_at = rowv.cells[8].textContent;
   const modalContent = `
   <div class="eye-modal">
   <h2 class="eye-header">Department Active</h2>
     <p><strong>ID: </strong>${id}</p>
-    <p><strong>Status: </strong> ${status}</p>
+    <p><strong>Status: </strong> <span class="active-status">${status}</span></p>
     <p><strong>Name: </strong> ${name}</p>
     <p><strong>Division: </strong> ${division}</p>
     <p><strong>Daily Rate: </strong> ${d_rate}</p>
@@ -311,6 +287,7 @@ function openTable(tableId) {
   }
 }
 
+/* Export to excel */
 function exportToExcel() {
   const tableBody = document.getElementById("table-body");
   const selectedRows = tableBody.querySelectorAll('input[type="checkbox"]:checked');
