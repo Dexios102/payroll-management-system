@@ -43,7 +43,7 @@ active
       <div id="cont1" class="w3-container w3-border city generate-payroll" >
           <div class="menu-container">
             <div class="row row-menu">
-              <div class="col-30 col-row">
+              <div class="col col-row bg-white" id="trylang">
                 {{-- <h5 style="font-weight: normal">Date</h5>
                 <select type="text" list="dates" name="" id="inputDate" onkeyup="inputDate()" placeholder="" class="w-100" style="margin-bottom: 10px;">
                   <option value="">January</option>
@@ -56,15 +56,25 @@ active
                     @endforeach
                   </datalist>
                 </div>
+            </div>
+            <div class="row row-menu">
+            
 
-              <div class="col-70 col-row bg-white">
+              <div class="col col-row bg-white">
                 {{-- <div class="text-center m-b-2">
                   <p>BUREAU OF FISHERIES AND AQUATIC RESOURCES REGIONAL <br> FISHERIES OFFICE - MIMAROPA</p>
                 </div> --}}
+                
 
-                <div class="row m-b-5" >
+                <div class="row m-b-5" id="header-content">
                   <div class="col">
-                    <p>For the Period: {{$dateToday}}</p>
+                    <p>For the Period: {{$dateToday}} 
+                      <select name="month_select" id="month_select">
+                        <option value="" selected id="select_whole">Whole month</option>
+                        <option value="" id="select_first" >XX-XX</option>
+                        <option value="" id="select_second">XX-XX</option>
+                      </select>
+                  </p>
                     <p >Fund Cluster:</p>
                   </div>
                   <div class="col">
@@ -72,6 +82,24 @@ active
                     <p>N0. of Minutes: {{$workinminutes}} minutes</p>
                   </div>
                 </div>
+                <div class="row" style="display: flex; padding:5px; float:right" >
+                  <button onclick="printPayslip()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" height="23" width="23"  style="align-items: center;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z" />
+                    </svg>
+                    Print
+                  </button>
+                  {{-- <button style="">asdad</button>
+                  <button style="">asdkjnafds</button> --}}
+                </div>
+                
+                <input type="number" id="daily_rate" hidden>
+                <input type="number" id="hour_rate" hidden>
+                <input type="number" id="minute_rate" hidden>
+
+
+
+                <div id="table-content">
                   <table class="w-100 payslip-tbl" style="table-layout: fixed">
                     <thead>
                       <tr>
@@ -101,7 +129,7 @@ active
                         <td class="text-left" style="align-content: flex-start">
                           <ul>
                             {{-- <li >Amount Earn</li> --}}
-                            <li>Gross Amount</li>
+                            <li>Salary</li>
                           </ul>
                           <ul id="addlist">
 
@@ -126,9 +154,9 @@ active
                           </ul>
                           <p class="text-right"><sub> </sub></p>
                           <ul class="m-t-5">
-                            <li><input type="number" name="" id="" class="text-right additionals" value="0" onchange="addChange()"></li>
-                            <li><input type="number" name="" id="" class="text-right additionals" value="0" onchange="addChange()"></li>
-                            <li><input type="number" name="" id="" class="text-right additionals" value="0" onchange="addChange()"></li>
+                            <li><input type="number" name="" id="input_days" class="text-right additionals" value="0" onchange="ded_days()"></li>
+                            <li><input type="number" name="" id="input_hours" class="text-right additionals" value="0" onchange="ded_hours()"></li>
+                            <li><input type="number" name="" id="input_minutes" class="text-right additionals" value="0" onchange="ded_minutes()"></li>
                           </ul>
                          
                       </td>
@@ -169,6 +197,8 @@ active
                       </tr>
                     </tfoot>
                   </table>
+                </div>
+                  
            
               </div>
             </div>

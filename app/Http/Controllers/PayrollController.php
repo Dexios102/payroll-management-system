@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class PayrollController extends Controller
 {
     public function list(){
@@ -410,8 +411,8 @@ class PayrollController extends Controller
 
         // ALL DEDUCTIONS
         // OTHER DEDUCTIONS
-        $deductions = PayrollDeduction::where('employee_id', $emp->id)
-                    ->where('status','active')->get();
+        $deductions = PayrollDeduction::whereHas('deduction_info', function ($query) { $query->where('type','contribution');
+        })->where('employee_id',$emp->id)->get();
         $sumDed = 0;
         $deductionHTML = '';
         $dedAmount = '';
@@ -458,9 +459,11 @@ class PayrollController extends Controller
         }
 
 
-        // WorkingDays and datenow
+        // WorkingDays  and datenow
         $now = Carbon::now();
         $daysInMonth = $now->daysInMonth;
+
+        //WorikingDays in whole month
         $workingDays = 0;
         for ($i = 1; $i <= $daysInMonth; $i++) {
             $date = Carbon::createFromDate($now->year, $now->month, $i);
@@ -468,10 +471,117 @@ class PayrollController extends Controller
                 $workingDays++;
             }
         }
+
+        //WorikingDays in half
+        //30Days
+        if($daysInMonth == 30){
+            $first_half = 0;
+            $second_half = 0;
+                for ($i = 1; $i <= 15; $i++) {
+                    $date = Carbon::createFromDate($now->year, $now->month, $i);
+                    if (!$date->isWeekend()) {
+                        $first_half++;
+                    }
+                }
+                for ($i = 16; $i <= 30; $i++) {
+                    $date = Carbon::createFromDate($now->year, $now->month, $i);
+                    if (!$date->isWeekend()) {
+                        $second_half++;
+                    }
+                }
+                $first_range = "1-15";
+                $second_range = "16-30";
+
+                $monthHTML = '<option value="'.$daysInMonth.'" selected id="select_whole">Whole month</option>';
+                $monthHTML .= '<option value="'.$first_half.'"  id="select_whole">'.$first_range.'</option>';
+                $monthHTML .= '<option value="'.$second_half.'"  id="select_whole">'.$second_range.'</option>';
+            }
+        //31Days
+       elseif($daysInMonth == 31){
+            $first_half = 0;
+            $second_half = 0;
+                for ($i = 1; $i <= 15; $i++) {
+                    $date = Carbon::createFromDate($now->year, $now->month, $i);
+                    if (!$date->isWeekend()) {
+                        $first_half++;
+                       
+                    }
+                }
+                for ($i = 16; $i <= 31; $i++) {
+                    $date = Carbon::createFromDate($now->year, $now->month, $i);
+                    if (!$date->isWeekend()) {
+                        $second_half++;
+                        
+                    }
+                }
+                $first_range = "1-15";
+                $second_range = "16-31";
+
+                $monthHTML = '<option value="'.$daysInMonth.'" selected id="select_whole">Whole month</option>';
+                $monthHTML .= '<option value="'.$first_half.'"  id="select_whole">'.$first_range.'</option>';
+                $monthHTML .= '<option value="'.$second_half.'"  id="select_whole">'.$second_range.'</option>';
+        }
+        //28Days
+       elseif($daysInMonth == 28){
+        $first_half = 0;
+        $second_half = 0;
+            for ($i = 1; $i <= 15; $i++) {
+                $date = Carbon::createFromDate($now->year, $now->month, $i);
+                if (!$date->isWeekend()) {
+                    $first_half++;
+                }
+            }
+            for ($i = 16; $i <= 28; $i++) {
+                $date = Carbon::createFromDate($now->year, $now->month, $i);
+                if (!$date->isWeekend()) {
+                    $second_half++;
+                }
+            }
+            $first_range = "1-15";
+            $second_range = "16-28";
+
+            $monthHTML = '<option value="'.$daysInMonth.'" selected id="select_whole">Whole month</option>';
+            $monthHTML .= '<option value="'.$first_half.'"  id="select_whole">'.$first_range.'</option>';
+            $monthHTML .= '<option value="'.$second_half.'"  id="select_whole">'.$second_range.'</option>';
+
+        }
+        else{
+            $first_half = 0;
+            $second_half = 0;
+                for ($i = 1; $i <= 15; $i++) {
+                    $date = Carbon::createFromDate($now->year, $now->month, $i);
+                    if (!$date->isWeekend()) {
+                        $first_half++;
+                    }
+                }
+                for ($i = 16; $i <= 27; $i++) {
+                    $date = Carbon::createFromDate($now->year, $now->month, $i);
+                    if (!$date->isWeekend()) {
+                        $second_half++;
+                    }
+                }
+                $first_range = "1-15";
+                $second_range = "16-27";
+
+                $monthHTML = '<option value="'.$daysInMonth.'" selected id="select_whole">Whole month</option>';
+                $monthHTML .= '<option value="'.$first_half.'"  id="select_whole">'.$first_range.'</option>';
+                $monthHTML .= '<option value="'.$second_half.'"  id="select_whole">'.$second_range.'</option>';
+            }
+
+
+       
+
+
+
+
         $workinMinutes = (60 * 8) * $workingDays;
         $monthtoday = $now->format('F Y');
 
         $amountEarned = $workingDays * $emp->daily_rate;
+        $daily_rate = $emp->daily_rate;
+        $hour_rate = $emp->daily_rate / 8;
+        $minute_rate = $hour_rate / 60 ;
+        
         
         $totalEarned = $amountEarned + $addTotal;
 
@@ -489,8 +599,37 @@ class PayrollController extends Controller
                         'totalDed' => $totalDed,
                         'amountEarned' => $amountEarned,
                         'totalEarned' => $totalEarned,
+                        'first_half' => $first_half,
+                        'second_half' => $second_half,
+                        'first_range' => $first_range,
+                        'second_range' => $second_range,
+                        'monthHTML' => $monthHTML,
+                        'daily_rate' => $daily_rate,
+                        'hour_rate' => $hour_rate,
+                        'minute_rate' => $minute_rate,
+
+
                     ]);
     }
 
+    public function payslipPrint(Request $request){
+        
+        $styleHTML = '.'.'payslip-tbl{border-spacing: 0px; border:1px solid #003049; }';
+        $styleHTML .= '.'.'payslip-tbl td,th{padding: 10px;font-size: 14px;border: 0; }';
+        $styleHTML .= '.'.'payslip-tbl ul li{text-decoration: none;list-style: none ; font-size: 13px;}';
+        $styleHTML .= '.'.'payslip-tbl input[type=number]{ border-top: 0;border-left: 0;border-right: 0;border-bottom: .5px solid gray; font-size: 13px;}';
+        $styleHTML .= '.'.'payslip-tbl thead{ border-bottom: 1px solid black;background-color: rgb(224, 224, 224);}';
+   
+        $styleLink = "<link rel=\"stylesheet\" href=\"css/custom.css\">";
+    
+    
+    
+        return response()->json([
+            'styleHTML'=>$styleHTML,
+            'styleLink'=>$styleLink,
+        ]);
+
+
+    }
     
 }

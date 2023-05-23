@@ -32,7 +32,7 @@ Route::post('/loginUser',[LoginRegisterController::class, 'loginUser'])->name('l
 Route::get('/logout',[LoginRegisterController::class, 'logoutUser'])->name('logout.user');
 Route::get('/signup',[LoginRegisterController::class, 'signup'])->name('signup');
 Route::get('/',[LoginRegisterController::class, 'login'])->name('signIn');
-
+Route::get('/session/remove',[HomeController::class, 'removeSession']);
 Route::get('/employee-portal',[EmployeePortalController::class, 'portal']);
 
 
@@ -117,7 +117,7 @@ Route::get('/practice', [HomeController::class, 'practice']);
 
 
 Route::get('/payslip-check', [PayrollController::class, 'payslipCheck']);
-
+Route::get('/print-payslip', [PayrollController::class,'payslipPrint']);
 
 });
   
