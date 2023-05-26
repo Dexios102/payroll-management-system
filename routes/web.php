@@ -87,6 +87,7 @@ Route::post('/allowance-update', [AllowanceController::class, 'update'])->name('
 Route::get('/allowance-deletemodal/{id}', [AllowanceController::class, 'deleteModal']);
 Route::post('/allowance-delete', [AllowanceController::class, 'delete']);
 Route::post('/allowance-restore', [AllowanceController::class, 'restore']);
+Route::post('/allowance-delete/{id}', [AllowanceController::class, 'delete'])->name('allowance-update');
 
 
 

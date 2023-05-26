@@ -10,7 +10,8 @@ class AllowanceController extends Controller
 {
     public function list(){
         $all = Allowance::all();
-        return view('hr.allowance-list', compact('all'));
+        $alldeleted = Allowance::onlyTrashed()->get();
+        return view('hr.allowance-list', compact('all', 'alldeleted'));
     }
 
     public function saveAllowance(Request $request){
@@ -63,14 +64,13 @@ class AllowanceController extends Controller
         return $all_arr;
       }
     
+public function delete(Request $request, $id){
+            
+    $id = $request->input('allowance_id');
 
-      public function delete(Request $request){
-    
-        $id = $request->input('id2');
-    
-        $all = Allowance::find($id);
-        $all->delete();
-    
-        return back()->with('success','Deleted Succesfully');
-      }
+    $all = Allowance::find($id);
+    $all->delete();
+
+    return back()->with('success','Deleted Succesfully');
+  }
 }

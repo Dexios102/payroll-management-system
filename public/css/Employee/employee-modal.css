@@ -228,3 +228,7 @@ button span {
 .require {
     color: red;
 }
+
+.show {
+    display: block;
+}

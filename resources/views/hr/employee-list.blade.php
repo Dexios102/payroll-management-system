@@ -218,7 +218,7 @@ active
                 <th>Division <button class="sort-btn" data-sortby="division"><i class="fa fa-sort"></i></button></th>
                 <th>Daily Rate</th>
                 <th>Position <button class="sort-btn" data-sortby="position"><i class="fa fa-sort"></i></button></th>
-                <th>Date Recorded <button class="sort-btn" data-sortby="created_at"><i class="fa fa-sort"></i></button>
+                <th>Date Deleted <button class="sort-btn" data-sortby="created_at"><i class="fa fa-sort"></i></button>
                 </th>
                 <th>More</th>
               </tr>

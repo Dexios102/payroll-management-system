@@ -16,10 +16,6 @@ tbody {
     color: #023047;
 }
 
-.primary-table-row:only-of-type {
-    background-color: green;
-}
-
 th,
 td {
     padding: .45rem;
