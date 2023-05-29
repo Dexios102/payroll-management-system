@@ -1,0 +1,144 @@
+/* ! Table */
+/* *Main Table */
+
+/* Table Size Main*/
+#table-main th:nth-child(1) {
+    width: 4%;
+}
+
+#table-main th:nth-child(2) {
+    width: 5%;
+}
+
+#table-main th:nth-child(3) {
+    width: 7%;
+}
+
+#table-main th:nth-child(4) {
+    width: 7%;
+}
+
+#table-main th:nth-child(5) {
+    width: 15%;
+}
+
+#table-main th:nth-child(6) {
+    width: 7%;
+}
+
+#table-main th:nth-child(7) {
+    width: 10%;
+}
+
+#table-main th:nth-child(8) {
+    width: 10%;
+}
+
+#table-main th:nth-child(9) {
+    width: 10%;
+}
+
+/* Table Size Archived  */
+#table-second th:nth-child(1) {
+    width: 4%;
+}
+
+#table-second th:nth-child(2) {
+    width: 5%;
+}
+
+#table-second th:nth-child(3) {
+    width: 7%;
+}
+
+#table-second th:nth-child(4) {
+    width: 7%;
+}
+
+#table-second th:nth-child(5) {
+    width: 15%;
+}
+
+#table-second th:nth-child(6) {
+    width: 7%;
+}
+
+#table-second th:nth-child(7) {
+    width: 10%;
+}
+
+#table-second th:nth-child(8) {
+    width: 10%;
+}
+
+#table-second th:nth-child(9) {
+    width: 10%;
+}
+
+#table-main td:nth-child(2) {
+    color: #1d3557;
+}
+
+/* Border Raduis Table */
+#table-main th:nth-child(1) {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#table-main th:nth-child(9) {
+    border-radius: 0px 10px 10px 0px;
+}
+
+#table-second th:nth-child(10) {
+    border-radius: 0px 10px 10px 0px;
+}
+
+#table-second th:nth-child(1) {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#table-second td:nth-child(2) {
+    color: #9d0208;
+    font-weight: 700;
+}
+
+#table-main td .created_at{
+    background-color: #1b4332;
+    font-weight: 450;
+    color: #fff;
+    border-radius: 15px;
+}
+
+#table-second td .delete_at {
+    background-color: #a4161a;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+#table-second td:nth-child(5) {
+    color: #a4161a !important;
+}
+
+#table-main td:nth-child(5),
+#table-second td:nth-child(5) {
+    color: #1d3557;
+    font-weight: 700;
+    line-height: 2rem;
+    text-transform: uppercase;
+}
+
+#table-main td:nth-child(4),
+#table-main td:nth-child(6),
+#table-main td:nth-child(7) {
+    font-weight: 500;
+}
+
+/* !Border */
+#table-main td:nth-child(4),
+#table-main td:nth-child(5),
+#table-second td:nth-child(4),
+#table-second td:nth-child(5) {
+    border-right: 1px solid #adb5bd;
+}
+
+/* ! Table END */

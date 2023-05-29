@@ -116,15 +116,15 @@ function exportToExcel_archived() {
 
   data_archived.push(headers_archived);
 
-  selectedRows_archived.forEach((row) => {
+  selectedRows_archived.forEach((rowall) => {
     const rowData_archived = [];
-    const tableRow_archived = row.closest("tr");
+    const tableRow_archived = rowall.closest("tr");
     const id_archived = tableRow_archived.querySelector("td:nth-child(2)").textContent.trim();
     const code_archived = tableRow_archived.querySelector("td:nth-child(4)").textContent.trim();
     const name_archived = tableRow_archived.querySelector("td:nth-child(5)").textContent.trim();
     const type_archived = tableRow_archived.querySelector("td:nth-child(6)").textContent.trim();
     const description_archived = tableRow_archived.querySelector("td:nth-child(7)").textContent.trim();
-    const dateDeleted_archived = tableRow_archived.querySelector(".deleted_at").textContent.trim();
+    const dateDeleted_archived = tableRow_archived.querySelector(".delete_at").textContent.trim();
 
     rowData_archived.push(id_archived, code_archived, name_archived, type_archived, description_archived, dateDeleted_archived);
     data_archived.push(rowData_archived);

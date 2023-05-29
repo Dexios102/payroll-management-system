@@ -11,7 +11,8 @@ class DeductionController extends Controller
     public function list(){
 
         $ded = Deduction::all();
-        return view('hr.deduction-list', compact('ded'));
+        $deducdeleted = Deduction::onlyTrashed()->get();
+        return view('hr.deduction-list', compact('ded', 'deducdeleted'));
     }
 
     public function save(Request $request){
@@ -68,12 +69,9 @@ class DeductionController extends Controller
         return $ded_arr;
       }
     
-
-      
-
-      public function delete(Request $request){
+      public function delete(Request $request, $id){
     
-        $id = $request->input('id2');
+        $id = $request->input('deduction_id');
     
         $ded = Deduction::find($id);
         $ded->delete();
