@@ -1,0 +1,18 @@
+{
+    "cabin": {
+        "normal": "C:\\xampp\\htdocs\\BfarPayroll\\storage\\fonts\/cabin_normal_e927925497f2fa79cc6138b3d439c9bf",
+        "500": "cabin_500_a72b8462975d16c83c9826675cbd39ab"
+    },
+    "fira sans": {
+        "200": "C:\\xampp\\htdocs\\BfarPayroll\\storage\\fonts\/fira_sans_200_1698a6dbc6e1962e0bbd6424074f6095",
+        "300": "C:\\xampp\\htdocs\\BfarPayroll\\storage\\fonts\/fira_sans_300_c731ff7f0aa9f8b36ac8405133cb2094",
+        "normal": "fira_sans_normal_59dd5ba8e95274544e1f9b92003655b6"
+    },
+    "nunito": {
+        "normal": "nunito_normal_f8ce9593f0c56e52776379aa29b2d690"
+    },
+    "lora": {
+        "normal": "C:\\xampp\\htdocs\\BfarPayroll\\storage\\fonts\/lora_normal_3eac064d585f8708493e76712e556c90",
+        "500": "lora_500_f6f62606c4e8e143157964dee1e39186"
+    }
+}

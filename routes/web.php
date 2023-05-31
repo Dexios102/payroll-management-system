@@ -15,6 +15,7 @@ use App\Models\Allowance;
 use App\Models\Payroll;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Generator\StringManipulationGenerator;
+use App\Http\Controllers\PrintController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +121,7 @@ Route::get('/practice', [HomeController::class, 'practice']);
 
 Route::get('/payslip-check', [PayrollController::class, 'payslipCheck']);
 Route::get('/print-payslip', [PayrollController::class,'payslipPrint']);
+Route::get('/printPayslipTable/{id}', [PrintController::class,'payslipPayslipTable']);
 
 });
   

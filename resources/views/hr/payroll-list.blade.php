@@ -247,7 +247,7 @@ active
             <td>
               <a href="/payroll-check/{{Crypt::encrypt($item->id)}}">Check</a>
               |
-              <a href="">Generate Slip</a>
+              <a href="/printPayslipTable/{{Crypt::encrypt($item->id)}}">Generate Slip</a>
             </td>
             <td>000{{$item->id}}</td>
             <td>{{$item->first_name}} {{$item->middle_name}} {{$item->last_name}} {{$item->suffix}}</td>
