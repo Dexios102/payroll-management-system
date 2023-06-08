@@ -1,0 +1,132 @@
+.slip-container {
+    width: 100%;
+    height: fit-content;
+    margin-top: .5rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-025);
+    padding: 1rem 3rem;
+}
+
+.information-slip-wrapper {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.information-slip-seperator{
+    flex: 1 0 50%;
+}
+
+.information-slip-wrapper select {
+    border: none;
+    border-left: 3px solid black;
+    padding-left: calc(1rem * .8);
+    padding: .3rem;
+    width: 30%;
+    font-weight: 600;
+}
+
+.information-slip-seperator span{
+    font-size: 1.1rem;
+    font-weight: 600 !important;
+    color: red;
+}
+
+
+.information-slip-seperator p{
+    font-weight: 500;
+}
+
+.slip-main-container {
+    width: 100%;
+    height: fit-content;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.slip-table {
+    table-layout: fixed;
+}
+
+.slip-table p {
+    font-weight: 500;
+}
+
+.slip-table thead {
+    background-color: #023047;
+    color: #fff;
+}
+
+
+.slip-header td{
+    padding: 1rem;
+}
+
+.slip-header th span {
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 0 5px 0 5px;
+}
+
+.slip-tbody .slip-tbody-header td{
+    font-weight: 600;
+}
+
+.slip-tbody .slip-tbody-header th {
+    background-color: transparent;
+    color: #023047;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.other-pay {
+    color: red;
+}
+
+.other-pay2 {
+    color: #da833a;
+    font-weight: 700;
+}
+
+.second-slip-header th{
+    background-color: white;
+    color: #023047;
+}
+
+.slip-tbody {
+    background-color: white;
+}
+
+.slip-tbody td {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.slip-tbody input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 4px;
+    border-radius: 10px;
+    background-color: #e9ecef;
+    text-align: center;
+    padding: .1rem;
+}
+
+.slip-tbody tr:hover {
+    background-color: white;
+}
+
+.total-deduc input{
+    background-color: rgb(218, 131, 58, 0.4);
+    color: black;
+}
+
+.slip-tfoot {
+    background-color: #023047;
+    color: #fff;
+    font-size: 1.2rem;
+}

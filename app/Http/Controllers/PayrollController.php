@@ -323,9 +323,6 @@ class PayrollController extends Controller
 
     }
 
-
-
-
     public function fixedDeductionSave($id){
         $fixed_deduction = FixedDeduction::withoutTrashed()->get();
         $emp = Employee::where('id',$id)->first();
@@ -610,26 +607,6 @@ class PayrollController extends Controller
 
 
                     ]);
-    }
-
-    public function payslipPrint(Request $request){
-        
-        $styleHTML = '.'.'payslip-tbl{border-spacing: 0px; border:1px solid #003049; }';
-        $styleHTML .= '.'.'payslip-tbl td,th{padding: 10px;font-size: 14px;border: 0; }';
-        $styleHTML .= '.'.'payslip-tbl ul li{text-decoration: none;list-style: none ; font-size: 13px;}';
-        $styleHTML .= '.'.'payslip-tbl input[type=number]{ border-top: 0;border-left: 0;border-right: 0;border-bottom: .5px solid gray; font-size: 13px;}';
-        $styleHTML .= '.'.'payslip-tbl thead{ border-bottom: 1px solid black;background-color: rgb(224, 224, 224);}';
-   
-        $styleLink = "<link rel=\"stylesheet\" href=\"css/custom.css\">";
-    
-    
-    
-        return response()->json([
-            'styleHTML'=>$styleHTML,
-            'styleLink'=>$styleLink,
-        ]);
-
-
     }
     
 }

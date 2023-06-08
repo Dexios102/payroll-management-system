@@ -152,8 +152,6 @@
     transform: scale(0.95);
 }
 
-
-
 input:focus {
     background: white;
 }

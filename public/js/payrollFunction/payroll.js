@@ -153,10 +153,10 @@ function deleteDeduc2(id){
             console.log(data.hour_rate);
             console.log(data.minute_rate);
             //console.log(data.monthHTML);
-            $('#empFullname').html('Employee Name: <span style=" text-decoration: underline;">'+ data.emp_array.fullname + '</span>');
-            $('#empId').html('Employee ID: '+ data.emp_array.id);
-            $('#empDepartment').html('Department: '+ data.emp_array.dept);
-            $('#empPosition').html('Designation/Position: '+ data.emp_array.pos);
+            $('#empFullname').html('Employee Name: <span>'+ data.emp_array.fullname + '</span>');
+            $('#empId').html('Employee ID: <span>'+ data.emp_array.id + '</span>');
+            $('#empDepartment').html('Department: <span>'+ data.emp_array.dept + '</span>');
+            $('#empPosition').html('Designation/Position: <span>'+ data.emp_array.pos + '</span>');
             $('#empSalary').val(data.emp_array.salary);
             $('#empEarned').val(data.amountEarned);
             // DEDUCTION
@@ -173,7 +173,7 @@ function deleteDeduc2(id){
 
             //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
-            $('#totalnet').html('Total Net Amount: '+$totalnet);
+            $('#totalnet').html('Total Net Amount: ₱ '+$totalnet.toLocaleString());
            
             //Month
             $('#month_select').empty().append(data.monthHTML); 
@@ -201,7 +201,7 @@ function deleteDeduc2(id){
     $('#totalDed').val(dedsum);
     //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
-            $('#totalnet').html('Total Net Amount: '+$totalnet);
+            $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
   }
 
 
@@ -220,14 +220,14 @@ function ded_days(){
         $('#totalAdd').val(addsum);
         //TOTAL NET
                 $totalnet = $('#totalAdd').val() - $('#totalDed').val();
-                $('#totalnet').html('Total Net Amount: '+$totalnet);
+                $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
 
     } else{
         $total_gross = $('#totalAdd').val() - parseFloat(dedsum);
         $('#totalAdd').val($total_gross);
         //TOTAL NET
                 $totalnet = $('#totalAdd').val() - $('#totalDed').val();
-                $('#totalnet').html('Total Net Amount: '+$totalnet);
+                $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
     }
    
   }
@@ -241,7 +241,7 @@ function ded_days(){
     $('#totalAdd').val($total_gross);
     //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
-            $('#totalnet').html('Total Net Amount: '+$totalnet);
+            $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
   }
 
   function ded_minutes(){
@@ -253,13 +253,9 @@ function ded_days(){
     $('#totalAdd').val($total_gross);
     //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
-            $('#totalnet').html('Total Net Amount: '+$totalnet);
+            $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
   }
-
-
-
-
-
+  
   function addChange(){
     var addsum = 0;
     $('.additionals').each(function(){
@@ -268,46 +264,6 @@ function ded_days(){
     $('#totalAdd').val(addsum);
     //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
-            $('#totalnet').html('Total Net Amount: '+$totalnet);
+            $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
   }
-
-  function printPayslip(){
-    
-    let sample = "Sample lang ito."
-    $.ajax({
-        url:"/print-payslip/",
-        type:"GET",
-        data:{'sample_data':sample},
-        cache:false,
-        success:function(data){
-          
-            var divContents = document.getElementById("table-content").innerHTML;
-            var headContents = document.getElementById("header-content").innerHTML;
-            var element = document.getElementById("table-content");
-            const style = getComputedStyle(element)
-                    var a = window.open('', '','width=' + '1024px' + ', height=' + '800px');
-                    a.document.write('<html>');
-                    a.document.write('<head>');
-                    a.document.write('<title>BFAR-MIMAROPA Regional Office Payslip</title>');
-                    a.document.write(data.styleLink);
-                    a.document.write('<style>'+data.styleHTML+'</style>');
-                    a.document.write('</title>');
-                    a.document.write('<body >');
-                    a.document.write(headContents);
-                    a.document.write(divContents);
-                    a.document.write('</body></head>');
-                    a.document.close();
-                    a.print();
-        
-                    // console.log(data);
-
-
-
-
-        },
-        error:function(){
-            console.log();
-        }
-      
-    })
-  }
+  

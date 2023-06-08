@@ -433,7 +433,7 @@ active
   </div>
 </body>
 
-<script src="js/employeeFunction/employee-table.js"></script>
+  <script src="js/employeeFunction/employee-table.js"></script>
   <script src="js/employeeFunction/employeeModal.js"></script>
   <script src="js/employeeFunction/employee-archived.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
