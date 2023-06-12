@@ -128,5 +128,9 @@
 .slip-tfoot {
     background-color: #023047;
     color: #fff;
+}
+
+.slip-tfoot p {
+    padding: 1rem;
     font-size: 1.2rem;
 }
