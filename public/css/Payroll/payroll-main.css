@@ -1,7 +1,20 @@
 @import url("../Re-usable/imports.css");
-@import url("allowance-table.css");
-@import url("allowance-modal.css");
+@import url("payroll-table.css");
+@import url("payroll-modal.css");
 @import url("search-employee.css");
 @import url("slip-container.css");
 
+
 /* !Additional CSS Here */
+
+.filtering {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+  
+  
+  
+  
+  

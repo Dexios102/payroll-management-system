@@ -24,8 +24,6 @@ active
         <li class="generate" id="generate-btn" onclick="openTable('window-generate')"
           style="font-weight: 600; opacity: 0.9; color: #023047">Genarate Payslip</li>
         <li class="all" id="all-btn" onclick="openTable('table-all')">All Data <span class="count">0</span></li>
-        <li class="del" id="archive-button" onclick="openTable('table-archived')">Archived <span
-            class="countArchive">0</span></li>
       </ul>
     </div><!-- !All status windows END -->
     <div class="all-table-container">
@@ -183,12 +181,6 @@ active
         <div class="action-container">
           <div class="action-wrapper">
             <div class="action-buttons">
-              <button class="action" id="addBtn">
-                <span class="action-icons" id="mark-as-paid">
-                  <i class="fa-solid fa-plus" style="color: #358f62;"></i>
-                </span>
-                Add
-              </button>
               <button class="action fullscreen" id="fullscreen-button" onclick="openFullscreen()">
                 <span class="action-icons" id="mark-as-unpaid">
                   <i class="fa-solid fa-expand fa-beat-fade" style="color: #0c3d92;"></i>
@@ -207,16 +199,18 @@ active
                 </span>
                 Spreadsheet
               </button>
-              <button class="action" id="delete-button" onclick="deleteCheckedItems()">
-                <span class="action-icons">
-                  <i class="fa-solid fa-trash" style="color: #4b5462;"></i>
-                </span>
-                Delete
-              </button>
             </div>
-            <div class="action-search">
-              <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-              <input type="search" placeholder="Search" id="search-input">
+            <div class="filtering">
+              <select id="filter">
+                <option value="all">All</option>
+                <option value="category1">Category 1</option>
+                <option value="category2">Category 2</option>
+                <option value="category3">Category 3</option>
+              </select>
+              <div class="action-search">
+                <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="search" placeholder="Search" id="search-input">
+              </div>
             </div>
           </div><!-- !Action Wrapper Close -->
         </div><!-- !Action Container Close -->
@@ -225,87 +219,102 @@ active
 
          <div class="table-container-wrapper">
           <table id="table-main">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Employee ID</th>
-                <th>Name</th>
-                <th>Monthly Salary</th>
-                <th>Bonus/Allowance</th>
-                <th>Total Deduction</th>
-                <th>Net Amount Received</th>
-              </tr>
+            <thead class="thead-main">
+            <tr>
+              <th class="table-selectAll"><input type="checkbox"></th>
+              <th>Action</th>
+              <th>Employee ID<button class="sort-btn" data-sortby="id"><i class="fa fa-sort"></i></th>
+              <th>Name<button class="sort-btn" data-sortby="name"><i class="fa fa-sort"></i></th>
+              <th>Department<button class="sort-btn" data-sortby="department"><i class="fa fa-sort"></i></th>
+              <th>Monthly Salary</th>
+              <th>Bonus/Allowance</th>
+              <th>Total Deduction</th>
+              <th>Net Amount Received</th>
+            </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody-main">
               @foreach ($emp as $item)
-              <tr>
-                <td>
-                  <a href="/payroll-check/{{Crypt::encrypt($item->id)}}">Check</a>
-                  <a href="/printPayslipTable/{{Crypt::encrypt($item->id)}}">Generate Slip</a>
+              <tr class="primary-table-row">
+                <td class="select-checkBox"><input type="checkbox" data-id="{{ $item->id }}"></td>
+                <td class="table-action-icons">
+                  <button>
+                    <span class="action-icons"><i class="fa-solid fa-eye eye-main-pos"
+                        style="color: #157fd1;"></i></span>
+                  </button>
+                  <button>
+                    <span class="action-icons"><i class="fa-solid fa-pen-to-square" style="color: #6c737f;"></i></span>
+                  </button>
+                  <button>
+                    <span class="action-icons"><i class="fa-sharp fa-solid fa-trash" style="color: #6c737f;"></i></span>
+                  </button>
+                </td><!-- ?Action Buttons END -->
+                <td><!-- ?ID -->
+                  ID-00{{$item->id}}
                 </td>
-                <td>000{{$item->id}}</td>
-                <td>{{$item->first_name}} {{$item->middle_name}} {{$item->last_name}} {{$item->suffix}}</td>
-                {{-- <td>{{$item->position}}</td>
-                <td>{{$item->department}}</td> --}}
-                <td class="text-center">
-                  <div class="cont2" style="display: flex; gap:2rem;">
-                    @if(isset($item->monthly_rate))
-                    <div class="rate">
-                      <span>&#8369;</span>{{$item->monthly_rate}}.00
-                    </div>
-                    <div class="rate-btn" style="float: right;">
-                      <button type="button" class="inputupdate1" onclick="inputupdate1({{$item->id}})">
-                        <span class="material-symbols-outlined">
-                          edit
-                        </span>
-                      </button>
-                    </div>
-                    @else
-                    <div class="rate">
-                      <i style="color:rgb(248, 68, 68)">No Data</i>
-                    </div>
-                    <div class="rate-btn" style="float: right">
-                      <button type="button" class="inputupdate1" onclick="inputupdate1({{$item->id}})">
-                        <span class="material-symbols-outlined">
-                          edit
-                        </span>
-                      </button>
-                    </div>
-                    @endif
+                <td><!-- ?Name -->
+                  {{$item->first_name}} {{$item->middle_name}} {{$item->last_name}} {{$item->suffix}}
+                </td>
+                <td><!-- ?Department -->
+                  <div style="background-color: #219ebc;
+                  color: white;
+                  border-radius: 0px 10px 10px 0px;
+                  font-weight: 600;">
+                    {{$item->department}}
                   </div>
-                  <td class="text-center">
-                    @if (isset($TotalAdditional[$item->id]))
-                          @foreach ($TotalAdditional  as $key => $value) 
-                            @if ($key == $item->id)
-                            <span>&#8369;</span>{{$value}}.00
-                            @endif
-                          @endforeach
-                        @else
-                        <i>No Data</i>
-                     @endif
-                  </td>
-                </td>      
-                  <td class="text-center">
-                    @if (isset($TotalDeduction[$item->id]))
-                        @foreach ($TotalDeduction  as $key => $value) 
-                            @if ($key == $item->id)
-                            <span>&#8369;</span>{{$value}}.00
-                            @endif
-                        @endforeach
-                      @else
-                      <i>No Data</i>
-                    @endif
-                    {{-- <br>
-                    <i><a href="/checkdeductiondetails/{{Crypt::encrypt($item->id)}}" class="tableBtn" title="Check deduction">click for the details</a>
-                    </i> --}}
-                  </td>
-                  <td class="text-center">
-                    @foreach ($TotalNet  as $key => $value) 
-                    @if ($key == $item->id)
+                </td>
+                <td><!-- ?Monthly Salary -->
+                  <div style="font-weight: 600;">
+                    <span>&#8369;</span>{{$item->monthly_rate}}.00
+                    <button class="edit-btn-monthly" title="Edit"
+                    style="border: none;
+                    outline: none; background-color: transparent; margin-left: 5px;">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </div>
+                </td>
+                <td><!-- ?Bonus -->
+                  @if (isset($TotalAdditional[$item->id]))
+                      @foreach ($TotalAdditional  as $key => $value) 
+                        @if ($key == $item->id)
+                        <div style="font-weight: 600;">
+                          <span>&#8369;</span>{{$value}}.00
+                        </div>
+                        @endif
+                      @endforeach
+                    @else
+                    <i>No Data</i>
+                 @endif
+                </td>
+                <td><!-- ?Deduction -->
+                  @if (isset($TotalDeduction[$item->id]))
+                    @foreach ($TotalDeduction  as $key => $value) 
+                        @if ($key == $item->id)
+                        <div style="border-radius: 10px;
+                        color: red;
+                        font-weight: 600;"
+                  >
+                        <span>&#8369;</span>{{$value}}.00
+                        </div>
+                        @endif
+                    @endforeach
+                  @else
+                  <i>No Data</i>
+                @endif
+                {{-- <br>
+                <i><a href="/checkdeductiondetails/{{Crypt::encrypt($item->id)}}" class="tableBtn" title="Check deduction">click for the details</a>
+                </i> --}}
+                </td>
+                <td><!-- ?Net Amount -->
+                  @foreach ($TotalNet  as $key => $value) 
+                  @if ($key == $item->id)
+                  <div style="background-color: #b7e4c7;
+                  border-radius: 10px;
+                  ">
                     <span>&#8369;</span>{{$value}}.00
-                    @endif
-                @endforeach</td>
-                  </td>
+                  </div>
+                  @endif
+                  @endforeach</td>
+                </td>
               </tr>
               @endforeach
             </tbody>
