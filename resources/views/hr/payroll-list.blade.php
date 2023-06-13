@@ -232,7 +232,7 @@ active
               <th>Net Amount Received</th>
             </tr>
             </thead>
-            <tbody class="tbody-main">
+            <tbody class="tbody-main" id="table-body">
               @foreach ($emp as $item)
               <tr class="primary-table-row">
                 <td class="select-checkBox"><input type="checkbox" data-id="{{ $item->id }}"></td>
@@ -241,9 +241,15 @@ active
                     <span class="action-icons"><i class="fa-solid fa-eye eye-main-pos"
                         style="color: #157fd1;"></i></span>
                   </button>
-                 
-                  <a href="/payroll-check/{{$item->id}}" style="background-color: blue; color: white; padding: 0 1rem;">
-                    Check Data
+                  <button><a href="/payroll-check/{{Crypt::encrypt($item->id)}}">
+                    <span class="action-icons"><i class="fa-solid fa-table" style="color: #264f97;"></i></span>
+                    </a>
+                  </button>
+                  <button><a href="/printPayslipTable/{{Crypt::encrypt($item->id)}}">
+                    <span class="action-icons"><i class="fa-solid fa-file-export"
+                      style ="color: #40916c;"></i></span>
+                    </a>
+                  </button>
                   
                 </td><!-- ?Action Buttons END -->
                 <td><!-- ?ID -->
@@ -252,8 +258,8 @@ active
                 <td><!-- ?Name -->
                   {{$item->first_name}} {{$item->middle_name}} {{$item->last_name}} {{$item->suffix}}
                 </td>
-                <td><!-- ?Department -->
-                  <div style="background-color: #219ebc;
+                <td class="department-main-td"><!-- ?Department -->
+                  <div class="department-main" style="background-color: #219ebc;
                   color: white;
                   border-radius: 0px 10px 10px 0px;
                   font-weight: 600;">
@@ -262,7 +268,7 @@ active
                 </td>
                 <td><!-- ?Monthly Salary -->
                   <div style="font-weight: 600;">
-                    <span>&#8369;</span>{{$item->monthly_rate}}.00
+                    <span class="department-main">&#8369;</span>{{$item->monthly_rate}}.00
                     <button class="edit-btn-monthly" title="Edit"
                     style="border: none;
                     outline: none; background-color: transparent; margin-left: 5px;">
@@ -291,15 +297,12 @@ active
                         color: red;
                         font-weight: 600;">
                         <span>&#8369;</span>{{$value}}.00
-                        </div>
+                        </div> 
                         @endif
                     @endforeach
                   @else
                   <i>No Data</i>
                 @endif
-                {{-- <br>
-                <i><a href="/checkdeductiondetails/{{Crypt::encrypt($item->id)}}" class="tableBtn" title="Check deduction">click for the details</a>
-                </i> --}}
                 </td>
                 <td><!-- ?Net Amount -->
                   @foreach ($TotalNet  as $key => $value) 
@@ -309,14 +312,13 @@ active
                     <span>&#8369;</span>{{$value}}.00
                   </div>
                   @endif
-                  @endforeach</td>
+                  @endforeach
                 </td>
               </tr>
               @endforeach
             </tbody>
           </table>
          </div>
-
       </div><!-- !Table-change END -->
     </div><!-- !All Table Container END -->
   </div><!-- !All main container END -->
