@@ -1,7 +1,6 @@
 /* *Main Container */
 .all-main-container {
     height: fit-content;
-    max-height: 90vh;
     width: 100%;
     padding: 1.2rem;
     border-radius: 10px;

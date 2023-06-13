@@ -241,12 +241,10 @@ active
                     <span class="action-icons"><i class="fa-solid fa-eye eye-main-pos"
                         style="color: #157fd1;"></i></span>
                   </button>
-                  <button>
-                    <span class="action-icons"><i class="fa-solid fa-pen-to-square" style="color: #6c737f;"></i></span>
-                  </button>
-                  <button>
-                    <span class="action-icons"><i class="fa-sharp fa-solid fa-trash" style="color: #6c737f;"></i></span>
-                  </button>
+                 
+                  <a href="/payroll-check/{{$item->id}}" style="background-color: blue; color: white; padding: 0 1rem;">
+                    Check Data
+                  
                 </td><!-- ?Action Buttons END -->
                 <td><!-- ?ID -->
                   ID-00{{$item->id}}
@@ -291,8 +289,7 @@ active
                         @if ($key == $item->id)
                         <div style="border-radius: 10px;
                         color: red;
-                        font-weight: 600;"
-                  >
+                        font-weight: 600;">
                         <span>&#8369;</span>{{$value}}.00
                         </div>
                         @endif
@@ -308,8 +305,7 @@ active
                   @foreach ($TotalNet  as $key => $value) 
                   @if ($key == $item->id)
                   <div style="background-color: #b7e4c7;
-                  border-radius: 10px;
-                  ">
+                  border-radius: 10px;">
                     <span>&#8369;</span>{{$value}}.00
                   </div>
                   @endif
