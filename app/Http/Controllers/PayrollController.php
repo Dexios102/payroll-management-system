@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\GeneratedPayslip;
 
 
 class PayrollController extends Controller
@@ -403,7 +404,8 @@ class PayrollController extends Controller
             'fullname' => $emp->fullname,
             'dept' => $emp->department,
             'pos' => $emp->position,
-            'salary' => $emp->monthly_rate
+            'salary' => $emp->monthly_rate,
+            'id2' => $emp->id,
         );
 
         // ALL DEDUCTIONS
@@ -607,6 +609,46 @@ class PayrollController extends Controller
 
 
                     ]);
+    }
+
+    public function payslipGenerate(Request $request){
+        $emp_id = $request->emp_id;
+        $emp = Employee::find($emp_id);
+
+        $emp_array = array(
+            'emp_id' =>  $emp->id,
+            'emp_fullname' => $emp->fullname,
+            'emp_department' => $emp->department,
+            'absents' => $request->absents,
+            'late_hours' => $request->late_hours,
+            'late_minutes' => $request->late_minutes,
+            'total_deduction' => $request->total_deduction,
+            'total_net' => $request->total_net,
+        );
+
+        $generate = new GeneratedPayslip();
+        $generate->employee_id = $emp->id;
+        $generate->employee_name = $emp->fullname;
+        $generate->department = $emp->department;
+        $generate->payroll_date = Carbon::now();
+        $generate->absents = $request->absents;
+        $generate->	late_hours = $request->	late_hours;
+        $generate->late_minutes = $request->late_minutes;
+        $generate->salary = $request->salary;
+        
+        $generate->total_deduction = $request->total_deduction;
+        $generate->total_net = $request->total_net;
+     
+
+        $generate->save();
+
+
+
+
+
+        return response()->json([
+            'emp_array' => $emp_array,
+        ]);
     }
     
 }

@@ -122,6 +122,7 @@ Route::get('/practice', [HomeController::class, 'practice']);
 Route::get('/payslip-check', [PayrollController::class, 'payslipCheck']);
 Route::get('/print-payslip', [PayrollController::class,'payslipPrint']);
 Route::get('/printPayslipTable/{id}', [PrintController::class,'payslipPayslipTable']);
+Route::get('/payslip-generate', [PayrollController::class,'payslipGenerate']);
 
 });
   

@@ -138,7 +138,7 @@ function deleteDeduc2(id){
   }
   
 
-  function inputEmployee() {
+function inputEmployee() {
     let input = document.getElementById("inputEmployee").value;
     // document.getElementById("try").innerHTML = "Your email: " + id;
     // console.log(input);
@@ -159,6 +159,7 @@ function deleteDeduc2(id){
             $('#empPosition').html('Designation/Position: <span>'+ data.emp_array.pos + '</span>');
             $('#empSalary').val(data.emp_array.salary);
             $('#empEarned').val(data.amountEarned);
+            $('#empId2').val(data.emp_array.id2 );
             // DEDUCTION
             $('#dedlist').html(data.dedHTML);
             $('#dedamount').html(data.amountHTML);
@@ -174,7 +175,7 @@ function deleteDeduc2(id){
             //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
             $('#totalnet').html('Total Net Amount: ₱ '+$totalnet.toLocaleString());
-           
+            $('#totalnet2').val($totalnet);
             //Month
             $('#month_select').empty().append(data.monthHTML); 
             
@@ -202,6 +203,7 @@ function deleteDeduc2(id){
     //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
             $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
+            $('#totalnet2').val($totalnet);
   }
 
 
@@ -221,6 +223,7 @@ function ded_days(){
         //TOTAL NET
                 $totalnet = $('#totalAdd').val() - $('#totalDed').val();
                 $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
+                $('#totalnet2').val($totalnet);
 
     } else{
         $total_gross = $('#totalAdd').val() - parseFloat(dedsum);
@@ -228,6 +231,7 @@ function ded_days(){
         //TOTAL NET
                 $totalnet = $('#totalAdd').val() - $('#totalDed').val();
                 $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
+                $('#totalnet2').val($totalnet);
     }
    
   }
@@ -242,6 +246,7 @@ function ded_days(){
     //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
             $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
+            $('#totalnet2').val($totalnet);
   }
 
   function ded_minutes(){
@@ -254,6 +259,7 @@ function ded_days(){
     //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
             $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
+            $('#totalnet2').val($totalnet);
   }
   
   function addChange(){
@@ -265,5 +271,6 @@ function ded_days(){
     //TOTAL NET
             $totalnet = $('#totalAdd').val() - $('#totalDed').val();
             $('#totalnet').html('Total Net Amount: ₱'+$totalnet);
+            $('#totalnet2').val($totalnet);
   }
   
