@@ -183,7 +183,14 @@ function inputEmployee() {
             $('#daily_rate').val(data.daily_rate);
             $('#hour_rate').val(data.hour_rate);
             $('#minute_rate').val(data.minute_rate);
-
+            
+            if(data.generated > 0){
+                $('#genID').html('Generated');
+                $('#genID').css('background-color', '#ff4d4d');
+              } else{
+                $('#genID').html('Generate');
+                $('#genID').css('background-color', '#118ab2');
+              }
           
         },
         error:function(data){

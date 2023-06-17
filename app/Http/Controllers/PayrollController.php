@@ -408,6 +408,10 @@ class PayrollController extends Controller
             'id2' => $emp->id,
         );
 
+        $generated = GeneratedPayslip::where('employee_id', $emp->id)
+        ->whereMonth('payroll_date', Carbon::now())
+        ->count();
+
         // ALL DEDUCTIONS
         // OTHER DEDUCTIONS
         $deductions = PayrollDeduction::whereHas('deduction_info', function ($query) { $query->where('type','contribution');
@@ -606,7 +610,7 @@ class PayrollController extends Controller
                         'daily_rate' => $daily_rate,
                         'hour_rate' => $hour_rate,
                         'minute_rate' => $minute_rate,
-
+                        'generated' =>$generated,
 
                     ]);
     }

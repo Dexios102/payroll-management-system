@@ -476,6 +476,8 @@ active
         success:function(data){
         var modal = document.getElementById('customModal2');
         modal.style.display = 'block';
+        $('#genID').html('Generated');
+        $('#genID').css('background-color', '#ff4d4d');
 
                 // Confirm button click event
                 $(document).on('click', '#confirmButton2', function() {
